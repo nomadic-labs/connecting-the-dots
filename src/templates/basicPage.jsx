@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import Layout from '../layouts/index';
 
 import PageContentContainer from '../containers/PageContentContainer'
-import PageTitleContainer from '../containers/PageTitleContainer'
 
 import { connect } from 'react-redux'
 import { updatePageContent, updatePageMetaData } from '../redux/actions'

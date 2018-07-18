@@ -181,6 +181,28 @@ export const interactiveTool = (state={}, action) => {
   }
 }
 
+export const page = (state={}, action) => {
+  switch (action.type) {
+    case 'LOAD_PAGE_DATA':
+      return {
+        ...state,
+        data: action.data
+      }
+    case 'UPDATE_PAGE_DATA':
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          content: {
+            ...state.data.content,
+            [action.contentId]: action.content
+          }
+        }
+      }
+    default:
+      return state
+  }
+}
 
 
 export const appReducers = (state = {}, action) => {
@@ -190,7 +212,8 @@ export const appReducers = (state = {}, action) => {
     pageData: pageData(state.pageData, action),
     content: content(state.content, action),
     navigation: navigation(state.navigation, action),
-    interactiveTool: interactiveTool(state.interactiveTool, action)
+    interactiveTool: interactiveTool(state.interactiveTool, action),
+    page: page(state.page, action),
   }
 }
 

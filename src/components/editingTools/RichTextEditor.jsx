@@ -12,7 +12,8 @@ class RichTextEditor extends React.Component {
   }
 
   initializeEditorState = () => {
-    const editorValue = createValueFromString(this.state.content.text, 'html');
+    const text = Boolean(this.state.content) ? this.state.content.text : '';
+    const editorValue = createValueFromString(text, 'html');
     this.setState({ editorValue });
   }
 

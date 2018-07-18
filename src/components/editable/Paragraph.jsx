@@ -13,10 +13,7 @@ const Paragraph = (props) => {
       content={{ text: props.text }}
       { ...props }
     >
-      <div className="col-md-6 col-sm-12">
-        <div className={`text-large ${props.classes}`}
-        dangerouslySetInnerHTML={ {__html: props.text} }>
-        </div>
+      <div dangerouslySetInnerHTML={ {__html: props.text} }>
       </div>
     </Editable>
   );

@@ -31,10 +31,11 @@ class PlainTextEditor extends React.Component {
   }
 
   render() {
-    const { text } = this.state.content;
+    const text = Boolean(this.state.content) ? this.state.content.text : '';
 
     return (
       <Input
+        multiline
         style={styles.input}
         value={text}
         onChange={this.handleEditorChange}

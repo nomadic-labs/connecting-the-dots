@@ -1,28 +1,51 @@
-import React from 'react';
-import Grid from "@material-ui/core/Grid";
+import React from "react";
+import logo from "../assets/images/icon.png";
 
-const styles = {
-  footer: {
-    display: 'flex',
-    boxShadow: '0px -2px 4px rgba(0,0,0,0.1)',
-    paddingTop: '20px'
-  },
-  container: {
-    display: 'flex',
-    justifyContent: 'center'
-  }
-}
-
-const Footer = (props) => {
+const Footer = props => {
   return (
-    <footer className='footer' style={styles.footer}>
-      <Grid container style={styles.container} justify="center">
-        <Grid item>
-          <p>© 2017 Save the Children International</p>
-        </Grid>
-      </Grid>
+    <footer className="wow fadeIn bg-white border-top">
+      <div className="footer-top">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12 col-sm-12 text-center">
+              <div className="text-center">
+                <a className="inner-link" href="#home">
+                  <img src={logo} alt="Black History Ottawa" />
+                </a>
+              </div>
+              <span className="text-small alt-font text-uppercase margin-two margin-lr-auto display-block letter-spacing-1 black-text">
+                Connecting the Dots
+              </span>
+            </div>
+            <div className="col-md-12 col-sm-12 text-center margin-four no-margin-lr no-margin-bottom xs-margin-fifteen xs-no-margin-lr xs-no-margin-bottom">
+              <div className="footer-social">
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                  <i className="fa fa-facebook" />
+                </a>
+                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                  <i className="fa fa-twitter" />
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+                  <i className="fa fa-linkedin" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="footer-bottom bg-gray">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12 col-sm-12 text-center">
+              <span className="text-small text-uppercase letter-spacing-1">
+                © 2018 Connecting the Dots
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
-  )
-}
+  );
+};
 
 export default Footer;

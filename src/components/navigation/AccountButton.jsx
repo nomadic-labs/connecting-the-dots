@@ -11,7 +11,6 @@ import {
   toggleEditing
 } from "../../redux/actions";
 
-import Button from "@material-ui/core/Button";
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import MenuItem from "@material-ui/core/MenuItem";
 import List from "@material-ui/core/List";

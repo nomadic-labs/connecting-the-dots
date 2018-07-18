@@ -36,7 +36,7 @@ class StatisticEditor extends React.Component {
 
     return (
       <div>
-        <FormControl fullWidth margin="normal">
+        <FormControl margin="normal">
           <Input
             name='number'
             type="number"
@@ -45,7 +45,7 @@ class StatisticEditor extends React.Component {
             label="Number"
           />
         </FormControl>
-        <FormControl fullWidth margin="normal">
+        <FormControl margin="normal">
           <TextField
             name='label'
             value={ label }
