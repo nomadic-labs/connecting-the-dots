@@ -6,6 +6,7 @@ import { updatePageData } from "../redux/actions";
 import Layout from "../layouts/index.js";
 import BasicPage from "../templates/basicPage.jsx";
 import BackgroundImage from "../components/editable/BackgroundImage";
+import Button from "../components/editable/Button";
 import Editable from "../components/editable/Editable";
 import PlainTextEditor from "../components/editingTools/PlainTextEditor";
 import RichTextEditor from "../components/editingTools/RichTextEditor";
@@ -236,6 +237,675 @@ const HomePage = ({ data, onUpdatePageData }) => {
                 </p>
               </Editable>
               <i className="fa fa-arrow-circle-right icon-small yellow-text display-block margin-fifteen no-margin-bottom xs-margin-two xs-no-margin-bottom" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="no-padding-top wow fadeIn" id="bho">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-lg-6 col-md-6 col-sm-12 padding-nine bg-black agency-skill md-padding-fifteen sm-padding-nineteen">
+              <span className="title-extra-large alt-font white-text">
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["bho-header"]}
+                  handleSave={onSave("bho-header")}
+                >
+                  {content["bho-header"]
+                    ? content["bho-header"]["text"]
+                    : "Header"}
+                </Editable>
+              </span>
+
+              <Editable
+                editor={RichTextEditor}
+                content={content["bho-description"]}
+                handleSave={onSave("bho-description")}
+              >
+                <p className="white-text text-medium margin-six no-margin-lr">
+                  {content["bho-description"]
+                    ? content["bho-description"]["text"]
+                    : "Header"}
+                </p>
+              </Editable>
+
+              <a
+                className="highlight-button-white-border margin-six btn btn-medium no-margin-lr button inner-link"
+                href=""
+              >
+                Support BHO{" "}
+                <i className="fa fa-heart-o icon-extra-small white-text" />
+              </a>
+            </div>
+
+            <div className="col-lg-6 col-md-6 col-sm-12 padding-4 bg-gray agency-skill md-padding-seventeen sm-padding-nineteen">
+              <span className="text-medium font-weight-600 text-uppercase black-text margin-six display-block main-font">
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["bho-objectives-header"]}
+                  handleSave={onSave("bho-objectives-header")}
+                >
+                  {content["bho-objectives-header"]
+                    ? content["bho-objectives-header"]["text"]
+                    : "Our Objectives"}
+                </Editable>
+              </span>
+
+              <div className="padding-six">
+                <Editable
+                  editor={RichTextEditor}
+                  content={content["bho-objectives-details"]}
+                  handleSave={onSave("bho-objectives-details")}
+                >
+                  {content["bho-objectives-details"]
+                    ? content["bho-objectives-details"]["text"]
+                    : "Details"}
+                </Editable>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tour" className="border-top wow fadeIn no-padding-bottom">
+        <div className="container xs-text-center">
+          <div className="row">
+            <div className="col-md-12 col-sm-12">
+              <h2 className="alt-font font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-lr no-margin-top">
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["tour-title"]}
+                  handleSave={onSave("tour-title")}
+                >
+                  {content["tour-title"]
+                    ? content["tour-title"]["text"]
+                    : "Title"}
+                </Editable>
+              </h2>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-5 col-sm-12">
+              <span className="text-extra-large margin-fourteen no-margin-lr no-margin-top display-inline-block main-font black-text md-margin-seventeen md-no-margin-lr md-no-margin-top sm-margin-nine sm-no-margin-lr sm-no-margin-top">
+                <Editable
+                  editor={RichTextEditor}
+                  content={content["tour-description"]}
+                  handleSave={onSave("tour-description")}
+                >
+                  {content["tour-description"]
+                    ? content["tour-description"]["text"]
+                    : "Details"}
+                </Editable>
+              </span>
+              <div>
+                <a
+                  href="#contact"
+                  className="highlight-button-black-border btn btn-medium button inner-link xs-no-margin"
+                >
+                  Let's Work Together
+                </a>
+              </div>
+            </div>
+            <div className="col-md-7 col-sm-12 text-center sm-margin-fifteen sm-no-margin-lr sm-no-margin-buttom">
+              <div className="col-md-3 col-sm-4 border-right counter-style1 xs-margin-nineteen xs-no-margin-lr xs-no-margin-top xs-no-border">
+                <span
+                  className="timer counter-number alt-font font-weight-500 black-text"
+                  data-to="5"
+                  data-speed="1000"
+                />
+                <span className="text-small font-weight-200 letter-spacing-2 text-uppercase margin-four no-margin-lr display-block alt-font xs-margin-two xs-no-margin-lr xs-no-margin-buttom">
+                  Provinces
+                </span>
+              </div>
+              <div className="col-md-3 col-sm-4 border-right counter-style1 xs-margin-nineteen xs-no-margin-lr xs-no-margin-top xs-no-border">
+                <span
+                  className="timer counter-number alt-font font-weight-500 black-text"
+                  data-to="12"
+                  data-speed="1000"
+                />
+                <span className="text-small font-weight-200 letter-spacing-2 text-uppercase margin-four no-margin-lr display-block alt-font xs-margin-two xs-no-margin-lr xs-no-margin-buttom">
+                  Cities
+                </span>
+              </div>
+              <div className="col-md-3 col-sm-4 border-right counter-style1 xs-margin-nineteen xs-no-margin-lr xs-no-margin-top xs-no-border">
+                <span
+                  className="timer counter-number alt-font font-weight-500 black-text"
+                  data-to="12345"
+                  data-speed="1000"
+                />
+                <span className="text-small font-weight-200 letter-spacing-2 text-uppercase margin-four no-margin-lr display-block alt-font xs-margin-two xs-no-margin-lr xs-no-margin-buttom">
+                  Dots Connected
+                </span>
+              </div>
+              <div className="col-md-3 col-sm-4 counter-style1">
+                <span
+                  className="timer counter-number alt-font font-weight-500 black-text"
+                  data-to="1198545"
+                  data-speed="1000"
+                />
+                <span className="text-small font-weight-200 letter-spacing-2 text-uppercase margin-four no-margin-lr display-block alt-font xs-margin-two xs-no-margin-lr xs-no-margin-buttom">
+                  Black Canadians
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="container-fluid display-inline-block margin-eight no-margin-lr no-margin-bottom md-margin-twenty-three md-no-margin-bottom md-no-margin-lr sm-margin-five sm-no-margin-lr sm-no-margin-buttom xs-margin-eleven xs-no-margin-lr xs-no-margin-buttom">
+          <div className="row">
+            <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
+              <div className="" />
+              <img src="images/bg-01.png" alt="" />
+              <div className="team-mood text-center">
+                <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large">
+                  Coast-to-Coast
+                </span>
+              </div>
+              <figure className="text-center padding-thirty">
+                <figcaption>
+                  <span className="alt-font font-weight-100 text-small letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    1,198,545 Black Canadians
+                  </span>
+                  <span className="alt-font font-weight-100 text-large letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    # Projects
+                  </span>
+                  <a
+                    href="https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/dt-td/Rp-eng.cfm?TABID=2&LANG=E&APATH=3&DETAIL=0&DIM=0&FL=A&FREE=0&GC=0&GK=0&GRP=1&PID=110531&PRID=10&PTYPE=109445&S=0&SHOWALL=0&SUB=0&Temporal=2017&THEME=120&VID=0&VNAMEE=&VNAMEF="
+                    target="_blank"
+                    className="highlight-button-black-border btn btn-medium button inner-link xs-no-margin"
+                  >
+                    View 2016 Census
+                  </a>
+                </figcaption>
+              </figure>
+            </div>
+            <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
+              <div className="opacity-light" />
+              <img src="images/toronto.jpg" alt="" />
+              <div className="team-mood text-center">
+                <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large">
+                  Ontario
+                </span>
+              </div>
+              <figure className="text-center padding-thirty">
+                <figcaption>
+                  <span className="alt-font font-weight-100 text-small letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    627,715 Black Canadians
+                  </span>
+                  <span className="alt-font font-weight-100 text-large letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    # Projects
+                  </span>
+                </figcaption>
+              </figure>
+            </div>
+            <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
+              <div className="opacity-light" />
+              <img src="images/calgary.jpg" alt="" />
+              <div className="team-mood text-center">
+                <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large">
+                  Alberta
+                </span>
+              </div>
+              <figure className="text-center padding-thirty">
+                <figcaption>
+                  <span className="alt-font font-weight-100 text-small letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    129,395 Black Canadians
+                  </span>
+                  <span className="alt-font font-weight-100 text-large letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    # Projects
+                  </span>
+                </figcaption>
+              </figure>
+            </div>
+            <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
+              <div className="opacity-light" />
+              <img src="images/vancouver.jpg" alt="" />
+              <div className="team-mood text-center">
+                <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large">
+                  British Columbia
+                </span>
+              </div>
+              <figure className="text-center padding-thirty">
+                <figcaption>
+                  <span className="alt-font font-weight-100 text-small letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    43,500 Black Canadians
+                  </span>
+                  <span className="alt-font font-weight-100 text-large letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    # Projects
+                  </span>
+                </figcaption>
+              </figure>
+            </div>
+            <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
+              <div className="opacity-light" />
+              <img src="images/halifax.jpg" alt="" />
+              <div className="team-mood text-center">
+                <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large">
+                  Nova Scotia
+                </span>
+              </div>
+              <figure className="text-center padding-thirty">
+                <figcaption>
+                  <span className="alt-font font-weight-100 text-small letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    21,915 Black Canadians
+                  </span>
+                  <span className="alt-font font-weight-100 text-large letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    # Projects
+                  </span>
+                </figcaption>
+              </figure>
+            </div>
+            <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
+              <div className="opacity-light" />
+              <img src="images/montreal.jpg" alt="" />
+              <div className="team-mood text-center">
+                <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large">
+                  Quebec
+                </span>
+              </div>
+              <figure className="text-center padding-thirty">
+                <figcaption>
+                  <span className="alt-font font-weight-100 text-small letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    319,230 Black Canadians
+                  </span>
+                  <span className="alt-font font-weight-100 text-large letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    # Projects
+                  </span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="areas-of-focus"
+        className="wow fadeIn no-padding-top no-padding-bottom"
+      >
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-lg-12 col-md-12 col-sm-12 bg-gray service padding-seven md-padding-seventeen xs-padding-twenty-nine xs-no-padding-lr">
+              <div className="row">
+                <div className="col-md-12 col-sm-12 text-center">
+                  <h2 className="alt-font font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-top">
+                    <Editable
+                      editor={PlainTextEditor}
+                      content={content["focus-title"]}
+                      handleSave={onSave("focus-title")}
+                    >
+                      {content["focus-title"]
+                        ? content["focus-title"]["text"]
+                        : "Header"}
+                    </Editable>
+                  </h2>
+                </div>
+              </div>
+              <div className="col-md-3 col-sm-12 service-sub text-center">
+                <i className="icon-target icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["focus1-header"]}
+                    handleSave={onSave("focus1-header")}
+                  >
+                    {content["focus1-header"]
+                      ? content["focus1-header"]["text"]
+                      : "Header"}
+                  </Editable>
+                </span>
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["focus1-description"]}
+                  handleSave={onSave("focus1-description")}
+                >
+                  <p className="text-medium width-80 center-col">
+                    {content["focus1-description"]
+                      ? content["focus1-description"]["text"]
+                      : "Header"}
+                  </p>
+                </Editable>
+              </div>
+
+              <div className="col-md-3 col-sm-12 service-sub text-center">
+                <i className="icon-target icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["focus2-header"]}
+                    handleSave={onSave("focus2-header")}
+                  >
+                    {content["focus2-header"]
+                      ? content["focus2-header"]["text"]
+                      : "Header"}
+                  </Editable>
+                </span>
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["focus2-description"]}
+                  handleSave={onSave("focus2-description")}
+                >
+                  <p className="text-medium width-80 center-col">
+                    {content["focus2-description"]
+                      ? content["focus2-description"]["text"]
+                      : "Header"}
+                  </p>
+                </Editable>
+              </div>
+
+              <div className="col-md-3 col-sm-12 service-sub text-center">
+                <i className="icon-target icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["focus1-header"]}
+                    handleSave={onSave("focus1-header")}
+                  >
+                    {content["focus3-header"]
+                      ? content["focus3-header"]["text"]
+                      : "Header"}
+                  </Editable>
+                </span>
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["focus3-description"]}
+                  handleSave={onSave("focus3-description")}
+                >
+                  <p className="text-medium width-80 center-col">
+                    {content["focus3-description"]
+                      ? content["focus3-description"]["text"]
+                      : "Header"}
+                  </p>
+                </Editable>
+              </div>
+
+              <div className="col-md-3 col-sm-12 service-sub text-center">
+                <i className="icon-target icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["focus4-header"]}
+                    handleSave={onSave("focus4-header")}
+                  >
+                    {content["focus4-header"]
+                      ? content["focus4-header"]["text"]
+                      : "Header"}
+                  </Editable>
+                </span>
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["focus4-description"]}
+                  handleSave={onSave("focus4-description")}
+                >
+                  <p className="text-medium width-80 center-col">
+                    {content["focus4-description"]
+                      ? content["focus4-description"]["text"]
+                      : "Header"}
+                  </p>
+                </Editable>
+              </div>
+
+              <div className="col-md-3 col-sm-12 service-sub text-center">
+                <i className="icon-target icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["focus5-header"]}
+                    handleSave={onSave("focus5-header")}
+                  >
+                    {content["focus5-header"]
+                      ? content["focus5-header"]["text"]
+                      : "Header"}
+                  </Editable>
+                </span>
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["focus5-description"]}
+                  handleSave={onSave("focus5-description")}
+                >
+                  <p className="text-medium width-80 center-col">
+                    {content["focus5-description"]
+                      ? content["focus5-description"]["text"]
+                      : "Header"}
+                  </p>
+                </Editable>
+              </div>
+
+              <div className="col-md-3 col-sm-12 service-sub text-center">
+                <i className="icon-target icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["6-header"]}
+                    handleSave={onSave("6-header")}
+                  >
+                    {content["6-header"]
+                      ? content["6-header"]["text"]
+                      : "Header"}
+                  </Editable>
+                </span>
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["6-description"]}
+                  handleSave={onSave("6-description")}
+                >
+                  <p className="text-medium width-80 center-col">
+                    {content["6-description"]
+                      ? content["6-description"]["text"]
+                      : "Header"}
+                  </p>
+                </Editable>
+              </div>
+
+              <div className="col-md-3 col-sm-12 service-sub text-center">
+                <i className="icon-target icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["focus7-header"]}
+                    handleSave={onSave("focus7-header")}
+                  >
+                    {content["focus7-header"]
+                      ? content["focus7-header"]["text"]
+                      : "Header"}
+                  </Editable>
+                </span>
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["focus7-description"]}
+                  handleSave={onSave("focus7-description")}
+                >
+                  <p className="text-medium width-80 center-col">
+                    {content["focus7-description"]
+                      ? content["focus7-description"]["text"]
+                      : "Header"}
+                  </p>
+                </Editable>
+              </div>
+
+              <div className="col-md-3 col-sm-12 service-sub text-center">
+                <i className="icon-target icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["focus8-header"]}
+                    handleSave={onSave("focus8-header")}
+                  >
+                    {content["focus8-header"]
+                      ? content["focus8-header"]["text"]
+                      : "Header"}
+                  </Editable>
+                </span>
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["focus8-description"]}
+                  handleSave={onSave("focus8-description")}
+                >
+                  <p className="text-medium width-80 center-col">
+                    {content["focus8-description"]
+                      ? content["focus8-description"]["text"]
+                      : "Header"}
+                  </p>
+                </Editable>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="get-involved"
+        className="wow fadeIn bg-fast-yellow work-with-us"
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12 col-sm-12 text-center">
+              <i className="icon-chat icon-large black-text" />
+              <span className="title-medium alt-font black-text display-block margin-four text-uppercase">
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["get-involved-cta"]}
+                  handleSave={onSave("get-involved-cta")}
+                >
+                  {content["get-involved-cta"]
+                    ? content["get-involved-cta"]["text"]
+                    : "Want to get involved?"}
+                </Editable>
+              </span>
+              <a
+                href="#contact"
+                className="highlight-button-dark btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
+              >
+                Support BHO
+              </a>
+              <a
+                href="#contact"
+                className="highlight-button-dark btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
+              >
+                Submit a project
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="wow fadeIn">
+        <div className="container xs-text-center">
+          <div className="row">
+            <div className="col-md-12 col-sm-12">
+              <h2 className="alt-font font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-six no-margin-lr no-margin-top">
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["contact-title"]}
+                  handleSave={onSave("contact-title")}
+                >
+                  {content["contact-title"]
+                    ? content["contact-title"]["text"]
+                    : "Contact us"}
+                </Editable>
+              </h2>
+            </div>
+          </div>
+          <div className="row call-us">
+            <div className="col-sm-12">
+              <span className="text-extra-large margin-six no-margin-lr no-margin-top display-inline-block alt-font black-text">
+                <Editable
+                  editor={PlainTextEditor}
+                  content={content["contact-message"]}
+                  handleSave={onSave("contact-message")}
+                >
+                  {content["contact-message"]
+                    ? content["contact-message"]["text"]
+                    : "Get in touch"}
+                </Editable>
+              </span>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-5 col-sm-12 margin-nine no-margin-bottom no-margin-lr">
+              <div className="sm-margin-nine sm-no-margin-tb sm-no-margin-left sm-display-inline-table xs-margin-nine xs-no-margin-lr xs-no-margin-top xs-width-100">
+                <span className="text-uppercase alt-font black-text ">
+                  Address
+                </span>
+                <Editable
+                    editor={PlainTextEditor}
+                    content={content["contact-address"]}
+                    handleSave={onSave("contact-address")}
+                  >
+                  <p className="text-medium">
+                  {content["contact-address"]
+                    ? content["contact-address"]["text"]
+                    : "Get in touch"}
+                  </p>
+                </Editable>
+              </div>
+              <div className="margin-thirteen no-margin-lr sm-margin-nine sm-no-margin-tb sm-no-margin-left sm-display-inline-table xs-margin-nine xs-no-margin-lr xs-no-margin-top xs-width-100">
+                <span className="text-uppercase alt-font black-text">
+                  Email
+                </span>
+                <Editable
+                    editor={PlainTextEditor}
+                    content={content["contact-email"]}
+                    handleSave={onSave("contact-email")}
+                  >
+                  <p className="text-medium">
+                  {content["contact-email"]
+                    ? content["contact-email"]["text"]
+                    : "example@host.com"}
+                  </p>
+                </Editable>
+              </div>
+              <div className="margin-six no-margin-lr sm-margin-nine sm-no-margin-tb sm-no-margin-left sm-display-inline-table xs-margin-nine xs-no-margin-lr xs-no-margin-top xs-width-100">
+                <span className="text-uppercase alt-font black-text">
+                  Phone
+                </span>
+                <Editable
+                    editor={PlainTextEditor}
+                    content={content["contact-phone"]}
+                    handleSave={onSave("contact-phone")}
+                  >
+                  <p className="text-medium">
+                  {content["contact-phone"]
+                    ? content["contact-phone"]["text"]
+                    : "123-456-7890"}
+                  </p>
+                </Editable>
+              </div>
+            </div>
+            <div className="col-md-7 col-sm-12 margin-nine no-margin-bottom no-margin-lr">
+              <form
+                id="agencycontactform"
+                action="javascript:void(0)"
+                method="post"
+              >
+                <div id="success" className="no-margin-lr" />
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="* YOUR NAME"
+                  className="big-input alt-font"
+                />
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  placeholder="* YOUR EMAIL"
+                  className="big-input alt-font"
+                />
+                <textarea
+                  name="comment"
+                  id="comment"
+                  placeholder="YOUR MESSAGE"
+                  className="big-input alt-font"
+                />
+                <button
+                  id="agency-contact-button"
+                  type="submit"
+                  className="highlight-button-dark btn btn-medium"
+                >
+                  Send
+                </button>
+              </form>
             </div>
           </div>
         </div>
