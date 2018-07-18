@@ -1,9 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Link, navigateTo } from "gatsby";
 import { map, compact } from "lodash";
 
-// import AdminToolsContainer from "../../containers/AdminToolsContainer";
+import AdminToolsContainer from "../../containers/AdminToolsContainer";
 
 import firebase from "../../firebase/init";
 
@@ -25,7 +24,7 @@ export default class Navigation extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         const ref = firebase
@@ -142,6 +141,12 @@ export default class Navigation extends React.Component {
                     >
                       Contact
                     </Link>
+                  </li>
+
+                  <li>
+                      {
+                        this.props.allowEditing && <AdminToolsContainer />
+                      }
                   </li>
                 </ul>
               </div>

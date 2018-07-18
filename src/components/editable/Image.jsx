@@ -25,11 +25,11 @@ const Image = (props) => {
     <Editable
       editor={ImageEditor}
       handleSave={handleSave}
-      content={{ source: props.source, caption: props.caption }}
+      content={{ imageSrc: props.imageSrc, caption: props.caption }}
       { ...props }
     >
       <div className='img edit-container' style={styles.imageContainer}>
-        <img src={props.source} alt={props.caption} style={styles.image} />
+        <img src={props.imageSrc} alt={props.caption} style={styles.image} />
         <small>{props.caption}</small>
       </div>
     </Editable>

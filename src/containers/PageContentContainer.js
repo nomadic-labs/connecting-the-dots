@@ -7,7 +7,6 @@ import { updatePageContent } from '../redux/actions';
 
 import PageNavigation from '../containers/PageNavigation';
 import SectionContainer from '../containers/SectionContainer';
-import ReferenceContainer from '../containers/ReferenceContainer';
 import SectionEditingActions from '../containers/SectionEditingActions';
 import LandingSection from '../components/editable/LandingSection';
 

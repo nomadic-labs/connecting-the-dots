@@ -1,7 +1,6 @@
 import React from "react";
 import Editable from './Editable';
 import BackgroundImage from "./BackgroundImage";
-import Paragraph from "./Paragraph";
 import PlainTextEditor from '../editingTools/PlainTextEditor';
 
 const LandingSection = props => {
@@ -19,10 +18,6 @@ const LandingSection = props => {
 
   const updateImage = updated => {
     handleSave({ imageSrc: updated.imageSrc });
-  };
-
-  const updateParagraph = updated => {
-    handleSave({ paragraph: updated.text });
   };
 
   const { content } = props;

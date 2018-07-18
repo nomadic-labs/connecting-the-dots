@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
-import LinkIcon from "@material-ui/icons/Link";
 
 import Editable from "./Editable";
 import StatisticEditor from "../editingTools/StatisticEditor";

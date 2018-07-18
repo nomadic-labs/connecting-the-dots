@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Grid from '@material-ui/core/Grid';
 
 import {
   updateSectionContent,
@@ -12,22 +11,6 @@ import {
   saveChanges,
 } from '../redux/actions'
 import InnerContentContainer from '../containers/InnerContentContainer';
-
-
-const sectionStyles = {
-  container: {
-    padding: '3rem 1rem',
-  }
-}
-
-
-const ctaStyles = {
-  container: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-}
 
 
 const mapStateToProps = (state) => {
@@ -63,7 +46,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const SectionContainer = (props) => {
-  const styles = props.cta ? ctaStyles : sectionStyles;
 
     return (
       <section className="wow fadeIn">

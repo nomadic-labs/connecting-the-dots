@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { StaticQuery, graphql } from "gatsby";
 
-import Hidden from "@material-ui/core/Hidden";
 import {
   userLoggedIn,
   userLoggedOut,
@@ -10,7 +9,6 @@ import {
 } from "../redux/actions";
 
 import Navigation from "../components/navigation/Navigation";
-import MobileNavigation from "../components/navigation/MobileNavigation";
 
 const mapStateToProps = state => {
   return {
@@ -54,14 +52,7 @@ const NavigationComponent = props => (
       }
     `}
     render={data => (
-      <div>
-        <Hidden mdUp>
-          <MobileNavigation {...props} pages={data.allPages.edges} />
-        </Hidden>
-        <Hidden smDown>
-          <Navigation {...props} pages={data.allPages.edges} />
-        </Hidden>
-      </div>
+      <Navigation {...props} pages={data.allPages.edges} />
     )}
   />
 );

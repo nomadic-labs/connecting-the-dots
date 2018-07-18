@@ -8,9 +8,10 @@ import Image from "../components/editable/Image";
 import FileUpload from "../components/editable/FileUpload";
 import Button from "../components/editable/Button";
 import Action from "../components/editable/Action";
-import PageNavButton from "../components/editable/PageNavButton";
 import Phase from "../components/editable/Phase";
 import Statistic from "../components/editable/Statistic";
+import PopupSquare from "../components/editable/PopupSquare";
+import FeatureBox from "../components/editable/FeatureBox";
 
 import SectionEditingActions from "../containers/SectionEditingActions";
 
@@ -114,6 +115,28 @@ const generateContentComponents = (
       case "statistic":
         return (
           <Statistic
+            key={index}
+            index={index}
+            sectionIndex={sectionIndex}
+            content={obj}
+            updateContent={onUpdate}
+            deleteContent={onDeleteContentItem}
+          />
+        );
+      case "popup_square":
+        return (
+          <PopupSquare
+            key={index}
+            index={index}
+            sectionIndex={sectionIndex}
+            content={obj}
+            updateContent={onUpdate}
+            deleteContent={onDeleteContentItem}
+          />
+        );
+      case "feature_box":
+        return (
+          <FeatureBox
             key={index}
             index={index}
             sectionIndex={sectionIndex}
