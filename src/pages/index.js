@@ -33,9 +33,6 @@ const mapStateToProps = state => {
 const HomePage = connect(mapStateToProps, mapDispatchToProps)(
   ({ pageData, onUpdatePageData }) => {
     const content = pageData ? pageData.content : {};
-
-    console.log("stateful content", content);
-
     const onSave = id => content => {
       onUpdatePageData("home", id, content);
     };
@@ -284,10 +281,14 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   content={content["bho-description"]}
                   handleSave={onSave("bho-description")}
                 >
-                  <p className="white-text text-medium margin-six no-margin-lr" dangerouslySetInnerHTML={{ __html: content["bho-description"]
-                      ? content["bho-description"]["text"]
-                      : "Header" }}>
-                  </p>
+                  <p
+                    className="white-text text-medium margin-six no-margin-lr"
+                    dangerouslySetInnerHTML={{
+                      __html: content["bho-description"]
+                        ? content["bho-description"]["text"]
+                        : "Header"
+                    }}
+                  />
                 </Editable>
 
                 <a
@@ -319,12 +320,12 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     handleSave={onSave("bho-objectives-details")}
                   >
                     <div
-                    dangerouslySetInnerHTML={{
-                      __html: content["bho-objectives-details"]
-                        ? content["bho-objectives-details"]["text"]
-                        : "Details"
-                    }}
-                  />
+                      dangerouslySetInnerHTML={{
+                        __html: content["bho-objectives-details"]
+                          ? content["bho-objectives-details"]["text"]
+                          : "Details"
+                      }}
+                    />
                   </Editable>
                 </div>
               </div>
@@ -358,12 +359,12 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     handleSave={onSave("tour-description")}
                   >
                     <div
-                    dangerouslySetInnerHTML={{
-                      __html: content["tour-description"]
-                        ? content["tour-description"]["text"]
-                        : "Details"
-                    }}
-                  />
+                      dangerouslySetInnerHTML={{
+                        __html: content["tour-description"]
+                          ? content["tour-description"]["text"]
+                          : "Details"
+                      }}
+                    />
                   </Editable>
                 </span>
                 <div>
@@ -407,19 +408,17 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </div>
                 <figure className="text-center padding-thirty">
                   <figcaption>
-                    <span className="alt-font font-weight-100 text-small letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    <span className="alt-font font-weight-100 text-medium letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
                       1,198,545 Black Canadians
                     </span>
-                    <span className="alt-font font-weight-100 text-large letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
-                      # Projects
-                    </span>
+
                     <a
                       href="https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/dt-td/Rp-eng.cfm?TABID=2&LANG=E&APATH=3&DETAIL=0&DIM=0&FL=A&FREE=0&GC=0&GK=0&GRP=1&PID=110531&PRID=10&PTYPE=109445&S=0&SHOWALL=0&SUB=0&Temporal=2017&THEME=120&VID=0&VNAMEE=&VNAMEF="
                       target="_blank"
                       rel="noopener noreferrer"
                       className="highlight-button-black-border btn btn-medium button inner-link xs-no-margin"
                     >
-                      View 2016 Census
+                      2016 Census
                     </a>
                   </figcaption>
                 </figure>
@@ -435,11 +434,8 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </div>
                 <figure className="text-center padding-thirty">
                   <figcaption>
-                    <span className="alt-font font-weight-100 text-small letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    <span className="alt-font font-weight-100 text-medium letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
                       627,715 Black Canadians
-                    </span>
-                    <span className="alt-font font-weight-100 text-large letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
-                      # Projects
                     </span>
                   </figcaption>
                 </figure>
@@ -454,11 +450,8 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </div>
                 <figure className="text-center padding-thirty">
                   <figcaption>
-                    <span className="alt-font font-weight-100 text-small letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    <span className="alt-font font-weight-100 text-medium letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
                       129,395 Black Canadians
-                    </span>
-                    <span className="alt-font font-weight-100 text-large letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
-                      # Projects
                     </span>
                   </figcaption>
                 </figure>
@@ -473,11 +466,8 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </div>
                 <figure className="text-center padding-thirty">
                   <figcaption>
-                    <span className="alt-font font-weight-100 text-small letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    <span className="alt-font font-weight-100 text-medium letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
                       43,500 Black Canadians
-                    </span>
-                    <span className="alt-font font-weight-100 text-large letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
-                      # Projects
                     </span>
                   </figcaption>
                 </figure>
@@ -492,11 +482,8 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </div>
                 <figure className="text-center padding-thirty">
                   <figcaption>
-                    <span className="alt-font font-weight-100 text-small letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    <span className="alt-font font-weight-100 text-medium letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
                       21,915 Black Canadians
-                    </span>
-                    <span className="alt-font font-weight-100 text-large letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
-                      # Projects
                     </span>
                   </figcaption>
                 </figure>
@@ -511,11 +498,8 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </div>
                 <figure className="text-center padding-thirty">
                   <figcaption>
-                    <span className="alt-font font-weight-100 text-small letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                    <span className="alt-font font-weight-100 text-medium letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
                       319,230 Black Canadians
-                    </span>
-                    <span className="alt-font font-weight-100 text-large letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
-                      # Projects
                     </span>
                   </figcaption>
                 </figure>
@@ -878,28 +862,40 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </div>
               </div>
               <div className="col-md-7 col-sm-12 margin-nine no-margin-bottom no-margin-lr">
-                <form id="contact-form" method="post">
+                <form
+                  id="contact-form"
+                  method="POST"
+                  action="https://formspree.io/connectingthedots.bho@gmail.com"
+                >
                   <div id="success" className="no-margin-lr" />
                   <input
                     type="text"
-                    name="name"
+                    name="Name"
                     id="name"
                     placeholder="* YOUR NAME"
                     className="big-input alt-font"
+                    required
                   />
                   <input
-                    type="text"
-                    name="email"
+                    type="email"
+                    name="_replyto"
                     id="email"
+                    required
                     placeholder="* YOUR EMAIL"
                     className="big-input alt-font"
                   />
                   <textarea
-                    name="comment"
+                    name="Comment"
                     id="comment"
                     placeholder="YOUR MESSAGE"
                     className="big-input alt-font"
                   />
+                  <input
+                    type="hidden"
+                    name="_next"
+                    value="http://connectingthedots.ca/"
+                  />
+                  <input type="text" name="_gotcha" style={{display: "none"}} />
                   <button
                     id="agency-contact-button"
                     type="submit"
@@ -919,7 +915,6 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
 
 class PageContainer extends React.Component {
   componentDidMount() {
-    console.log("COMPONENT DID MOUNT");
     const initialPageData = {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
