@@ -1,0 +1,205 @@
+@import "variables";
+@import "typography";
+@import "menu";
+@import "loader";
+
+
+.large {
+  font-size: 150%;
+}
+
+section {
+  &:nth-of-type(even) {
+    background-color: $light-grey;
+  }
+
+  .inner-content > div, .edit-container {
+    margin-bottom: 20px;
+  }
+}
+
+.edit-container {
+  position: relative;
+
+  .edit-action {
+    position: absolute;
+    top: 0;
+    right: -66px;
+    display: flex;
+  }
+}
+
+.home {
+  .section {
+    .inner-content {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .header {
+      display: flex;
+      padding-right: 20px;
+    }
+
+    .header, .para {
+      flex: 1 1 50%;
+      min-width: 300px;
+    }
+  }
+}
+
+.about {
+  .section {
+    .inner-content {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+    }
+
+    .header {
+      display: flex;
+    }
+
+  }
+}
+
+.img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.display-title {
+  max-width: 50vw;
+}
+
+.headline-holder-container {
+  display: flex;
+  justify-content: center;
+
+  .headline-holder {
+    line-height: 1.1;
+    background-color: rgba(255,255,255,0.7);
+    padding: 1rem 1rem 0.25rem 1rem;
+    text-align: center;
+  }
+}
+
+section.call-to-action {
+  line-height: 1;
+  background-color: $primary;
+  text-align: center;
+
+  .container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .para {
+    font-size: 3rem;
+    color: white;
+    padding: 1rem;
+  }
+
+  .inner-content {
+    text-align: center;
+  }
+
+  .stc-btn {
+    background-color: white;
+
+    a {
+      color: $primary;
+    }
+
+    &:active, &:hover, &:focus {
+      background-color: transparentize(white, 0.1);
+    }
+  }
+
+  .header {
+    justify-content: center;
+    color: white;
+
+    h3 {
+      border-bottom: 2px solid $black;
+    }
+  }
+}
+
+button, .stc-btn {
+  cursor: pointer;
+  border: none;
+
+  &.btn-red {
+    background-color: $secondary;
+
+    &:active, &:hover, &:focus {
+      background-color: transparentize($secondary, 0.1);
+    }
+
+    a {
+      color: white;
+    }
+  }
+
+  &.btn-white {
+    background-color: white;
+
+    &:active, &:hover, &:focus {
+      background-color: transparentize(white, 0.1);
+    }
+
+    a {
+      color: $black;
+    }
+  }
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: #009CA6;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.interactive-tool {
+  padding: 2rem;
+
+  .title {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid rgb(1, 180, 170)
+  }
+}
+
+.dashboard {
+  padding: 2rem;
+}
+
+/* RESPONSIVE FOR TABLETS */
+
+@media (max-width: 992px) {
+}
+
+/* RESPONSIVE FOR MOBILE */
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
+
+  .display-title {
+    max-width: 100%;
+  }
+
+  section.call-to-action {
+    padding: 3rem 1rem;
+
+    .para {
+      font-size: 2rem;
+    }
+  }
+}
