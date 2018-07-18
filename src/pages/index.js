@@ -70,7 +70,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                         content={content["landing-subtitle"]}
                         handleSave={onSave("landing-subtitle")}
                       >
-                        <p className="white-text main-font text-large xs-width-80">
+                        <p className="white-text main-font title-small xs-width-80">
                           {content["landing-subtitle"]
                             ? content["landing-subtitle"]["text"]
                             : "Subtitle"}
@@ -158,7 +158,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   content={content["phase1-description"]}
                   handleSave={onSave("phase1-description")}
                 >
-                  <p className="center-col width-90">
+                  <p className="center-col width-90 text-medium">
                     {content["phase1-description"]
                       ? content["phase1-description"]["text"]
                       : "Phase description"}
@@ -189,7 +189,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   content={content["phase2-description"]}
                   handleSave={onSave("phase2-description")}
                 >
-                  <p className="center-col width-90">
+                  <p className="center-col width-90 text-medium">
                     {content["phase2-description"]
                       ? content["phase2-description"]["text"]
                       : "Phase description"}
@@ -220,7 +220,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   content={content["phase3-description"]}
                   handleSave={onSave("phase3-description")}
                 >
-                  <p className="center-col width-90">
+                  <p className="center-col width-90 text-medium">
                     {content["phase3-description"]
                       ? content["phase3-description"]["text"]
                       : "Phase description"}
@@ -251,7 +251,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   content={content["phase4-description"]}
                   handleSave={onSave("phase4-description")}
                 >
-                  <p className="center-col width-90">
+                  <p className="center-col width-90 text-medium">
                     {content["phase4-description"]
                       ? content["phase4-description"]["text"]
                       : "Phase description"}
@@ -267,7 +267,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-12 padding-nine bg-black agency-skill md-padding-fifteen sm-padding-nineteen">
-                <span className="title-extra-large alt-font white-text">
+                <span className="title-extra-large alt-font white-text text-italic">
                   <Editable
                     editor={PlainTextEditor}
                     content={content["bho-header"]}
@@ -336,7 +336,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           <div className="container xs-text-center">
             <div className="row">
               <div className="col-md-12 col-sm-12">
-                <h2 className="alt-font font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-lr no-margin-top">
+                <h2 className="alt-font font-weight-600  text-italic text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-lr no-margin-top">
                   <Editable
                     editor={PlainTextEditor}
                     content={content["tour-title"]}
@@ -533,7 +533,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               <div className="col-lg-12 col-md-12 col-sm-12 bg-gray service padding-seven md-padding-seventeen xs-padding-twenty-nine xs-no-padding-lr">
                 <div className="row">
                   <div className="col-md-12 col-sm-12 text-center">
-                    <h2 className="alt-font font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-top">
+                    <h2 className="alt-font font-weight-600 text-italic  text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-top">
                       <Editable
                         editor={PlainTextEditor}
                         content={content["focus-title"]}
@@ -765,7 +765,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           <div className="container">
             <div className="row">
               <div className="col-md-12 col-sm-12 text-center">
-                <i className="icon-chat icon-large black-text" />
+                <i className="icon-heart icon-large black-text" />
                 <span className="title-medium alt-font black-text display-block margin-four text-uppercase">
                   <Editable
                     editor={PlainTextEditor}
@@ -798,7 +798,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           <div className="container xs-text-center">
             <div className="row">
               <div className="col-md-12 col-sm-12">
-                <h2 className="alt-font font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-six no-margin-lr no-margin-top">
+                <h2 className="alt-font font-weight-600 text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-six no-margin-lr no-margin-top">
                   <Editable
                     editor={PlainTextEditor}
                     content={content["contact-title"]}

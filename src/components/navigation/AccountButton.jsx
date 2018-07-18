@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, push } from "gatsby";
+import { push } from "gatsby";
 import firebase from "../../firebase/init";
 import { connect } from "react-redux";
 
@@ -13,7 +13,6 @@ import {
 
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import MenuItem from "@material-ui/core/MenuItem";
-import List from "@material-ui/core/List";
 import Menu from "@material-ui/core/Menu";
 import RegistrationModal from "./RegistrationModal";
 
@@ -93,7 +92,7 @@ class AccountButton extends React.Component {
           <div
             className="btn-small-white btn btn-small no-margin inner-link"
             onClick={openMenu}
-            aria-owns={anchorEl ? 'account-menu' : null}
+            aria-owns={anchorEl ? "account-menu" : null}
             aria-haspopup="true"
           >
             <span style={styles.iconLabel}>
@@ -107,23 +106,28 @@ class AccountButton extends React.Component {
             open={Boolean(anchorEl)}
             onClose={closeMenu}
           >
-            <MenuItem
-              onClick={() => {
-                props.onToggleEditing();
-                closeMenu();
-              }}
-            >
-              {toggleText}
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                props.deploy();
-                closeMenu();
-              }}
-              divider
-            >
-              Publish changes
-            </MenuItem>
+            {props.allowEditing && (
+              <MenuItem
+                onClick={() => {
+                  props.onToggleEditing();
+                  closeMenu();
+                }}
+              >
+                {toggleText}
+              </MenuItem>
+            )}
+
+            {props.allowEditing && (
+              <MenuItem
+                onClick={() => {
+                  props.deploy();
+                  closeMenu();
+                }}
+                divider
+              >
+                Publish changes
+              </MenuItem>
+            )}
             <MenuItem
               onClick={() => {
                 logout();
@@ -186,33 +190,5 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-
-export const AccountSectionContent = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(props => {
-  const logout = e => {
-    firebase.auth().signOut();
-    props.userLoggedOut();
-    props.closeMenu();
-    push("/");
-  };
-
-  return (
-    <List id="account-dropdown">
-      <MenuItem
-        component={Link}
-        to={"/dashboard"}
-        onClick={props.closeMenu}
-        className={props.classes.root}
-      >
-        Dashboard
-      </MenuItem>
-      <MenuItem onClick={logout} className={props.classes.root}>
-        Sign out
-      </MenuItem>
-    </List>
-  );
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountButton);

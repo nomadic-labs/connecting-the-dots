@@ -31,7 +31,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to={"#about"}
-                    className="nner-link text-medium"
+                    className="inner-link text-medium"
                     data-scroll
                   >
                     Our Mission
@@ -40,8 +40,8 @@ const Navigation = () => {
 
                 <li>
                   <Link
-                    to={"#about"}
-                    className="nner-link text-medium"
+                    to={"#tour"}
+                    className="inner-link text-medium"
                     data-scroll
                   >
                     Places
@@ -50,8 +50,8 @@ const Navigation = () => {
 
                 <li>
                   <Link
-                    to={"#about"}
-                    className="nner-link text-medium"
+                    to={"#areas-of-focus"}
+                    className="inner-link text-medium"
                     data-scroll
                   >
                     Areas of Focus
@@ -60,40 +60,30 @@ const Navigation = () => {
 
                 <li>
                   <Link
-                    to={"#about"}
-                    className="nner-link text-medium"
+                    to={"#get-involved"}
+                    className="inner-link text-medium"
                     data-scroll
                   >
-                    Projects
+                    Get involved
                   </Link>
                 </li>
 
                 <li>
                   <Link
-                    to={"#about"}
-                    className="nner-link text-medium"
+                    to={"#contact"}
+                    className="inner-link text-medium"
                     data-scroll
                   >
-                    Blog
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    to={"#about"}
-                    className="nner-link text-medium"
-                    data-scroll
-                  >
-                    Contact
+                    Contact us
                   </Link>
                 </li>
               </ul>
             </div>
 
-            <div className="col-lg-4 col-md-2 pull-right header-right text-right" style={{display: 'flex'}}>
+            <div className="col-lg-4 col-md-2 pull-right header-right text-right" style={{display: 'flex', justifyContent: 'space-around' }}>
               <AccountButton />
               <a
-                className="btn-small-white btn btn-small no-margin inner-link"
+                className="btn-small-white btn btn-small no-margin iinner-link"
                 href="#contact"
               >
                 Donate Now
