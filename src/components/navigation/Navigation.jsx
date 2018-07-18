@@ -3,6 +3,7 @@ import { Link, navigateTo } from "gatsby";
 import { map, compact } from "lodash";
 
 import AdminToolsContainer from "../../containers/AdminToolsContainer";
+import AccountButton from "./AccountButton";
 
 import firebase from "../../firebase/init";
 
@@ -22,34 +23,6 @@ export default class Navigation extends React.Component {
     this.state = {
       isOpen: false
     };
-  }
-
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        const ref = firebase
-          .app()
-          .database()
-          .ref(`users/${user.uid}`);
-        ref.once("value").then(snapshot => {
-          const userData = snapshot.val();
-          if (userData) {
-            this.props.userLoggedIn(userData);
-          } else {
-            const newUser = {
-              uid: user.uid,
-              displayName: user.displayName,
-              email: user.email,
-              photoURL: user.photoURL
-            };
-            ref.set(newUser);
-            this.props.userLoggedIn(newUser);
-          }
-        });
-      } else {
-        this.props.userLoggedOut();
-      }
-    });
   }
 
   toggle() {
@@ -142,22 +115,11 @@ export default class Navigation extends React.Component {
                       Contact
                     </Link>
                   </li>
-
-                  <li>
-                      {
-                        this.props.allowEditing && <AdminToolsContainer />
-                      }
-                  </li>
                 </ul>
               </div>
 
-              <div className="col-lg-4 col-md-2 pull-right header-right text-right sm-display-none">
-                <span className=" white-text text-uppercase text-medium md-display-none margin-two no-margin-tb no-margin-left">
-                  <strong>
-                    Support Us{" "}
-                    <i className="fa fa-heart-o icon-extra-small white-text" />
-                  </strong>
-                </span>
+              <div className="col-lg-4 col-md-2 pull-right header-right text-right" style={{display: 'flex'}}>
+                <AccountButton />
                 <a
                   className="btn-small-white btn btn-small no-margin inner-link"
                   href="#contact"

@@ -88,6 +88,21 @@ export function savePage(pageData, content) {
   };
 }
 
+export function updatePageData(pageId, contentId, content) {
+  return dispatch => {
+    const db = firebase.database();
+
+    db.ref(`pages/${pageId}/content/${contentId}/`).update(content, () => {
+      return dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    });
+  };
+}
+
 export function saveChanges(innerFunction) {
   return (dispatch, getState) => {
     Promise.resolve(dispatch(innerFunction))
