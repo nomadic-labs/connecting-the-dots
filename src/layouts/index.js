@@ -1,11 +1,7 @@
 import React from "react";
-
+import Helmet from "react-helmet";
 import withRoot from '../utils/withRoot';
 
-import { connect } from 'react-redux'
-import { closeMenu } from "../redux/actions";
-
-import Helmet from "react-helmet";
 import NavigationContainer from "../containers/NavigationContainer";
 import NotificationContainer from "../containers/NotificationContainer";
 import Footer from "../components/Footer";
@@ -45,18 +41,4 @@ const TemplateWrapper = props => (
   </div>
 );
 
-function mapStateToProps(state) {
-  return {
-    showMenu: state.navigation.showMenu
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    closeMenu: () => {
-      dispatch(closeMenu());
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRoot(TemplateWrapper))
+export default withRoot(TemplateWrapper);
