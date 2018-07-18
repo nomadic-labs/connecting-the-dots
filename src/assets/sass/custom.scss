@@ -8,16 +8,6 @@
   font-size: 150%;
 }
 
-section {
-  &:nth-of-type(even) {
-    background-color: $light-grey;
-  }
-
-  .inner-content > div, .edit-container {
-    margin-bottom: 20px;
-  }
-}
-
 .edit-container {
   position: relative;
 

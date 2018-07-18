@@ -71,7 +71,7 @@ const mapDispatchToProps = dispatch => {
 Editable.propTypes = {
   editor: PropTypes.func.isRequired,
   handleChange: PropTypes.func,
-  content: PropTypes.object.isRequired,
+  content: PropTypes.object,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Editable);
