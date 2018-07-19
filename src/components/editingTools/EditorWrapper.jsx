@@ -8,7 +8,7 @@ const innerContentStyles = {
     backgroundColor: "rgba(255,255,255,0.3)",
     border: "1px solid black",
     position: "relative",
-    padding: "10px"
+    padding: "10px",
   },
   actions: {
     position: "absolute",
@@ -43,7 +43,7 @@ const innerContentStyles = {
 const fullWidthStyles = {
   ...innerContentStyles,
   editContainer: {
-    padding: "0"
+    padding: "0",
   },
   actions: {
     ...innerContentStyles.actions,
@@ -61,7 +61,8 @@ const EditorWrapper = props => {
         props.isEditing
           ? {
               ...styles.editContainer,
-              backgroundColor: "rgba(255,255,255,0.9)"
+              backgroundColor: "rgba(255,255,255,0.9)",
+              zIndex: '9999'
             }
           : styles.editContainer
       }

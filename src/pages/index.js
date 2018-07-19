@@ -34,6 +34,8 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
   ({ pageData, onUpdatePageData }) => {
     const content = pageData ? pageData.content : {};
     const onSave = id => content => {
+      console.log('id', id)
+      console.log('content', content)
       onUpdatePageData("home", id, content);
     };
 

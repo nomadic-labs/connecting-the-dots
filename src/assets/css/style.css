@@ -1622,19 +1622,6 @@ footer img {max-width: 156px;}
 .maps iframe{ pointer-events: none; }
 
 /* ===================================
-    Tattoo demo
-====================================== */
-
-.section-top-pattern{background:url(../images/tattoo-icon-bg.jpg) no-repeat top center;}
-.tattoo-art-bg{ min-height: 710px;}
-.tattoo-art-title{ border: 7px solid #6ad5a7;}
-.artist-info{ opacity: 0; height: 100%; width: 100%; background: rgba(255,255,255,0.9); padding: 15% 15% 0;}
-.artist-info p{ color: #757575}
-.our-artist:hover .artist-info{ opacity: 1;}
-.artist-title{ position: absolute; bottom: 0; right: 0; background: #ffffff; padding: 18px 40px 15px;}
-.tattoo-art-box .title-extra {font-size: 60px !important; line-height: 60px !important;}
-
-/* ===================================
     Blog listing
 ====================================== */
 

@@ -6,6 +6,7 @@ import ImageEditor from "../editingTools/ImageEditor";
 import defaultImage from '../../assets/images/default_bg.jpg';
 
 const BackgroundImage = ({ content, handleSave, children }) => {
+  console.log('background image', content)
   const imageUrl = content && content.imageSrc ? content.imageSrc : defaultImage;
   const styles = {
     background: {
