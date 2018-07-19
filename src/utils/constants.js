@@ -1,1 +1,1 @@
-export const DEPLOY_ENDPOINT = process.env.DEPLOY_ENDPOINT;
+export const DEPLOY_ENDPOINT = "https://deploy.connectingthedots.ca";
