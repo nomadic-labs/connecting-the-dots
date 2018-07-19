@@ -5,6 +5,7 @@ import AccountButton from "./AccountButton";
 
 
 const Navigation = (props) => {
+  const menuItems = props.menuItems ? props.menuItems : []
   return (
     <div>
       <nav className="navbar no-margin-bottom alt-font">
@@ -29,7 +30,7 @@ const Navigation = (props) => {
             >
               <ul className="nav navbar-nav">
 
-                { props.menuItems.map(item => (
+                { menuItems.map(item => (
                   <li key={item.anchor}>
                     <Link
                       to={`#${item.anchor}`}
