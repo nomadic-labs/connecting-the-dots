@@ -13,6 +13,14 @@ import Statistic from "../components/editable/Statistic";
 import BHOlogo from "../assets/images/bho-logo.png";
 import GOClogo from "../assets/images/goc.png";
 
+const menuItems = [
+  { label: "Our mission", anchor: "about" },
+  { label: "Places", anchor: "tour" },
+  { label: "Areas of Focus", anchor: "areas-of-focus" },
+  { label: "Get involved", anchor: "get-involved" },
+  { label: "Contact us", anchor: "contact" },
+]
+
 const mapDispatchToProps = dispatch => {
   return {
     onUpdatePageData: (page, id, data) => {
@@ -38,7 +46,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
     };
 
     return (
-      <Layout>
+      <Layout menuItems={menuItems}>
         <section className="no-padding">
           <div className="owl-slider-full owl-carousel owl-theme light-pagination square-pagination dark-pagination-without-next-prev-arrow main-slider">
             <BackgroundImage
@@ -767,12 +775,12 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 >
                   Support BHO
                 </a>
-                <a
-                  href="#contact"
+                <Link
+                  to="/project-form"
                   className="highlight-button-dark btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
                 >
                   Submit a project
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -893,7 +901,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   <input
                     type="hidden"
                     name="_next"
-                    value="http://connectingthedots.ca/"
+                    value="https://www.connectingthedots.ca/"
                   />
                   <input type="text" name="_gotcha" style={{display: "none"}} />
                   <button

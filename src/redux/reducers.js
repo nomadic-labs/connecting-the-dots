@@ -75,6 +75,18 @@ export const page = (state={}, action) => {
   }
 }
 
+export const projectForm = (state={}, action) => {
+  switch (action.type) {
+    case 'UPDATE_PROJECT_FORM':
+      return {
+        ...state,
+        ...action.data
+      }
+    default:
+      return state
+  }
+}
+
 
 export const appReducers = (state = {}, action) => {
   return {
@@ -82,6 +94,7 @@ export const appReducers = (state = {}, action) => {
     adminTools: adminTools(state.adminTools, action),
     navigation: navigation(state.navigation, action),
     page: page(state.page, action),
+    projectForm: projectForm(state.projectForm, action),
   }
 }
 

@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import AccountButton from "./AccountButton";
 
 
-const Navigation = () => {
+const Navigation = (props) => {
   return (
     <div>
       <nav className="navbar no-margin-bottom alt-font">
@@ -28,55 +28,18 @@ const Navigation = () => {
               id="bs-example-navbar-collapse-1"
             >
               <ul className="nav navbar-nav">
-                <li>
-                  <Link
-                    to={"#about"}
-                    className="inner-link text-medium"
-                    data-scroll
-                  >
-                    Our Mission
-                  </Link>
-                </li>
 
-                <li>
-                  <Link
-                    to={"#tour"}
-                    className="inner-link text-medium"
-                    data-scroll
-                  >
-                    Places
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    to={"#areas-of-focus"}
-                    className="inner-link text-medium"
-                    data-scroll
-                  >
-                    Areas of Focus
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    to={"#get-involved"}
-                    className="inner-link text-medium"
-                    data-scroll
-                  >
-                    Get involved
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    to={"#contact"}
-                    className="inner-link text-medium"
-                    data-scroll
-                  >
-                    Contact us
-                  </Link>
-                </li>
+                { props.menuItems.map(item => (
+                  <li key={item.anchor}>
+                    <Link
+                      to={`#${item.anchor}`}
+                      className="inner-link text-medium"
+                      data-scroll
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 

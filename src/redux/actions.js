@@ -1,6 +1,7 @@
 import axios from "axios";
 import { DEPLOY_ENDPOINT } from "../utils/constants";
 import firebase from "../firebase/init";
+import slugify from 'slugify';
 
 // AUTHENTICATION ------------------------
 
@@ -121,4 +122,49 @@ export function openMenu() {
 
 export function closeMenu() {
   return { type: "CLOSE_MENU" }
+}
+
+// FORMS ------------------------
+
+export function submitProjectFormSuccess() {
+  return { type: "SUBMIT_PROJECT_FORM_SUCCESS" }
+}
+
+export function submitProjectFormError(error) {
+  return { type: "SUBMIT_PROJECT_FORM_ERROR" }
+}
+
+export function updateForm(data) {
+  return { type: "UPDATE_PROJECT_FORM", data }
+}
+
+export function submitProjectForm(formData) {
+  return dispatch => {
+    const db = firebase.database();
+    const user = slugify(formData.name);
+    const date = new Date()
+    const dateString = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${date.getTime()}`
+    const submissionId = `${user}-${dateString}`
+
+    db.ref(`projectSubmissions/${submissionId}`).update(formData, (error) => {
+      if (error) {
+        console.log('Error submitting form', error)
+        dispatch(submitProjectFormError(error));
+        return dispatch(
+          showNotification(
+            `There was an error submitting your form: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      dispatch(submitProjectFormSuccess());
+      dispatch(
+        showNotification(
+          "Thanks for submitting your project! We will review it before publishing it on the website.",
+          "success"
+        )
+      );
+    });
+  };
 }

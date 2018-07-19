@@ -35,7 +35,7 @@ const TemplateWrapper = props => (
       <link rel="icon" href={favicon} type="image/x-icon" />
     </Helmet>
     <NotificationContainer />
-    <NavigationContainer />
+    <NavigationContainer menuItems={props.menuItems} />
     <div className='page-content'>{props.children}</div>
     <Footer />
   </div>
