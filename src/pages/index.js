@@ -34,8 +34,6 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
   ({ pageData, onUpdatePageData }) => {
     const content = pageData ? pageData.content : {};
     const onSave = id => content => {
-      console.log('id', id)
-      console.log('content', content)
       onUpdatePageData("home", id, content);
     };
 
@@ -47,7 +45,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               content={content["landing-background"]}
               handleSave={onSave("landing-background")}
             >
-              <div className="opacity-light bg-dark-gray" />
+              <div className="opacity-full bg-dark-gray"></div>
               <div className="container full-screen position-relative">
                 <div className="slider-typography text-left">
                   <div className="slider-text-middle-main md-margin-eleven sm-margin-three xs-margin-thirteen">

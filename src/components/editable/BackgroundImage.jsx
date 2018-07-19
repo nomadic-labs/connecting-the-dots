@@ -30,6 +30,7 @@ const BackgroundImage = ({ content, handleSave, children }) => {
         className={`item owl-bg-img`}
         style={styles.background}
       >
+        <div className="opacity-light bg-dark-gray"></div>
         {children}
       </div>
     </Editable>
