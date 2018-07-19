@@ -3,7 +3,7 @@ import React from "react";
 import Editable from "./Editable";
 import ImageEditor from "../editingTools/ImageEditor";
 
-const defaultImage = "http://placehold.it/2000x1000";
+const defaultImage = "https://placehold.it/2000x1000";
 
 const BackgroundImage = ({ content, handleSave, children }) => {
   const imageUrl = content && content.imageSrc ? content.imageSrc : defaultImage;
