@@ -8,8 +8,7 @@ const Statistic = props => {
     props.handleSave(content);
   };
 
-  const defaultContent = { number: 10, label: 'Label' }
-  const content = props.content || defaultContent
+  const content = props.content || {};
 
   return (
     <div className="col-md-3 col-sm-4 border-right counter-style1 xs-margin-nineteen xs-no-margin-lr xs-no-margin-top xs-no-border">
