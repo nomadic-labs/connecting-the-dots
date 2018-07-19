@@ -1,1 +1,1 @@
-export const DEPLOY_ENDPOINT = 'https://toolkit.sharonkennedy.ca';
+export const DEPLOY_ENDPOINT = process.env.DEPLOY_ENDPOINT;

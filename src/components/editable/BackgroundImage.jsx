@@ -3,10 +3,9 @@ import React from "react";
 import Editable from "./Editable";
 import ImageEditor from "../editingTools/ImageEditor";
 
-import defaultImage from '../../assets/images/default_bg.jpg';
+const defaultImage = "http://placehold.it/2000x1000";
 
 const BackgroundImage = ({ content, handleSave, children }) => {
-  console.log('background image', content)
   const imageUrl = content && content.imageSrc ? content.imageSrc : defaultImage;
   const styles = {
     background: {

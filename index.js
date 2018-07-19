@@ -2,6 +2,7 @@ const express = require("express");
 const shell = require("shelljs");
 const admin = require("firebase-admin");
 const serviceAccount = require("./config/firebase-config.json").serviceAccountKey;
+const databaseURL = require("./config/firebase-config.json").databaseURL;
 const cors = require("cors");
 const morgan = require('morgan');
 const winston = require('./config/winston');
@@ -10,14 +11,10 @@ const app = express();
 app.use(cors({ credentials: true, origin: true }));
 app.use(morgan('combined', { stream: winston.stream }));
 
-let databaseUrl = process.env.FIREBASE_DB_URL;
-if (!databaseUrl) {
-  databaseUrl = require("./config/firebase-config.json").databaseURL;
-}
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: databaseUrl
+  databaseURL: databaseURL
 });
 
 function deployToolkit() {
