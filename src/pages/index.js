@@ -26,6 +26,8 @@ import partner10 from "../assets/images/partners/Legacy-Voices.jpg";
 import partner11 from "../assets/images/partners/Nova-Scotia-Alliance-of-Black-School-Educators.jpg";
 import partner12 from "../assets/images/partners/Ontario-Alliance-of-Black-School-Educators.jpg";
 import partner13 from "../assets/images/partners/Ontario-Black-History-Society.jpg";
+import partner14 from "../assets/images/partners/wedge15.png";
+import partner15 from "../assets/images/partners/ylac.png";
 
 import coast from "../assets/images/bg-01.png";
 import toronto from "../assets/images/toronto.jpg";
@@ -142,7 +144,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               </div>
               <div className="col-md-6 col-sm-12 col-xs-12 col-md-offset-1 sm-padding-five sm-no-padding-lr sm-no-padding-bottom xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom">
 
-                <div className="col-md-6 col-sm-12 service-sub text-center">
+                <div className="col-md-6 col-sm-6 service-sub text-center">
                   <div className="logo-container">
                     <img src={BHOlogo} alt="Black History Ottawa logo" />
                   </div>
@@ -151,7 +153,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   </span>
                 </div>
 
-                <div className="col-md-6 col-sm-12 service-sub text-center">
+                <div className="col-md-6 col-sm-6 service-sub text-center">
                   <div className="logo-container">
                     <img src={GOClogo} alt="Government of Canada logo" />
                   </div>
@@ -917,6 +919,14 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 <PartnerLogo
                   imageSrc={partner13}
                   name={`Ontario Black History Society`}
+                />
+                <PartnerLogo
+                  imageSrc={partner14}
+                  name={`WEDGE 15 Inc.`}
+                />
+                <PartnerLogo
+                  imageSrc={partner15}
+                  name={`Young Leaders Advisory Council`}
                 />
               </div>
             </div>
