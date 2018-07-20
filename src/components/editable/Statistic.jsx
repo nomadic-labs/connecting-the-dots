@@ -22,7 +22,9 @@ const Statistic = props => {
           className="timer counter-number alt-font font-weight-500 black-text"
           data-to={content.number}
           data-speed="1000"
-        />
+        >
+          {content.number}
+        </span>
         <span className="text-small font-weight-200 letter-spacing-2 text-uppercase margin-four no-margin-lr display-block alt-font xs-margin-two xs-no-margin-lr xs-no-margin-buttom">
           {content.label}
         </span>

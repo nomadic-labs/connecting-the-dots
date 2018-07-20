@@ -132,7 +132,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="Social Media">
-                  <label>Social Media Link</label>
+                  <label>Social Media Link (Facebook, Twitter, Instagram, etc.)</label>
                   <input
                     type="text"
                     name="Social media handle"

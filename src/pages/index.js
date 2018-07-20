@@ -448,7 +448,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     </span>
 
                     <a
-                      href="https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/dt-td/Rp-eng.cfm?TABID=2&LANG=E&APATH=3&DETAIL=0&DIM=0&FL=A&FREE=0&GC=0&GK=0&GRP=1&PID=110531&PRID=10&PTYPE=109445&S=0&SHOWALL=0&SUB=0&Temporal=2017&THEME=120&VID=0&VNAMEE=&VNAMEF="
+                      href="https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/index-eng.cfm"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="highlight-button-black-border btn btn-medium button inner-link xs-no-margin"
@@ -616,7 +616,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
-                  <i className="icon-global icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
+                  <i className="icon-megaphone icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
                     <Editable
                       editor={PlainTextEditor}
