@@ -133,6 +133,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   handleSave={onSave("mission-description")}
                 >
                   <div
+                    className="text-extra-large black-text"
                     dangerouslySetInnerHTML={{
                       __html: content["mission-description"]
                         ? content["mission-description"]["text"]
@@ -141,19 +142,26 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   />
                 </Editable>
               </div>
-              <div className="col-md-6 col-sm-12 col-md-offset-1 sm-padding-five sm-no-padding-lr sm-no-padding-bottom xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom">
-                <div className="col-md-3 col-sm-2 margin-five no-margin-bottom">
-                  <span className="text-medium font-weight-200 black-text margin-five no-margin-lr no-margin-top display-block main-font xs-margin-five xs-no-margin-lr xs-no-margin-top">
+              <div className="col-md-6 col-sm-12 col-xs-12 col-md-offset-1 sm-padding-five sm-no-padding-lr sm-no-padding-bottom xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom">
+
+                <div className="col-md-6 col-sm-12 service-sub text-center">
+                  <div className="logo-container">
+                    <img src={BHOlogo} alt="Black History Ottawa logo" />
+                  </div>
+                  <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
                     a Black History Ottawa initiative
                   </span>
-                  <img src={BHOlogo} alt="Black History Ottawa logo" />
                 </div>
-                <div className="col-md-4 col-sm-3 margin-five no-margin-bottom">
-                  <span className="text-medium font-weight-200 black-text margin-five no-margin-lr no-margin-top display-block main-font xs-margin-five xs-no-margin-lr xs-no-margin-top">
+
+                <div className="col-md-6 col-sm-12 service-sub text-center">
+                  <div className="logo-container">
+                    <img src={GOClogo} alt="Government of Canada logo" />
+                  </div>
+                  <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
                     supported by Government of Canada
                   </span>
-                  <img src={GOClogo} alt="Government of Canada logo" />
                 </div>
+
               </div>
             </div>
           </div>
@@ -168,7 +176,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   handleSave={onSave("who-we-are-img")}
                 />
               </div>
-              <div className="xs-col-12 col-md-6 bg-black service padding-seven md-padding-seventeen xs-padding-twenty-nine xs-no-padding-lr">
+              <div className="xs-col-12 col-md-6 bg-black service padding-seven md-padding-seventeen xs-padding-twenty-nine">
                 <div className="title-large margin-six no-margin-lr no-margin-top display-inline-block white-text">
                   <Editable
                     editor={RichTextEditor}
@@ -191,7 +199,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
 
         <section className="wow fadeIn no-padding-top">
           <div className="container">
-            <div className="row">
+            <div className="row xs-text-center">
               <div className="col-md-12 col-sm-12">
                 <h2 className="alt-font text-italic font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-1 margin-seven no-margin-lr no-margin-top xs-margin-eleven xs-no-margin-lr xs-no-margin-top">
                   <Editable
@@ -367,7 +375,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           <div className="container xs-text-center">
             <div className="row">
               <div className="col-md-12 col-sm-12">
-                <h2 className="alt-font font-weight-600  text-italic text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-lr no-margin-top">
+                <h2 className="alt-font font-weight-600 text-italic text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-lr no-margin-top">
                   <Editable
                     editor={PlainTextEditor}
                     content={content["tour-title"]}
@@ -540,22 +548,20 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           className="wow fadeIn no-padding-top no-padding-bottom"
         >
           <div className="container-fluid">
-            <div className="row">
+            <div className="row xs-text-center">
               <div className="col-lg-12 col-md-12 col-sm-12 bg-gray service padding-seven md-padding-seventeen xs-padding-twenty-nine xs-no-padding-lr">
-                <div className="row">
-                  <div className="col-md-12 col-sm-12 text-left">
-                    <h2 className="alt-font font-weight-600 text-italic  text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-top">
-                      <Editable
-                        editor={PlainTextEditor}
-                        content={content["focus-title"]}
-                        handleSave={onSave("focus-title")}
-                      >
-                        {content["focus-title"]
-                          ? content["focus-title"]["text"]
-                          : "Header"}
-                      </Editable>
-                    </h2>
-                  </div>
+                <div className="col-md-12 col-sm-12 text-left xs-text-center">
+                  <h2 className="alt-font font-weight-600 text-italic  text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-top">
+                    <Editable
+                      editor={PlainTextEditor}
+                      content={content["focus-title"]}
+                      handleSave={onSave("focus-title")}
+                    >
+                      {content["focus-title"]
+                        ? content["focus-title"]["text"]
+                        : "Header"}
+                    </Editable>
+                  </h2>
                 </div>
                 <div className="col-md-3 col-sm-12 service-sub text-center">
                   <i className="icon-book-open icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
@@ -850,8 +856,8 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
         >
           <div className="container">
             <div className="row">
-              <div className="col-md-12 col-sm-12 text-left">
-                <h2 className="alt-font font-weight-600 text-italic  text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-top">
+              <div className="col-md-12 col-sm-12 text-left xs-text-center">
+                <h2 className="alt-font font-weight-600 text-italic text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-top">
                   {`Our Partners`}
                 </h2>
               </div>
