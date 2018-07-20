@@ -69,45 +69,43 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
     return (
       <Layout menuItems={menuItems}>
         <section className="no-padding">
-          <div className="owl-slider-full owl-carousel owl-theme light-pagination square-pagination dark-pagination-without-next-prev-arrow main-slider">
-            <BackgroundImage
-              content={content["landing-background"]}
-              handleSave={onSave("landing-background")}
-              overlay={true}
-            >
-              <div className="container full-screen position-relative">
-                <div className="slider-typography text-left">
-                  <div className="slider-text-middle-main md-margin-eleven sm-margin-three xs-margin-thirteen">
-                    <div className="slider-text-middle slider-typography-option1">
-                      <span className="white-text font-weight-800 letter-spacing-1 alt-font text-italic">
-                        <Editable
-                          editor={PlainTextEditor}
-                          content={content["landing-title"]}
-                          handleSave={onSave("landing-title")}
-                        >
-                          {content["landing-title"]
-                            ? content["landing-title"]["text"]
-                            : "Title"}
-                        </Editable>
-                      </span>
-                      <div className="bg-fast-yellow separator-line-extra-thick no-margin-lr margin-twelve md-no-margin-lr md-margin-six" />
+          <BackgroundImage
+            content={content["landing-background"]}
+            handleSave={onSave("landing-background")}
+            overlay={true}
+          >
+            <div className="container full-screen position-relative">
+              <div className="slider-typography text-left">
+                <div className="slider-text-middle-main md-margin-eleven sm-margin-three xs-margin-thirteen">
+                  <div className="slider-text-middle slider-typography-option1">
+                    <span className="white-text font-weight-800 letter-spacing-1 alt-font text-italic">
                       <Editable
                         editor={PlainTextEditor}
-                        content={content["landing-subtitle"]}
-                        handleSave={onSave("landing-subtitle")}
+                        content={content["landing-title"]}
+                        handleSave={onSave("landing-title")}
                       >
-                        <p className="white-text main-font title-small xs-width-80">
-                          {content["landing-subtitle"]
-                            ? content["landing-subtitle"]["text"]
-                            : "Subtitle"}
-                        </p>
+                        {content["landing-title"]
+                          ? content["landing-title"]["text"]
+                          : " "}
                       </Editable>
-                    </div>
+                    </span>
+                    <div className="bg-fast-yellow separator-line-extra-thick no-margin-lr margin-twelve md-no-margin-lr md-margin-six" />
+                    <Editable
+                      editor={PlainTextEditor}
+                      content={content["landing-subtitle"]}
+                      handleSave={onSave("landing-subtitle")}
+                    >
+                      <p className="white-text main-font title-small xs-width-80">
+                        {content["landing-subtitle"]
+                          ? content["landing-subtitle"]["text"]
+                          : " "}
+                      </p>
+                    </Editable>
                   </div>
                 </div>
               </div>
-            </BackgroundImage>
-          </div>
+            </div>
+          </BackgroundImage>
         </section>
 
         <section id="about" className="wow fadeIn">
