@@ -78,7 +78,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                         : "Title"}
                     </Editable>
                   </h2>
-                  <div className="alt-font title-small xs-text-large white-text text-uppercase margin-one no-margin-bottom no-margin-lr display-block">
+                  <div className="alt-font title-small xs-text-large white-text margin-one no-margin-bottom no-margin-lr display-block">
                     <Editable
                       editor={PlainTextEditor}
                       content={content["project-form-description"]}
@@ -104,89 +104,128 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   id="project-submission-form"
                 >
                   <div id="success" className="no-margin-lr" />
+
+                  <div id="Name">
+                  <label>Your Name * </label>
                   <input
                     type="text"
                     name="Name"
-                    id="name"
-                    placeholder="* YOUR NAME"
+                    id="name-input"
+                    placeholder="Firstname Lastname"
                     className="big-input alt-font"
                     required
                     onChange={onChange('name')}
                   />
+                  </div>
+
+                  <div id="email">
+                  <label>Email Address *</label>
                   <input
                     type="email"
                     name="_replyto"
-                    id="email"
+                    id="email-input"
                     required
-                    placeholder="* YOUR EMAIL"
+                    placeholder="name@your-project.ca"
                     className="big-input alt-font"
                     onChange={onChange('email')}
                   />
+                  </div>
+
+                  <div id="Social Media">
+                  <label>Social Media Link</label>
                   <input
                     type="text"
                     name="Social media handle"
-                    id="social-media"
-                    placeholder="SOCIAL MEDIA HANDLE"
+                    id="social-media-input"
+                    placeholder="socialmedia.com/yourproject"
                     className="big-input alt-font"
                     onChange={onChange('social-media')}
                   />
+                  </div>
+
+                  <div id="Organization">
+                  <label>Your Organization</label>
                   <input
                     type="text"
                     name="Organization"
-                    id="organization"
-                    placeholder="ORGANIZATION"
+                    id="organization-input"
+                    placeholder="Organization Name"
                     className="big-input alt-font"
                     onChange={onChange('organization')}
                   />
+                  </div>
+
+                  <div id="position">
+                  <label>Your Role in the Project</label>
                   <input
                     type="text"
                     name="Position"
-                    id="position"
-                    placeholder="POSITION"
+                    id="position-input"
+                    placeholder="Program Coordinator"
                     className="big-input alt-font"
                     onChange={onChange('position')}
                   />
+                  </div>
+
+                  <div id="website">
+                  <label>Project Website</label>
                   <input
                     type="text"
-                    name="Website"
-                    id="website"
-                    placeholder="WEBSITE"
+                    name="Website-input"
+                    placeholder="https://www.your-project.ca"
                     className="big-input alt-font"
                     onChange={onChange('website')}
                   />
+                  </div>
+
+                  <div id="city">
+                  <label>City</label>
                   <input
                     type="text"
                     name="City"
-                    id="city"
-                    placeholder="CITY"
+                    id="city-input"
+                    placeholder="City Name"
                     className="big-input alt-font"
                     onChange={onChange('city')}
                   />
+                  </div>
+
+                  <div id="province">
+                  <label>Province/Territory</label>
                   <div className="select-style big-select alt-font">
-                    <select id="province" name="Province" onChange={onChange('province')} value={formData.province}>
-                      <option>PROVINCE/TERRITORY</option>
-                      <option value="AB">AB</option>
-                      <option value="BC">BC</option>
-                      <option value="MB">MB</option>
-                      <option value="NB">NB</option>
-                      <option value="NS">NS</option>
-                      <option value="NV">NV</option>
-                      <option value="NWT">NWT</option>
-                      <option value="NFD&LB">NFD&LB</option>
-                      <option value="ON">ON</option>
-                      <option value="PEI">PEI</option>
-                      <option value="QC">QC</option>
-                      <option value="SK">SK</option>
-                      <option value="YK">YK</option>
+                    <select id="province-input" name="Province" onChange={onChange('province')} value={formData.province}>
+                      <option>Select Province/Territory</option>
+                      <option value="AB">Alberta</option>
+                      <option value="BC">British Columbia</option>
+                      <option value="MB">Manitoba</option>
+                      <option value="NB">New Brunswick</option>
+                      <option value="NS">Nova Scotia</option>
+                      <option value="NV">Nunavut</option>
+                      <option value="NWT">Northwest Territories</option>
+                      <option value="NFD&LB">Newfoundland and Labrador</option>
+                      <option value="ON">Ontario</option>
+                      <option value="PEI">Prince Edward Island</option>
+                      <option value="QC">Quebec</option>
+                      <option value="SK">Saskatchewan</option>
+                      <option value="YK">Yukon</option>
                     </select>
                   </div>
+                  </div>
+
+                  <div id="project-disrciption">
+                  <label>Describe Your Project</label>
                   <textarea
                     name="Project description"
-                    id="project-description"
-                    placeholder="DESCRIBE YOUR PROJECT"
+                    id="project-description-input"
+                    placeholder="A brief description of your project goes here."
                     className="big-input alt-font"
                     onChange={onChange('project-description')}
                   />
+                  </div>
+
+
+                  <div id="file-upload">
+                  <label>Upload a File</label>
                   <FileUploadEditor content={{}} handleChange={onChange('project-file-url')} />
                   <input
                     type="hidden"
@@ -198,6 +237,8 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     name="_gotcha"
                     style={{ display: "none" }}
                   />
+                  </div>
+
                   <button
                     id="project-form-submit"
                     type="submit"
