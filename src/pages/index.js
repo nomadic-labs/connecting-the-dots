@@ -75,7 +75,6 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               handleSave={onSave("landing-background")}
               overlay={true}
             >
-              <div className="opacity-full bg-dark-gray" />
               <div className="container full-screen position-relative">
                 <div className="slider-typography text-left">
                   <div className="slider-text-middle-main md-margin-eleven sm-margin-three xs-margin-thirteen">
@@ -163,14 +162,14 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
         <section className="wow fadeIn no-padding-top">
           <div className="container-fluid">
             <div className="row">
-              <div className="col-lg-6 col-md-12 col-sm-12 service xs-display-none flex">
+              <div className="xs-col-12 col-md-6 service no-padding flex">
                 <BackgroundImage
                   content={content["who-we-are-img"]}
                   handleSave={onSave("who-we-are-img")}
                 />
               </div>
-              <div className="col-lg-6 col-md-12 col-sm-12 bg-black service padding-seven md-padding-seventeen xs-padding-twenty-nine xs-no-padding-lr">
-                <div className="title-large margin-six no-margin-lr no-margin-top display-inline-block alt-font white-text">
+              <div className="xs-col-12 col-md-6 bg-black service padding-seven md-padding-seventeen xs-padding-twenty-nine xs-no-padding-lr">
+                <div className="title-large margin-six no-margin-lr no-margin-top display-inline-block white-text">
                   <Editable
                     editor={RichTextEditor}
                     content={content["who-we-are"]}
@@ -193,6 +192,20 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
         <section className="wow fadeIn no-padding-top">
           <div className="container">
             <div className="row">
+              <div className="col-md-12 col-sm-12">
+                <h2 className="alt-font text-italic font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-1 margin-seven no-margin-lr no-margin-top xs-margin-eleven xs-no-margin-lr xs-no-margin-top">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["phases-title"]}
+                    handleSave={onSave("phases-title")}
+                  >
+                    {content["phases-title"]
+                      ? content["phases-title"]["text"]
+                      : "Title"}
+                  </Editable>
+                </h2>
+              </div>
+
               <div
                 className="col-md-3 col-sm-4 testimonial-style1 text-left wow fadeInUp xs-margin-nineteen xs-no-margin-top xs-no-margin-lr"
                 data-wow-duration="300ms"
@@ -545,7 +558,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
                 </div>
                 <div className="col-md-3 col-sm-12 service-sub text-center">
-                  <i className="icon-book-open icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                  <i className="icon-book-open icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
                     <Editable
                       editor={PlainTextEditor}
@@ -565,13 +578,13 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     <p className="text-medium width-80 center-col">
                       {content["focus1-description"]
                         ? content["focus1-description"]["text"]
-                        : "Header"}
+                        : "Description"}
                     </p>
                   </Editable>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
-                  <i className="icon-paintbrush icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                  <i className="icon-paintbrush icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
                     <Editable
                       editor={PlainTextEditor}
@@ -591,13 +604,13 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     <p className="text-medium width-80 center-col">
                       {content["focus2-description"]
                         ? content["focus2-description"]["text"]
-                        : "Header"}
+                        : "Description"}
                     </p>
                   </Editable>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
-                  <i className="icon-global icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                  <i className="icon-global icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
                     <Editable
                       editor={PlainTextEditor}
@@ -617,13 +630,13 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     <p className="text-medium width-80 center-col">
                       {content["focus3-description"]
                         ? content["focus3-description"]["text"]
-                        : "Header"}
+                        : "Description"}
                     </p>
                   </Editable>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
-                  <i className="icon-refresh icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                  <i className="icon-refresh icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
                     <Editable
                       editor={PlainTextEditor}
@@ -643,13 +656,13 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     <p className="text-medium width-80 center-col">
                       {content["focus4-description"]
                         ? content["focus4-description"]["text"]
-                        : "Header"}
+                        : "Description"}
                     </p>
                   </Editable>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
-                  <i className="icon-happy icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                  <i className="icon-happy icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
                     <Editable
                       editor={PlainTextEditor}
@@ -669,13 +682,13 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     <p className="text-medium width-80 center-col">
                       {content["focus5-description"]
                         ? content["focus5-description"]["text"]
-                        : "Header"}
+                        : "Description"}
                     </p>
                   </Editable>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
-                  <i className="icon-circle-compass icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                  <i className="icon-circle-compass icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
                     <Editable
                       editor={PlainTextEditor}
@@ -695,13 +708,13 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     <p className="text-medium width-80 center-col">
                       {content["6-description"]
                         ? content["6-description"]["text"]
-                        : "Header"}
+                        : "Description"}
                     </p>
                   </Editable>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
-                  <i className="icon-wallet icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                  <i className="icon-wallet icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
                     <Editable
                       editor={PlainTextEditor}
@@ -721,13 +734,13 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     <p className="text-medium width-80 center-col">
                       {content["focus7-description"]
                         ? content["focus7-description"]["text"]
-                        : "Header"}
+                        : "Description"}
                     </p>
                   </Editable>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
-                  <i className="icon-chat icon-extra-large fast-yellow-text margin-seven no-margin-lr no-margin-top" />
+                  <i className="icon-chat icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
                     <Editable
                       editor={PlainTextEditor}
@@ -747,7 +760,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     <p className="text-medium width-80 center-col">
                       {content["focus8-description"]
                         ? content["focus8-description"]["text"]
-                        : "Header"}
+                        : "Description"}
                     </p>
                   </Editable>
                 </div>
@@ -782,7 +795,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     dangerouslySetInnerHTML={{
                       __html: content["bho-description"]
                         ? content["bho-description"]["text"]
-                        : "Header"
+                        : "Description"
                     }}
                   />
                 </Editable>

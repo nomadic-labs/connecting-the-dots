@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/images/icon.png";
+import AccountButton from "./navigation/AccountButton";
 
 const Footer = props => {
   return (
@@ -36,10 +37,13 @@ const Footer = props => {
       <div className="footer-bottom bg-gray">
         <div className="container">
           <div className="row">
-            <div className="col-md-12 col-sm-12 text-center">
+            <div className="col-xs-6">
               <span className="text-small text-uppercase letter-spacing-1">
                 © 2018 Connecting the Dots
               </span>
+            </div>
+            <div className="col-xs-6 pull-right text-right">
+              <AccountButton />
             </div>
           </div>
         </div>

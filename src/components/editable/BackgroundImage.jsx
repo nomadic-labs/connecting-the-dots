@@ -31,7 +31,7 @@ const BackgroundImage = ({ content, handleSave, children, overlay }) => {
         className={`item owl-bg-img`}
         style={styles.background}
       >
-        { overlay && <div className="opacity-light bg-purple"></div> }
+        { overlay && <div className="opacity-medium bg-dark-gray"></div> }
         {children}
       </div>
     </Editable>

@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import AccountButton from "./AccountButton";
-
 
 const Navigation = (props) => {
   const menuItems = props.menuItems ? props.menuItems : []
@@ -45,7 +43,12 @@ const Navigation = (props) => {
             </div>
 
             <div className="col-lg-4 col-md-2 pull-right header-right text-right" style={{display: 'flex', justifyContent: 'space-around' }}>
-              <AccountButton />
+              <Link
+                className="btn-small-white btn btn-small no-margin iinner-link"
+                to="/project-form"
+              >
+                Submit a Project
+              </Link>
               <a
                 className="btn-small-white btn btn-small no-margin iinner-link"
                 href="https://www.canadahelps.org/en/charities/black-history-ottawa-corporation/"

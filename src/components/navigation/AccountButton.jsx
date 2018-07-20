@@ -90,7 +90,7 @@ class AccountButton extends React.Component {
       return (
         <div>
           <div
-            className="btn-small-white btn btn-small no-margin inner-link"
+            className="highlight-button-black-border btn btn-small no-margin inner-link"
             onClick={openMenu}
             aria-owns={anchorEl ? "account-menu" : null}
             aria-haspopup="true"
@@ -145,7 +145,7 @@ class AccountButton extends React.Component {
     return (
       <span>
         <div
-          className="btn-small-white btn btn-small no-margin inner-link"
+          className="highlight-button-black-border btn btn-small no-margin inner-link"
           onClick={login}
         >
           <span style={styles.iconLabel}>Sign In / Sign Up</span>

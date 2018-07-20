@@ -63,7 +63,6 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
               handleSave={onSave("project-form-background")}
               overlay={true}
             >
-          <div className="opacity-full bg-deep-blue3" />
           <div className="container half-screen position-relative">
             <div className="slider-typography text-center">
               <div className="slider-text-middle-main md-margin-eleven sm-margin-three xs-margin-thirteen">
