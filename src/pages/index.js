@@ -795,7 +795,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   handleSave={onSave("bho-description")}
                 >
                   <p
-                    className="white-text text-medium margin-six no-margin-lr"
+                    className="white-text text-extra-large margin-six no-margin-lr"
                     dangerouslySetInnerHTML={{
                       __html: content["bho-description"]
                         ? content["bho-description"]["text"]
@@ -942,7 +942,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
             </div>
             <div className="row call-us">
               <div className="col-sm-12">
-                <span className="text-extra-large margin-six no-margin-lr no-margin-top display-inline-block alt-font black-text">
+                <span className="text-extra-large margin-six no-margin-lr no-margin-top display-inline-block black-text">
                   <Editable
                     editor={PlainTextEditor}
                     content={content["contact-message"]}
