@@ -15,7 +15,7 @@ const Navigation = (props) => {
   const menuItems = props.menuItems ? props.menuItems : []
   return (
     <div>
-      <nav className="navbar no-margin-bottom alt-font">
+      <nav className="navbar no-margin-bottom">
         <div className="container navigation-menu">
           <div className="row">
             <div className="col-lg-1 col-md-3 navbar-header">

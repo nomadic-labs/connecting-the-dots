@@ -1,6 +1,16 @@
 import React from 'react'
 import TextEditor, { createValueFromString } from 'react-rte';
 
+const styles = {
+  input: {
+    fontSize: "inherit",
+    fontFamily: "inherit",
+    fontWeight: "inherit",
+    color: "rgba(0,0,0,0.8)",
+    backgroundColor: "#fff",
+  }
+};
+
 class RichTextEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +37,11 @@ class RichTextEditor extends React.Component {
     const { editorValue } = this.state;
 
     if (editorValue) {
-      return (<TextEditor value={editorValue} onChange={this.onChange} />)
+      return (
+        <div style={styles.input}>
+          <TextEditor value={editorValue} onChange={this.onChange} />
+        </div>
+      )
     }
 
     return (<div />)

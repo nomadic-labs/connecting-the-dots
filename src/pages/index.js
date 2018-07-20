@@ -158,7 +158,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     <img src={GOClogo} alt="Government of Canada logo" />
                   </div>
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
-                    supported by Government of Canada
+                    supported by the Government of Canada
                   </span>
                 </div>
 
@@ -668,7 +668,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
-                  <i className="icon-happy icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
+                  <i className="icon-heart icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
                     <Editable
                       editor={PlainTextEditor}
