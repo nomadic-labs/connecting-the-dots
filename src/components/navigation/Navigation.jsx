@@ -31,9 +31,9 @@ const Navigation = (props) => {
               <ul className="nav navbar-nav">
 
                 { menuItems.map(item => (
-                  <li key={item.anchor}>
+                  <li key={item.url}>
                     <Link
-                      to={`#${item.anchor}`}
+                      to={`${item.url}`}
                       className="inner-link text-medium"
                       data-scroll
                     >
@@ -48,7 +48,9 @@ const Navigation = (props) => {
               <AccountButton />
               <a
                 className="btn-small-white btn btn-small no-margin iinner-link"
-                href="#contact"
+                href="https://www.canadahelps.org/en/charities/black-history-ottawa-corporation/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Donate Now
               </a>

@@ -19,6 +19,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    // `gatsby-plugin-offline`,
     {
       resolve: "gatsby-source-firebase",
       options: {

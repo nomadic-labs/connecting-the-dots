@@ -9,17 +9,31 @@ import Editable from "../components/editable/Editable";
 import PlainTextEditor from "../components/editingTools/PlainTextEditor";
 import RichTextEditor from "../components/editingTools/RichTextEditor";
 import Statistic from "../components/editable/Statistic";
+import PartnerLogo from "../components/PartnerLogo";
 
 import BHOlogo from "../assets/images/bho-logo.png";
 import GOClogo from "../assets/images/goc.png";
+import partner1 from "../assets/images/partners/35-working-with-Racialized-Youth.jpg";
+import partner2 from "../assets/images/partners/BHO-logo-black.png";
+import partner3 from "../assets/images/partners/Black-Agenda-Noir.jpg";
+import partner4 from "../assets/images/partners/Black-Business-and-Professional-Association.jpg";
+import partner5 from "../assets/images/partners/Black-Health-Alliance.jpg";
+import partner6 from "../assets/images/partners/by-blacks.jpg";
+import partner7 from "../assets/images/partners/CanadianCouncil_Black.jpg";
+import partner8 from "../assets/images/partners/Jamaican-Canadian-Association.jpg";
+import partner9 from "../assets/images/partners/JNikira-Dinqinesh-Education-Centre.jpg";
+import partner10 from "../assets/images/partners/Legacy-Voices.jpg";
+import partner11 from "../assets/images/partners/Nova-Scotia-Alliance-of-Black-School-Educators.jpg";
+import partner12 from "../assets/images/partners/Ontario-Alliance-of-Black-School-Educators.jpg";
+import partner13 from "../assets/images/partners/Ontario-Black-History-Society.jpg";
 
 const menuItems = [
-  { label: "Our mission", anchor: "about" },
-  { label: "Places", anchor: "tour" },
-  { label: "Areas of Focus", anchor: "areas-of-focus" },
-  { label: "Get involved", anchor: "get-involved" },
-  { label: "Contact us", anchor: "contact" },
-]
+  { label: "Our mission", url: "#about" },
+  { label: "Get involved", url: "#get-involved" },
+  { label: "Places", url: "#tour" },
+  { label: "Black History Ottawa", url: "#bho" },
+  { label: "Contact us", url: "#contact" }
+];
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -53,7 +67,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               content={content["landing-background"]}
               handleSave={onSave("landing-background")}
             >
-              <div className="opacity-full bg-dark-gray"></div>
+              <div className="opacity-full bg-dark-gray" />
               <div className="container full-screen position-relative">
                 <div className="slider-typography text-left">
                   <div className="slider-text-middle-main md-margin-eleven sm-margin-three xs-margin-thirteen">
@@ -268,74 +282,31 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           </div>
         </section>
 
-        <section className="no-padding-top wow fadeIn" id="bho">
-          <div className="container-fluid">
+        <section
+          id="get-involved"
+          className="wow fadeIn bg-fast-yellow work-with-us"
+        >
+          <div className="container">
             <div className="row">
-              <div className="col-lg-6 col-md-6 col-sm-12 padding-nine bg-black agency-skill md-padding-fifteen sm-padding-nineteen">
-                <span className="title-extra-large alt-font white-text text-italic">
+              <div className="col-md-12 col-sm-12 text-center">
+                <i className="icon-heart icon-large black-text" />
+                <span className="title-medium alt-font black-text display-block margin-four text-uppercase">
                   <Editable
                     editor={PlainTextEditor}
-                    content={content["bho-header"]}
-                    handleSave={onSave("bho-header")}
+                    content={content["get-involved-cta"]}
+                    handleSave={onSave("get-involved-cta")}
                   >
-                    {content["bho-header"]
-                      ? content["bho-header"]["text"]
-                      : "Header"}
+                    {content["get-involved-cta"]
+                      ? content["get-involved-cta"]["text"]
+                      : "Want to get involved?"}
                   </Editable>
                 </span>
-
-                <Editable
-                  editor={RichTextEditor}
-                  content={content["bho-description"]}
-                  handleSave={onSave("bho-description")}
+                <Link
+                  to="/project-form"
+                  className="highlight-button-dark btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
                 >
-                  <p
-                    className="white-text text-medium margin-six no-margin-lr"
-                    dangerouslySetInnerHTML={{
-                      __html: content["bho-description"]
-                        ? content["bho-description"]["text"]
-                        : "Header"
-                    }}
-                  />
-                </Editable>
-
-                <a
-                  className="highlight-button-white-border margin-six btn btn-medium no-margin-lr button inner-link"
-                  href="#top"
-                >
-                  Support BHO{" "}
-                  <i className="fa fa-heart-o icon-extra-small white-text" />
-                </a>
-              </div>
-
-              <div className="col-lg-6 col-md-6 col-sm-12 padding-4 bg-gray agency-skill md-padding-seventeen sm-padding-nineteen">
-                <span className="text-medium font-weight-600 text-uppercase black-text margin-six display-block main-font">
-                  <Editable
-                    editor={PlainTextEditor}
-                    content={content["bho-objectives-header"]}
-                    handleSave={onSave("bho-objectives-header")}
-                  >
-                    {content["bho-objectives-header"]
-                      ? content["bho-objectives-header"]["text"]
-                      : "Our Objectives"}
-                  </Editable>
-                </span>
-
-                <div className="padding-six">
-                  <Editable
-                    editor={RichTextEditor}
-                    content={content["bho-objectives-details"]}
-                    handleSave={onSave("bho-objectives-details")}
-                  >
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: content["bho-objectives-details"]
-                          ? content["bho-objectives-details"]["text"]
-                          : "Details"
-                      }}
-                    />
-                  </Editable>
-                </div>
+                  Submit a project
+                </Link>
               </div>
             </div>
           </div>
@@ -380,7 +351,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     href="#contact"
                     className="highlight-button-black-border btn btn-medium button inner-link xs-no-margin"
                   >
-                    Let's Work Together
+                    {`Let's Work Together`}
                   </a>
                 </div>
               </div>
@@ -524,7 +495,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
             <div className="row">
               <div className="col-lg-12 col-md-12 col-sm-12 bg-gray service padding-seven md-padding-seventeen xs-padding-twenty-nine xs-no-padding-lr">
                 <div className="row">
-                  <div className="col-md-12 col-sm-12 text-center">
+                  <div className="col-md-12 col-sm-12 text-left">
                     <h2 className="alt-font font-weight-600 text-italic  text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-top">
                       <Editable
                         editor={PlainTextEditor}
@@ -750,37 +721,151 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           </div>
         </section>
 
+        <section className="no-padding-top wow fadeIn" id="bho">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-lg-6 col-md-6 col-sm-12 padding-nine bg-black agency-skill md-padding-fifteen sm-padding-nineteen">
+                <span className="title-extra-large alt-font white-text text-italic">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["bho-header"]}
+                    handleSave={onSave("bho-header")}
+                  >
+                    {content["bho-header"]
+                      ? content["bho-header"]["text"]
+                      : "Header"}
+                  </Editable>
+                </span>
+
+                <Editable
+                  editor={RichTextEditor}
+                  content={content["bho-description"]}
+                  handleSave={onSave("bho-description")}
+                >
+                  <p
+                    className="white-text text-medium margin-six no-margin-lr"
+                    dangerouslySetInnerHTML={{
+                      __html: content["bho-description"]
+                        ? content["bho-description"]["text"]
+                        : "Header"
+                    }}
+                  />
+                </Editable>
+
+                <a
+                  className="highlight-button-white-border margin-six btn btn-medium no-margin-lr button inner-link"
+                  href="https://www.canadahelps.org/en/charities/black-history-ottawa-corporation/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {`Support BHO `}
+                  <i className="fa fa-heart-o icon-extra-small white-text" />
+                </a>
+              </div>
+
+              <div className="col-lg-6 col-md-6 col-sm-12 padding-4 bg-gray agency-skill md-padding-seventeen sm-padding-nineteen">
+                <span className="text-medium font-weight-600 text-uppercase black-text margin-six display-block main-font">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["bho-objectives-header"]}
+                    handleSave={onSave("bho-objectives-header")}
+                  >
+                    {content["bho-objectives-header"]
+                      ? content["bho-objectives-header"]["text"]
+                      : "Our Objectives"}
+                  </Editable>
+                </span>
+
+                <div className="padding-six">
+                  <Editable
+                    editor={RichTextEditor}
+                    content={content["bho-objectives-details"]}
+                    handleSave={onSave("bho-objectives-details")}
+                  >
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: content["bho-objectives-details"]
+                          ? content["bho-objectives-details"]["text"]
+                          : "Details"
+                      }}
+                    />
+                  </Editable>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section
-          id="get-involved"
-          className="wow fadeIn bg-fast-yellow work-with-us"
+          className="wow fadeIn animated no-padding"
+          style={{ visibility: "visible", animationName: "fadeIn" }}
         >
           <div className="container">
             <div className="row">
-              <div className="col-md-12 col-sm-12 text-center">
-                <i className="icon-heart icon-large black-text" />
-                <span className="title-medium alt-font black-text display-block margin-four text-uppercase">
-                  <Editable
-                    editor={PlainTextEditor}
-                    content={content["get-involved-cta"]}
-                    handleSave={onSave("get-involved-cta")}
-                  >
-                    {content["get-involved-cta"]
-                      ? content["get-involved-cta"]["text"]
-                      : "Want to get involved?"}
-                  </Editable>
-                </span>
-                <a
-                  href="#contact"
-                  className="highlight-button-dark btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
-                >
-                  Support BHO
-                </a>
-                <Link
-                  to="/project-form"
-                  className="highlight-button-dark btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
-                >
-                  Submit a project
-                </Link>
+              <div className="col-md-12 col-sm-12 text-left">
+                <h2 className="alt-font font-weight-600 text-italic  text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-top">
+                  {`Our Partners`}
+                </h2>
+              </div>
+            </div>
+            <div className="row margin-eight no-margin-bottom">
+              <div className="col-12 center-col">
+                <PartnerLogo
+                  imageSrc={partner1}
+                  name={"3R Working with Racialized Youth"}
+                />
+                <PartnerLogo
+                  imageSrc={partner2}
+                  name={"Black History Ottawa"}
+                />
+                <PartnerLogo imageSrc={partner3} name={"Black Agenda Noir"} />
+                <PartnerLogo
+                  imageSrc={partner4}
+                  name={"Black Business and Professional Association"}
+                />
+              </div>
+            </div>
+
+            <div className="row margin-eight no-margin-bottom">
+              <div className="col-12 center-col">
+                <PartnerLogo
+                  imageSrc={partner5}
+                  name={"Black Health Alliance"}
+                />
+                <PartnerLogo imageSrc={partner6} name={"ByBlacks.com"} />
+                <PartnerLogo
+                  imageSrc={partner7}
+                  name={"Canadian Council for People of African Descent"}
+                />
+                <PartnerLogo
+                  imageSrc={partner8}
+                  name={"Jamaican Canadian Association"}
+                />
+              </div>
+            </div>
+            <div className="row margin-eight no-margin-bottom">
+              <div className="col-12 center-col">
+                <PartnerLogo
+                  imageSrc={partner9}
+                  name={`J'Nikira Dinqinesh Education Centre`}
+                />
+                <PartnerLogo imageSrc={partner10} name={`Legacy Voices`} />
+                <PartnerLogo
+                  imageSrc={partner11}
+                  name={`Nova Scotia Alliance of Black School Educators`}
+                />
+                <PartnerLogo
+                  imageSrc={partner12}
+                  name={`Ontario Alliance of Black School Educators`}
+                />
+              </div>
+            </div>
+            <div className="row margin-eight no-margin-bottom">
+              <div className="col-12 center-col">
+                <PartnerLogo
+                  imageSrc={partner13}
+                  name={`Ontario Black History Society`}
+                />
               </div>
             </div>
           </div>
@@ -903,7 +988,11 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     name="_next"
                     value="https://www.connectingthedots.ca/"
                   />
-                  <input type="text" name="_gotcha" style={{display: "none"}} />
+                  <input
+                    type="text"
+                    name="_gotcha"
+                    style={{ display: "none" }}
+                  />
                   <button
                     id="agency-contact-button"
                     type="submit"
