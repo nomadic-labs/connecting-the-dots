@@ -61,6 +61,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
           <BackgroundImage
               content={content["project-form-background"]}
               handleSave={onSave("project-form-background")}
+              overlay={true}
             >
           <div className="opacity-full bg-deep-blue3" />
           <div className="container half-screen position-relative">

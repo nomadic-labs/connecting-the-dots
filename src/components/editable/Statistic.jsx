@@ -9,9 +9,10 @@ const Statistic = props => {
   };
 
   const content = props.content || {};
+  const border = !props.last ? 'border-right' : '';
 
   return (
-    <div className="col-md-3 col-sm-4 border-right counter-style1 xs-margin-nineteen xs-no-margin-lr xs-no-margin-top xs-no-border">
+    <div className={`col-sm-4 counter-style1 xs-margin-nineteen xs-no-margin-lr xs-no-margin-top xs-no-border ${border}`}>
       <Editable
         editor={StatisticEditor}
         handleSave={handleSave}

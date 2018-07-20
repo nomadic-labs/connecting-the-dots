@@ -342,6 +342,7 @@ i { color: #9a9a9a; margin:0}
 .bg-transparent-deep-blue{ background: rgba(17,116,198,.9) !important}
 .bg-turquoise-blue {background: #93e4cf !important;}
 .bg-deep-pink-dark { background:#e15276 !important}
+.bg-purple { background: #6D5B97 !important; }
 
 /* opacity */
 .opacity-light{ position: absolute; height: 100%; width: 100%; opacity: 0.5; z-index: 1; top:0; left: 0 }

@@ -27,6 +27,13 @@ import partner11 from "../assets/images/partners/Nova-Scotia-Alliance-of-Black-S
 import partner12 from "../assets/images/partners/Ontario-Alliance-of-Black-School-Educators.jpg";
 import partner13 from "../assets/images/partners/Ontario-Black-History-Society.jpg";
 
+import coast from "../assets/images/bg-01.png";
+import toronto from "../assets/images/toronto.jpg";
+import calgary from "../assets/images/calgary.jpg";
+import halifax from "../assets/images/halifax.jpg";
+import montreal from "../assets/images/montreal.jpg";
+import vancouver from "../assets/images/vancouver.jpg";
+
 const menuItems = [
   { label: "Our mission", url: "#about" },
   { label: "Get involved", url: "#get-involved" },
@@ -66,6 +73,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
             <BackgroundImage
               content={content["landing-background"]}
               handleSave={onSave("landing-background")}
+              overlay={true}
             >
               <div className="opacity-full bg-dark-gray" />
               <div className="container full-screen position-relative">
@@ -146,6 +154,36 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     supported by Government of Canada
                   </span>
                   <img src={GOClogo} alt="Government of Canada logo" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="wow fadeIn no-padding-top">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-lg-6 col-md-12 col-sm-12 service xs-display-none flex">
+                <BackgroundImage
+                  content={content["who-we-are-img"]}
+                  handleSave={onSave("who-we-are-img")}
+                />
+              </div>
+              <div className="col-lg-6 col-md-12 col-sm-12 bg-black service padding-seven md-padding-seventeen xs-padding-twenty-nine xs-no-padding-lr">
+                <div className="title-large margin-six no-margin-lr no-margin-top display-inline-block alt-font white-text">
+                  <Editable
+                    editor={RichTextEditor}
+                    content={content["who-we-are"]}
+                    handleSave={onSave("who-we-are")}
+                  >
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: content["who-we-are"]
+                          ? content["who-we-are"]["text"]
+                          : " "
+                      }}
+                    />
+                  </Editable>
                 </div>
               </div>
             </div>
@@ -324,7 +362,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   >
                     {content["tour-title"]
                       ? content["tour-title"]["text"]
-                      : "Title"}
+                      : " "}
                   </Editable>
                 </h2>
               </div>
@@ -341,7 +379,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                       dangerouslySetInnerHTML={{
                         __html: content["tour-description"]
                           ? content["tour-description"]["text"]
-                          : "Details"
+                          : " "
                       }}
                     />
                   </Editable>
@@ -367,10 +405,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 <Statistic
                   content={content["statistic3"]}
                   handleSave={onSave("statistic3")}
-                />
-                <Statistic
-                  content={content["statistic4"]}
-                  handleSave={onSave("statistic4")}
+                  last={true}
                 />
               </div>
             </div>
@@ -379,7 +414,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
             <div className="row">
               <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
                 <div className="" />
-                <img src="images/bg-01.png" alt="" />
+                <img src={coast} alt="Coast to Coast" />
                 <div className="team-mood text-center">
                   <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large no-wrap">
                     Coast-to-Coast
@@ -405,7 +440,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
 
               <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
                 <div className="opacity-light" />
-                <img src="images/toronto.jpg" alt="" />
+                <img src={toronto} alt="Toronto, Ontario" />
                 <div className="team-mood text-center">
                   <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large no-wrap">
                     Ontario
@@ -421,7 +456,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               </div>
               <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
                 <div className="opacity-light" />
-                <img src="images/calgary.jpg" alt="" />
+                <img src={calgary} alt="Calgary, Alberta" />
                 <div className="team-mood text-center">
                   <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large no-wrap">
                     Alberta
@@ -437,7 +472,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               </div>
               <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
                 <div className="opacity-light" />
-                <img src="images/vancouver.jpg" alt="" />
+                <img src={vancouver} alt="Vancouver, British Columbia" />
                 <div className="team-mood text-center">
                   <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large no-wrap">
                     British Columbia
@@ -453,7 +488,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               </div>
               <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
                 <div className="opacity-light" />
-                <img src="images/halifax.jpg" alt="" />
+                <img src={halifax} alt="Halifax, Nova Scotia" />
                 <div className="team-mood text-center">
                   <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large no-wrap">
                     Nova Scotia
@@ -469,7 +504,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               </div>
               <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
                 <div className="opacity-light" />
-                <img src="images/montreal.jpg" alt="" />
+                <img src={montreal} alt="Montreal, Québec" />
                 <div className="team-mood text-center">
                   <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large no-wrap">
                     Quebec

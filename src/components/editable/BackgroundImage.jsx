@@ -5,11 +5,12 @@ import ImageEditor from "../editingTools/ImageEditor";
 
 import defaultImage from "../../assets/images/purple_bg";
 
-const BackgroundImage = ({ content, handleSave, children }) => {
+const BackgroundImage = ({ content, handleSave, children, overlay }) => {
   const imageUrl = content && content.imageSrc ? content.imageSrc : defaultImage;
   const styles = {
     background: {
-      backgroundImage: `url('${imageUrl}')`
+      backgroundImage: `url('${imageUrl}')`,
+      height: 'inherit',
     }
   };
 
@@ -30,7 +31,7 @@ const BackgroundImage = ({ content, handleSave, children }) => {
         className={`item owl-bg-img`}
         style={styles.background}
       >
-        <div className="opacity-light bg-dark-gray"></div>
+        { overlay && <div className="opacity-light bg-purple"></div> }
         {children}
       </div>
     </Editable>
