@@ -5,6 +5,9 @@ const styles = {
   button: {
     padding: '6px 25px',
   },
+  fullWidth: {
+    width: '100%'
+  }
 }
 
 
@@ -15,7 +18,7 @@ const Navigation = (props) => {
       <nav className="navbar no-margin-bottom alt-font">
         <div className="container navigation-menu">
           <div className="row">
-            <div className="col-lg-0 col-md-3 navbar-header">
+            <div className="col-lg-1 col-md-3 navbar-header">
               <button
                 type="button"
                 className="navbar-toggle collapsed"
@@ -31,8 +34,9 @@ const Navigation = (props) => {
             <div
               className="col-lg-5 col-md-6 col-sm-9 collapse navbar-collapse"
               id="bs-example-navbar-collapse-1"
+              style={styles.fullWidth}
             >
-              <ul className="nav navbar-nav" style={styles.navbar}>
+              <ul className="nav navbar-nav">
                 { menuItems.map(item => (
                   <li key={item.url}>
                     <Link
@@ -44,6 +48,8 @@ const Navigation = (props) => {
                     </Link>
                   </li>
                 ))}
+              </ul>
+              <ul className="nav navbar-nav navbar-right">
                 <li>
                   <Link
                     className="btn-small-white btn btn-small no-margin inner-link"
