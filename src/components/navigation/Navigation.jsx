@@ -63,7 +63,7 @@ const Navigation = (props) => {
                 <li>
                   <a
                     className="btn-small-white btn btn-small no-margin inner-link"
-                    href="https://www.canadahelps.org/en/charities/black-history-ottawa-corporation/"
+                    href="https://www.fundscrip.com/support-a-group/XCS92G?GUID"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

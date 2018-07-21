@@ -20,14 +20,11 @@ const Footer = props => {
             </div>
             <div className="col-md-12 col-sm-12 text-center margin-four no-margin-lr no-margin-bottom xs-margin-fifteen xs-no-margin-lr xs-no-margin-bottom">
               <div className="footer-social">
-                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/groups/220005041901992/" target="_blank" rel="noopener noreferrer">
                   <i className="fa fa-facebook" />
                 </a>
-                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                <a href="https://twitter.com/Project_CtD" target="_blank" rel="noopener noreferrer">
                   <i className="fa fa-twitter" />
-                </a>
-                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
-                  <i className="fa fa-linkedin" />
                 </a>
               </div>
             </div>
