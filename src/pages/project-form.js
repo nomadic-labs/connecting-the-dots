@@ -106,7 +106,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   <div id="success" className="no-margin-lr" />
 
                   <div id="Name">
-                  <label for="name-input">Your Name * </label>
+                  <label htmlFor="name-input">Your Name * </label>
                   <input
                     type="text"
                     name="Name"
@@ -120,7 +120,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="email">
-                  <label for="email-input">Email Address *</label>
+                  <label htmlFor="email-input">Email Address *</label>
                   <input
                     type="email"
                     name="_replyto"
@@ -134,7 +134,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="Social Media">
-                  <label for="social-media-input">Social Media Link (Facebook, Twitter, Instagram, etc.)</label>
+                  <label htmlFor="social-media-input">Social Media Link (Facebook, Twitter, Instagram, etc.)</label>
                   <input
                     type="text"
                     name="Social-media"
@@ -147,7 +147,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="Organization">
-                  <label for="organization-input">Your Organization</label>
+                  <label htmlFor="organization-input">Your Organization</label>
                   <input
                     type="text"
                     name="Organization"
@@ -160,7 +160,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="position">
-                  <label for="position-input">Your Role in the Project</label>
+                  <label htmlFor="position-input">Your Role in the Project</label>
                   <input
                     type="text"
                     name="Position"
@@ -173,7 +173,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="website">
-                  <label for="website-input">Project Website</label>
+                  <label htmlFor="website-input">Project Website</label>
                   <input
                     type="text"
                     name="Website"
@@ -186,7 +186,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="city">
-                  <label for="city-input">City</label>
+                  <label htmlFor="city-input">City</label>
                   <input
                     type="text"
                     name="City"
@@ -199,7 +199,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="province-input">
-                  <label for="Province">Province/Territory</label>
+                  <label htmlFor="Province">Province/Territory</label>
                   <div className="select-style big-select alt-font">
                     <select id="province-input" aria-labelledby="province or territory" name="Province" onChange={onChange('province')} value={formData.province}>
                       <option>Select Province/Territory</option>
@@ -221,7 +221,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="project-description-input">
-                  <label for="Project description">Describe Your Project</label>
+                  <label htmlFor="Project description">Describe Your Project</label>
                   <textarea
                     name="Project description"
                     id="project-description-input"
