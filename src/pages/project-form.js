@@ -106,11 +106,12 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   <div id="success" className="no-margin-lr" />
 
                   <div id="Name">
-                  <label>Your Name * </label>
+                  <label htmlFor="name-input">Your Name * </label>
                   <input
                     type="text"
                     name="Name"
                     id="name-input"
+                    aria-labelledby="name"
                     placeholder="Firstname Lastname"
                     className="big-input alt-font"
                     required
@@ -119,11 +120,12 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="email">
-                  <label>Email Address *</label>
+                  <label htmlFor="email-input">Email Address *</label>
                   <input
                     type="email"
                     name="_replyto"
                     id="email-input"
+                    aria-labelledby="email"
                     required
                     placeholder="name@your-project.ca"
                     className="big-input alt-font"
@@ -132,11 +134,12 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="Social Media">
-                  <label>Social Media Link (Facebook, Twitter, Instagram, etc.)</label>
+                  <label htmlFor="social-media-input">Social Media Link (Facebook, Twitter, Instagram, etc.)</label>
                   <input
                     type="text"
-                    name="Social media handle"
+                    name="Social-media"
                     id="social-media-input"
+                    aria-labelledby="social-media"
                     placeholder="socialmedia.com/yourproject"
                     className="big-input alt-font"
                     onChange={onChange('social-media')}
@@ -144,11 +147,12 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="Organization">
-                  <label>Your Organization</label>
+                  <label htmlFor="organization-input">Your Organization</label>
                   <input
                     type="text"
                     name="Organization"
                     id="organization-input"
+                    aria-labelledby="Organization"
                     placeholder="Organization Name"
                     className="big-input alt-font"
                     onChange={onChange('organization')}
@@ -156,11 +160,12 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="position">
-                  <label>Your Role in the Project</label>
+                  <label htmlFor="position-input">Your Role in the Project</label>
                   <input
                     type="text"
                     name="Position"
                     id="position-input"
+                    aria-labelledby="position"
                     placeholder="Program Coordinator"
                     className="big-input alt-font"
                     onChange={onChange('position')}
@@ -168,10 +173,12 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="website">
-                  <label>Project Website</label>
+                  <label htmlFor="website-input">Project Website</label>
                   <input
                     type="text"
-                    name="Website-input"
+                    name="Website"
+                    id="Website-input"
+                    aria-labelledby="website"
                     placeholder="https://www.your-project.ca"
                     className="big-input alt-font"
                     onChange={onChange('website')}
@@ -179,21 +186,22 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
 
                   <div id="city">
-                  <label>City</label>
+                  <label htmlFor="city-input">City</label>
                   <input
                     type="text"
                     name="City"
                     id="city-input"
+                    aria-labelledby="city"
                     placeholder="City Name"
                     className="big-input alt-font"
                     onChange={onChange('city')}
                   />
                   </div>
 
-                  <div id="province">
-                  <label>Province/Territory</label>
+                  <div id="province-input">
+                  <label htmlFor="Province">Province/Territory</label>
                   <div className="select-style big-select alt-font">
-                    <select id="province-input" name="Province" onChange={onChange('province')} value={formData.province}>
+                    <select id="province-input" aria-labelledby="province or territory" name="Province" onChange={onChange('province')} value={formData.province}>
                       <option>Select Province/Territory</option>
                       <option value="AB">Alberta</option>
                       <option value="BC">British Columbia</option>
@@ -212,11 +220,12 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   </div>
                   </div>
 
-                  <div id="project-disrciption">
-                  <label>Describe Your Project</label>
+                  <div id="project-description-input">
+                  <label htmlFor="Project description">Describe Your Project</label>
                   <textarea
                     name="Project description"
                     id="project-description-input"
+                    aria-labelledby="project description"
                     placeholder="A brief description of your project goes here."
                     className="big-input alt-font"
                     onChange={onChange('project-description')}
