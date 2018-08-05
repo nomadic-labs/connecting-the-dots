@@ -34,6 +34,10 @@ module.exports = {
 
               return node
             },
+          },
+          {
+            type: "Projects",
+            path: "projectSubmissions"
           }
         ]
       }

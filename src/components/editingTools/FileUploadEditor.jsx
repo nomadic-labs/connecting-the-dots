@@ -6,8 +6,10 @@ import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 // eslint-disable-next-line
 import { theme, withStyles } from "@material-ui/core/styles";
+import { MAXIMUM_IMAGE_SIZE } from "../../utils/constants"
 
 import "../../assets/sass/image_uploader.scss";
+
 
 const styles = theme => ({
   header: {
@@ -65,6 +67,14 @@ class FileUploadEditor extends React.Component {
   _handleFileChange(event) {
     this.setState({ loading: true });
     const file = event.target.files[0];
+    if (file.size > MAXIMUM_IMAGE_SIZE) {
+      this.setState({
+        imageError: true,
+        loading: false
+      });
+      return;
+    }
+
     const filename = file.name;
 
     const fileRef = firebase
@@ -94,7 +104,7 @@ class FileUploadEditor extends React.Component {
       <div className="image-uploader-container">
         <Grid container justify="flex-start">
           <Grid item xs={12}>
-            <p>Upload a file such as a project report or description</p>
+            <p>Upload a file such as a project report or description (max 2MB)</p>
           </Grid>
           <Grid item>
             <label className={this.props.classes.button}>
@@ -128,6 +138,10 @@ class FileUploadEditor extends React.Component {
                 </a>
               </div>
             )}
+            {
+              this.state.imageError &&
+              <div>Your file is too big. Please select a file less than 2MB.</div>
+            }
           </Grid>
           { title &&
             <Grid item xs={12}>

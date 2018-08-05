@@ -1,5 +1,5 @@
 import React from "react";
-import { push } from "gatsby";
+import { push, Link } from "gatsby";
 import firebase from "../../firebase/init";
 import { connect } from "react-redux";
 
@@ -109,6 +109,19 @@ class AccountButton extends React.Component {
             {props.allowEditing && (
               <MenuItem
                 onClick={() => {
+                  closeMenu();
+                }}
+                component={Link}
+                to={'/project-review'}
+                divider
+              >
+                Review submitted projects
+              </MenuItem>
+            )}
+
+            {props.allowEditing && (
+              <MenuItem
+                onClick={() => {
                   props.onToggleEditing();
                   closeMenu();
                 }}
@@ -128,6 +141,7 @@ class AccountButton extends React.Component {
                 Publish changes
               </MenuItem>
             )}
+
             <MenuItem
               onClick={() => {
                 logout();

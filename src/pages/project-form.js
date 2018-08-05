@@ -117,29 +117,29 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                 <form id="project-submission-form">
                   <div id="success" className="no-margin-lr" />
 
-                  <div id="Name">
-                    <label htmlFor="name-input">Your Name * </label>
+                  <div id="name-input">
+                    <label htmlFor="name">Your Name * </label>
                     <input
                       type="text"
-                      name="Name"
-                      id="name-input"
-                      aria-labelledby="name"
+                      name="name"
+                      id="name"
                       placeholder="Firstname Lastname"
                       className="big-input alt-font"
                       required
+                      aria-required
                       onChange={onChange("name")}
                       value={formData["name"] || ""}
                     />
                   </div>
 
-                  <div id="email">
-                    <label htmlFor="email-input">Email Address *</label>
+                  <div id="email-input">
+                    <label htmlFor="email">Email Address *</label>
                     <input
                       type="email"
-                      name="_replyto"
-                      id="email-input"
-                      aria-labelledby="email"
+                      name="email"
+                      id="email"
                       required
+                      aria-required
                       placeholder="name@your-project.ca"
                       className="big-input alt-font"
                       onChange={onChange("email")}
@@ -147,31 +147,29 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     />
                   </div>
 
-                  <div id="Social Media">
-                    <label htmlFor="social-media-input">
+                  <div id="social-media-input">
+                    <label htmlFor="social-media">
                       Social Media Link (Facebook, Twitter, Instagram, etc.)
                     </label>
                     <input
                       type="text"
-                      name="Social-media"
-                      id="social-media-input"
-                      aria-labelledby="social-media"
-                      placeholder="socialmedia.com/yourproject"
+                      name="social-media"
+                      id="social-media"
+                      placeholder="https://socialmedia.com/yourproject"
                       className="big-input alt-font"
                       onChange={onChange("social-media")}
                       value={formData["social-media"] || ""}
                     />
                   </div>
 
-                  <div id="Organization">
-                    <label htmlFor="organization-input">
+                  <div id="organization-input">
+                    <label htmlFor="organization">
                       Your Organization
                     </label>
                     <input
                       type="text"
-                      name="Organization"
-                      id="organization-input"
-                      aria-labelledby="Organization"
+                      name="organization"
+                      id="organization"
                       placeholder="Organization Name"
                       className="big-input alt-font"
                       onChange={onChange("organization")}
@@ -179,15 +177,29 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     />
                   </div>
 
-                  <div id="position">
-                    <label htmlFor="position-input">
+                  <div id="project-title-input">
+                    <label htmlFor="project-title">
+                      Project Title
+                    </label>
+                    <input
+                      type="text"
+                      name="project-title"
+                      id="project-title"
+                      placeholder="Project Title"
+                      className="big-input alt-font"
+                      onChange={onChange("project-title")}
+                      value={formData["project-title"] || ""}
+                    />
+                  </div>
+
+                  <div id="position-input">
+                    <label htmlFor="position">
                       Your Role in the Project
                     </label>
                     <input
                       type="text"
-                      name="Position"
-                      id="position-input"
-                      aria-labelledby="position"
+                      name="position"
+                      id="position"
                       placeholder="Program Coordinator"
                       className="big-input alt-font"
                       onChange={onChange("position")}
@@ -195,13 +207,12 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     />
                   </div>
 
-                  <div id="website">
-                    <label htmlFor="website-input">Project Website</label>
+                  <div id="website-input">
+                    <label htmlFor="website">Project Website</label>
                     <input
                       type="text"
-                      name="Website"
-                      id="Website-input"
-                      aria-labelledby="website"
+                      name="website"
+                      id="website"
                       placeholder="https://www.your-project.ca"
                       className="big-input alt-font"
                       onChange={onChange("website")}
@@ -209,13 +220,12 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     />
                   </div>
 
-                  <div id="city">
-                    <label htmlFor="city-input">City</label>
+                  <div id="city-input">
+                    <label htmlFor="city">City</label>
                     <input
                       type="text"
-                      name="City"
-                      id="city-input"
-                      aria-labelledby="city"
+                      name="city"
+                      id="city"
                       placeholder="City Name"
                       className="big-input alt-font"
                       onChange={onChange("city")}
@@ -227,11 +237,11 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     <label htmlFor="Province">Province/Territory</label>
                     <div className="select-style big-select alt-font">
                       <select
-                        id="province-input"
-                        aria-labelledby="province or territory"
-                        name="Province"
+                        id="province"
+                        name="province"
                         onChange={onChange("province")}
                         value={formData.province}
+                        className="big-select"
                       >
                         <option>Select Province/Territory</option>
                         <option value="AB">Alberta</option>
@@ -258,13 +268,13 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       Describe Your Project
                     </label>
                     <textarea
-                      name="Project description"
-                      id="project-description-input"
-                      aria-labelledby="project description"
-                      placeholder="A brief description of your project goes here."
+                      name="project-description"
+                      id="project-description"
+                      placeholder="Please provide a brief description of your project (max 2000 characters)."
                       className="big-input alt-font"
                       onChange={onChange("project-description")}
                       value={formData["project-description"] || ""}
+                      maxlength={2000}
                     />
                   </div>
 
@@ -277,6 +287,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                         name="Focus"
                         onChange={onChange("focus")}
                         value={formData.focus}
+                        className="big-select"
                       >
                         <option value="Education">{`Education`}</option>
                         <option value="Art & Culture">{`Art & Culture`}</option>
@@ -297,17 +308,6 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       handleChange={onChange("project-file-url")}
                     />
                   </div>
-
-                  <input
-                    type="hidden"
-                    name="_next"
-                    value="https://connectingthedots.ca/"
-                  />
-                  <input
-                    type="text"
-                    name="_gotcha"
-                    style={{ display: "none" }}
-                  />
 
                   <button
                     id="project-form-submit"

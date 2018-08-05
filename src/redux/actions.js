@@ -1,7 +1,7 @@
 import axios from "axios";
 import { DEPLOY_ENDPOINT } from "../utils/constants";
 import firebase from "../firebase/init";
-import slugify from 'slugify';
+import slugify from "slugify";
 
 // AUTHENTICATION ------------------------
 
@@ -41,7 +41,7 @@ export function updatePage(pageId, contentId, content) {
   return dispatch => {
     const db = firebase.database();
 
-    db.ref(`pages/${pageId}/content/${contentId}/`).update(content, (error) => {
+    db.ref(`pages/${pageId}/content/${contentId}/`).update(content, error => {
       if (error) {
         return dispatch(
           showNotification(
@@ -109,46 +109,53 @@ export function loadPageData(data) {
 }
 
 export function updatePageData(contentId, content) {
-  console.log('updating', contentId)
-  console.log('content', content)
-  return { type: "UPDATE_PAGE_DATA", contentId, content }
+  console.log("updating", contentId);
+  console.log("content", content);
+  return { type: "UPDATE_PAGE_DATA", contentId, content };
 }
 
 // NAVIGATION ------------------------
 
 export function openMenu() {
-  return { type: "OPEN_MENU" }
+  return { type: "OPEN_MENU" };
 }
 
 export function closeMenu() {
-  return { type: "CLOSE_MENU" }
+  return { type: "CLOSE_MENU" };
 }
 
 // FORMS ------------------------
 
 export function submitProjectFormSuccess() {
-  return { type: "SUBMIT_PROJECT_FORM_SUCCESS" }
+  return { type: "SUBMIT_PROJECT_FORM_SUCCESS" };
 }
 
 export function submitProjectFormError(error) {
-  return { type: "SUBMIT_PROJECT_FORM_ERROR" }
+  return { type: "SUBMIT_PROJECT_FORM_ERROR" };
 }
 
 export function updateForm(data) {
-  return { type: "UPDATE_PROJECT_FORM", data }
+  return { type: "UPDATE_PROJECT_FORM", data };
 }
 
 export function submitProjectForm(formData) {
   return dispatch => {
     const db = firebase.database();
     const user = slugify(formData.name);
-    const date = new Date()
-    const dateString = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${date.getTime()}`
-    const submissionId = `${user}-${dateString}`
+    const date = new Date();
+    const dateString = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${date.getTime()}`;
+    const submissionId = `${user}-${dateString}`;
+    const status = "pending";
 
-    db.ref(`projectSubmissions/${submissionId}`).update(formData, (error) => {
+    const data = {
+      ...formData,
+      'submitted-on': date.toString(),
+      status
+    }
+
+    db.ref(`projectSubmissions/${submissionId}`).update(data, error => {
       if (error) {
-        console.log('Error submitting form', error)
+        console.log("Error submitting form", error);
         dispatch(submitProjectFormError(error));
         return dispatch(
           showNotification(
@@ -166,5 +173,57 @@ export function submitProjectForm(formData) {
         )
       );
     });
+  };
+}
+
+// PROJECTS ------------------------
+
+export function updateProjects(projects) {
+  return { type: "UPDATE_PROJECTS", projects };
+}
+
+export function updateProject(projectId, projectData) {
+  return { type: "UPDATE_PROJECT", projectId, projectData }
+}
+
+export function updateProjectStatus(projectId, status) {
+  return dispatch => {
+    const db = firebase.database();
+
+    db
+      .ref(`projectSubmissions/${projectId}/status`)
+      .set(status)
+      .then(err => {
+        if (err) {
+          return dispatch(
+            showNotification(
+              `There was an error updating this project: ${err}`,
+              "error"
+            )
+          );
+        }
+
+        dispatch(updateProject(projectId, { status }));
+        dispatch(
+          showNotification(
+            `This project has been marked as ${status}. Don't forget to publish your changes!`,
+            "success"
+          )
+        );
+      });
+  }
+}
+
+export function getProjects() {
+  return dispatch => {
+    const db = firebase.database();
+
+    db
+      .ref(`projectSubmissions`)
+      .once("value")
+      .then(snapshot => {
+        const projects = snapshot.val();
+        dispatch(updateProjects(projects));
+      });
   };
 }

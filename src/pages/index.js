@@ -853,6 +853,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
         <section
           className="wow fadeIn animated no-padding"
           style={{ visibility: "visible", animationName: "fadeIn" }}
+          id="partners"
         >
           <div className="container">
             <div className="row">
@@ -863,7 +864,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               </div>
             </div>
             <div className="row margin-eight no-margin-bottom">
-              <div className="col-12 center-col">
+              <div className="col-12 center-col partner-row">
                 <PartnerLogo
                   imageSrc={partner1}
                   name={"3R Working with Racialized Youth"}
@@ -881,7 +882,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
             </div>
 
             <div className="row margin-eight no-margin-bottom">
-              <div className="col-12 center-col">
+              <div className="col-12 center-col partner-row">
                 <PartnerLogo
                   imageSrc={partner5}
                   name={"Black Health Alliance"}
@@ -898,7 +899,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               </div>
             </div>
             <div className="row margin-eight no-margin-bottom">
-              <div className="col-12 center-col">
+              <div className="col-12 center-col partner-row">
                 <PartnerLogo
                   imageSrc={partner9}
                   name={`J'Nikira Dinqinesh Education Centre`}
@@ -915,7 +916,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               </div>
             </div>
             <div className="row margin-eight no-margin-bottom">
-              <div className="col-12 center-col">
+              <div className="col-12 center-col partner-row">
                 <PartnerLogo
                   imageSrc={partner13}
                   name={`Ontario Black History Society`}

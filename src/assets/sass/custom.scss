@@ -179,6 +179,20 @@ button, .stc-btn {
   }
 }
 
+section#partners {
+  .partner-row {
+    display: flex;
+    align-items: stretch;
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
+
 /* RESPONSIVE FOR TABLETS */
 
 @media (max-width: 992px) {
