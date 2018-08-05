@@ -37,7 +37,12 @@ module.exports = {
           },
           {
             type: "Projects",
-            path: "projectSubmissions"
+            path: "projectSubmissions",
+            map: node => {
+              node.focus = JSON.stringify(node.focus);
+
+              return node
+            },
           }
         ]
       }

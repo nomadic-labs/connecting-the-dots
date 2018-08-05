@@ -14,8 +14,20 @@ import Editable from "../components/editable/Editable";
 import BackgroundImage from "../components/editable/BackgroundImage";
 import PlainTextEditor from "../components/editingTools/PlainTextEditor";
 import FileUploadEditor from "../components/editingTools/FileUploadEditor";
+import CitySelector from "../components/CitySelector";
+import Select from "react-select";
 
 const menuItems = [{ label: "Home", url: "/" }];
+const focusOptions = [
+  { label: 'Education', value: 'Education' },
+  { label: 'Art & Culture', value: 'Art & Culture' },
+  { label: 'Media & Journalism', value: 'Media & Journalism' },
+  { label: 'Employment Equity', value: 'Employment Equity' },
+  { label: 'Health', value: 'Health' },
+  { label: 'Justice', value: 'Justice' },
+  { label: 'Economic Prosperity', value: 'Economic Prosperity' },
+  { label: 'Civic Engagement', value: 'Civic Engagement' }
+]
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -61,7 +73,8 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
     };
 
     const onChange = field => event => {
-      onUpdateForm({ [field]: event.target.value });
+      const value = event.target ? event.target.value : event;
+      onUpdateForm({ [field]: value });
     };
 
     return (
@@ -147,21 +160,6 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     />
                   </div>
 
-                  <div id="social-media-input">
-                    <label htmlFor="social-media">
-                      Social Media Link (Facebook, Twitter, Instagram, etc.)
-                    </label>
-                    <input
-                      type="text"
-                      name="social-media"
-                      id="social-media"
-                      placeholder="https://socialmedia.com/yourproject"
-                      className="big-input alt-font"
-                      onChange={onChange("social-media")}
-                      value={formData["social-media"] || ""}
-                    />
-                  </div>
-
                   <div id="organization-input">
                     <label htmlFor="organization">
                       Your Organization
@@ -192,6 +190,32 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     />
                   </div>
 
+                  <div id="city-input">
+                    <label htmlFor="city">City</label>
+                    <CitySelector
+                      type="text"
+                      name="city"
+                      id="city"
+                      placeholder="City Name"
+                      handleSelect={onChange("city")}
+                      value={formData["city"]}
+                    />
+                  </div>
+
+                  <div id="focus-input">
+                    <label htmlFor="Focus">Area of Focus</label>
+                    <div className="big-select alt-font">
+                      <Select
+                        id="focus"
+                        name="Focus"
+                        options={focusOptions}
+                        onChange={onChange("focus")}
+                        className="big-select"
+                        isMulti
+                      />
+                    </div>
+                  </div>
+
                   <div id="position-input">
                     <label htmlFor="position">
                       Your Role in the Project
@@ -220,47 +244,19 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     />
                   </div>
 
-                  <div id="city-input">
-                    <label htmlFor="city">City</label>
+                   <div id="social-media-input">
+                    <label htmlFor="social-media">
+                      Social Media Link (Facebook, Twitter, Instagram, etc.)
+                    </label>
                     <input
                       type="text"
-                      name="city"
-                      id="city"
-                      placeholder="City Name"
+                      name="social-media"
+                      id="social-media"
+                      placeholder="https://socialmedia.com/yourproject"
                       className="big-input alt-font"
-                      onChange={onChange("city")}
-                      value={formData["city"] || ""}
+                      onChange={onChange("social-media")}
+                      value={formData["social-media"] || ""}
                     />
-                  </div>
-
-                  <div id="province-input">
-                    <label htmlFor="Province">Province/Territory</label>
-                    <div className="select-style big-select alt-font">
-                      <select
-                        id="province"
-                        name="province"
-                        onChange={onChange("province")}
-                        value={formData.province}
-                        className="big-select"
-                      >
-                        <option>Select Province/Territory</option>
-                        <option value="AB">Alberta</option>
-                        <option value="BC">British Columbia</option>
-                        <option value="MB">Manitoba</option>
-                        <option value="NB">New Brunswick</option>
-                        <option value="NS">Nova Scotia</option>
-                        <option value="NV">Nunavut</option>
-                        <option value="NWT">Northwest Territories</option>
-                        <option value="NFD&LB">
-                          Newfoundland and Labrador
-                        </option>
-                        <option value="ON">Ontario</option>
-                        <option value="PEI">Prince Edward Island</option>
-                        <option value="QC">Quebec</option>
-                        <option value="SK">Saskatchewan</option>
-                        <option value="YK">Yukon</option>
-                      </select>
-                    </div>
                   </div>
 
                   <div id="project-description-input">
@@ -274,31 +270,8 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       className="big-input alt-font"
                       onChange={onChange("project-description")}
                       value={formData["project-description"] || ""}
-                      maxlength={2000}
+                      maxLength={2000}
                     />
-                  </div>
-
-                  <div id="focus-input">
-                    <label htmlFor="Focus">Area of Focus</label>
-                    <div className="select-style big-select alt-font">
-                      <select
-                        id="focus"
-                        aria-labelledby="Area of Focus"
-                        name="Focus"
-                        onChange={onChange("focus")}
-                        value={formData.focus}
-                        className="big-select"
-                      >
-                        <option value="Education">{`Education`}</option>
-                        <option value="Art & Culture">{`Art & Culture`}</option>
-                        <option value="Media & Journalism">{`Media & Journalism`}</option>
-                        <option value="Employment Equity">{`Employment Equity`}</option>
-                        <option value="Health">{`Health`}</option>
-                        <option value="Justice">{`Justice`}</option>
-                        <option value="Economic Prosperity">{`Economic Prosperity`}</option>
-                        <option value="Civic Engagement">{`Civic Engagement`}</option>
-                      </select>
-                    </div>
                   </div>
 
                   <div id="file-upload">
