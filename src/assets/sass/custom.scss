@@ -183,6 +183,7 @@ section#partners {
   .partner-row {
     display: flex;
     align-items: stretch;
+    flex-wrap: wrap;
 
     .logo-container {
       display: flex;
@@ -191,6 +192,10 @@ section#partners {
       justify-content: space-between;
     }
   }
+}
+
+.big-select input {
+  margin: 0;
 }
 
 /* RESPONSIVE FOR TABLETS */

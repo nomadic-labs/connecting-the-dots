@@ -18,6 +18,7 @@ import CitySelector from "../components/CitySelector";
 import Select from "react-select";
 
 const menuItems = [{ label: "Home", url: "/" }];
+
 const focusOptions = [
   { label: 'Education', value: 'Education' },
   { label: 'Art & Culture', value: 'Art & Culture' },
@@ -199,12 +200,14 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       placeholder="City Name"
                       handleSelect={onChange("city")}
                       value={formData["city"]}
+                      style={{marginBottom: '20px'}}
+                      className="big-select alt-font text-medium"
                     />
                   </div>
 
                   <div id="focus-input">
                     <label htmlFor="Focus">Area of Focus</label>
-                    <div className="big-select alt-font">
+                    <div className="big-select alt-font text-medium" style={{marginBottom: '20px'}}>
                       <Select
                         id="focus"
                         name="Focus"
@@ -212,6 +215,32 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                         onChange={onChange("focus")}
                         className="big-select"
                         isMulti
+                        styles={{
+                          input: (base) => ({ ...base, fontFamily: `'Judson', 'Georgia', serif`, verticalAlign: 'middle' }),
+                          control: (base, state) => {
+                            const baseStyle = {
+                              ...base,
+                              backgroundColor: "#fff",
+                              border: "2px solid rgba(0,0,0,.1)",
+                              borderRadius: "none",
+                              padding: "10px 14px",
+                              boxShadow: "none",
+                            };
+
+
+                            if (state.isFocused) {
+                              return {
+                                ...baseStyle,
+                                border: "2px solid rgba(0,0,0,.5)",
+                                "&:hover": {
+                                  border: "2px solid rgba(0,0,0,.5)",
+                                }
+                              }
+                            }
+
+                            return baseStyle;
+                          }
+                        }}
                       />
                     </div>
                   </div>
