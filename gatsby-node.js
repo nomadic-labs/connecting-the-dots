@@ -50,6 +50,7 @@ const path = require("path");
 //   });
 // };
 
+
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === "build-html") {
     actions.setWebpackConfig({
@@ -57,6 +58,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         rules: [
           {
             test: /react-rte/,
+            use: loaders.null(),
+          },
+          {
+            test: /mapbox-gl/,
             use: loaders.null(),
           },
         ],
