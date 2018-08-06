@@ -41,7 +41,8 @@ const menuItems = [
   { label: "Get involved", url: "#get-involved" },
   { label: "Places", url: "#tour" },
   { label: "Black History Ottawa", url: "#bho" },
-  { label: "Contact us", url: "#contact" }
+  { label: "Contact us", url: "#contact" },
+  { label: "Projects", url: "/projects" },
 ];
 
 const mapDispatchToProps = dispatch => {
@@ -360,6 +361,12 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                       : "Want to get involved?"}
                   </Editable>
                 </span>
+                <Link
+                  to="/projects"
+                  className="highlight-button btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
+                >
+                  See the Projects
+                </Link>
                 <Link
                   to="/project-form"
                   className="highlight-button-dark btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"

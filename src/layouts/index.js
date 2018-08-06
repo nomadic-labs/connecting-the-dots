@@ -20,8 +20,19 @@ import "../assets/css/magnific-popup.css";
 import "../assets/css/style.css";
 import "../assets/css/responsive.css";
 
+const styles = {
+  container: {
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  content: {
+    flexGrow: '1'
+  }
+}
+
 const TemplateWrapper = props => (
-  <div>
+  <div style={styles.container}>
     <Helmet>
       <title>
         Connecting the Dots
@@ -36,7 +47,7 @@ const TemplateWrapper = props => (
     </Helmet>
     <NotificationContainer />
     <NavigationContainer menuItems={props.menuItems} />
-    <div className='page-content'>{props.children}</div>
+    <div className='page-content' style={styles.content}>{props.children}</div>
     <Footer />
   </div>
 );

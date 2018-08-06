@@ -21,7 +21,14 @@ const ProtectedPage = props => {
     return <div>{props.children}</div>
   }
 
-  return <div>You must be logged in to see this page.</div>
+  return (
+    <section>
+      <div class="container">
+        <p>You are not authorized to view this page.</p>
+        <p>(Are you logged in?)</p>
+      </div>
+    </section>
+  )
 }
 
 

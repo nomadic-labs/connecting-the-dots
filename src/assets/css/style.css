@@ -620,10 +620,15 @@ section { padding: 130px 0; }
 .highlight-button-dark i { color: #fff}
 .highlight-button-dark:hover i {color:#000}
 
-.highlight-button-green { border:2px solid #6ad5a7; display: inline-block; padding: 2px 20px 3px; font-size: 12px; color:#fff; background-color: #6ad5a7;  }
-.highlight-button-green:hover, .highlight-button-green:focus { background-color: transparent; border: 2px solid #6ad5a7; color:#fff}
+.highlight-button-green { border:2px solid #005E3F; display: inline-block; padding: 2px 20px 3px; font-size: 12px; color:#fff; background-color: #005E3F;  }
+.highlight-button-green:hover, .highlight-button-green:focus { background-color: transparent; border: 2px solid #005E3F; color:#fff}
 .highlight-button-green i { color: #fff}
 .highlight-button-green:hover i {color:#fff;}
+
+.highlight-button-green-dark { border:2px solid #005E3F; display: inline-block; padding: 2px 20px 3px; font-size: 12px; color:#fff; background-color: #005E3F;  }
+.highlight-button-green-dark:hover, .highlight-button-green-dark:focus { background-color: transparent; border: 2px solid #000; color:#000}
+.highlight-button-green-dark i { color: #fff}
+.highlight-button-green-dark:hover i {color:#fff;}
 
 .highlight-button-blue { border:2px solid #2283d4; display: inline-block; padding: 8px 20px 9px; font-size: 12px; color:#fff; background-color: #2283d4;  }
 .highlight-button-blue:hover, .highlight-button-blue:focus { background-color: transparent; border: 2px solid #fff; color:#fff}
@@ -678,6 +683,13 @@ section { padding: 130px 0; }
 
 .button-desc { font-size:30px !important; line-height: 35px; font-family: 'Open Sans', sans-serif; font-weight: 600}
 .button-desc span { display: block; font-size: 18px; font-weight: 400 }
+
+.btn.btn-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 /* reveal button */
 .button-reveal { overflow:hidden; position: relative; transition: all 200ms linear 0s; border: 2px solid #000; font-size:16px; padding: 0}

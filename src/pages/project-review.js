@@ -9,7 +9,6 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
 import CloseIcon from "@material-ui/icons/Close";
 import CheckIcon from "@material-ui/icons/Check";
 import OpenIcon from "@material-ui/icons/OpenInNew";
@@ -21,7 +20,8 @@ import ProtectedPage from "../layouts/protected-page"
 const menuItems = [{ label: "Home", url: "/" }];
 const styles = {
   paper: {
-    margin: "3rem"
+    marginTop: "4rem",
+    marginBottom: "4rem",
   }
 };
 
@@ -71,7 +71,7 @@ const ProjectCard = ({ project, uid, updateProjectStatus }) => {
 
           <TableRow>
             <CustomTableCell>Date submitted</CustomTableCell>
-            <CustomTableCell>{project["submitted-on"]}</CustomTableCell>
+            <CustomTableCell>{project['submitted-on']}</CustomTableCell>
           </TableRow>
 
           <TableRow>
@@ -101,19 +101,17 @@ const ProjectCard = ({ project, uid, updateProjectStatus }) => {
 
           <TableRow>
             <CustomTableCell>Social media</CustomTableCell>
-            <CustomTableCell>{project["social-media"]}</CustomTableCell>
+            <CustomTableCell>{project['social-media']}</CustomTableCell>
           </TableRow>
 
           <TableRow>
             <CustomTableCell>Location</CustomTableCell>
-            <CustomTableCell>{`${project["city"]}, ${
-              project["province"]
-            }`}</CustomTableCell>
+            <CustomTableCell>{project.city.label}</CustomTableCell>
           </TableRow>
 
           <TableRow>
             <CustomTableCell>Project description</CustomTableCell>
-            <CustomTableCell>{project["project-description"]}</CustomTableCell>
+            <CustomTableCell>{project['project-description']}</CustomTableCell>
           </TableRow>
 
           <TableRow>
@@ -133,23 +131,25 @@ const ProjectCard = ({ project, uid, updateProjectStatus }) => {
             <CustomTableCell>
               <Grid container spacing={16}>
                 <Grid item>
-                  <Button
+                  <button
+                    className="btn highlight-button-dark btn-small no-margin inner-link btn-flex"
                     variant="raised"
                     color="primary"
                     onClick={rejectProject}
                   >
                     <CloseIcon />Reject
-                  </Button>
+                  </button>
                 </Grid>
                 <Grid item>
-                  <Button
+                  <button
+                    className="btn highlight-button-green-dark btn-small no-margin inner-link btn-flex"
                     variant="raised"
                     color="secondary"
                     onClick={approveProject}
                   >
                     <CheckIcon />
                     Approve
-                  </Button>
+                  </button>
                 </Grid>
               </Grid>
             </CustomTableCell>
@@ -165,27 +165,24 @@ const ProjectReviewPage = props => {
     <Layout menuItems={menuItems}>
       <ProtectedPage>
       <section className="">
-        <div className="container position-relative">
+        <div className="container">
           <h2 className="alt-font black-text text-italic font-weight-600 xs-title-extra-large">
             Submitted Projects
           </h2>
+          <div>
+            {map(props.projects, (project, uid) => {
+              return (
+                <ProjectCard
+                  project={project}
+                  key={uid}
+                  uid={uid}
+                  updateProjectStatus={props.updateProjectStatus}
+                />
+              );
+            })}
+          </div>
         </div>
       </section>
-
-      <Grid container justify="center">
-        <Grid item xs={12}>
-          {map(props.projects, (project, uid) => {
-            return (
-              <ProjectCard
-                project={project}
-                key={uid}
-                uid={uid}
-                updateProjectStatus={props.updateProjectStatus}
-              />
-            );
-          })}
-        </Grid>
-      </Grid>
       </ProtectedPage>
     </Layout>
   );
