@@ -11,6 +11,9 @@ const styles = {
 };
 
 const ProjectCard = ({ project }) => {
+  const focusArray = JSON.parse(project.focus)
+  const focusAreas = focusArray ? focusArray.map(focus => focus.label).join(', ') : null;
+
   return (
     <div style={styles.paper} className="service-sub">
       <Grid container>
@@ -24,6 +27,11 @@ const ProjectCard = ({ project }) => {
           <p className="text-large margin-three no-margin-lr display-block xs-margin-eleven xs-no-margin-lr">
             {project.project_description}
           </p>
+
+          {
+            focusAreas &&
+            <p className="text-large margin-three no-margin-lr display-block xs-margin-eleven xs-no-margin-lr">{`Areas of focus: ${focusAreas}`}</p>
+          }
 
           <Grid container spacing={24}>
             {project.project_file_url && (

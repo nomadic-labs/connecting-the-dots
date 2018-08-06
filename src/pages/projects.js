@@ -37,7 +37,6 @@ class ProjectsPage extends React.Component {
       zoom: 3.0
     });
 
-    console.log(this.projectsByCity);
     this.markers = map(this.projectsByCity, (data, city) => {
       const popup = new mapbox.Popup().setHTML(
         `<a href='#${city}'>See projects from ${city}</a>`
