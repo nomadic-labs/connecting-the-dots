@@ -1,5 +1,4 @@
 import axios from "axios";
-import { DEPLOY_ENDPOINT } from "../utils/constants";
 import firebase from "../firebase/init";
 import slugify from "slugify";
 
@@ -64,7 +63,7 @@ export function updatePage(pageId, contentId, content) {
 
 export function deploy() {
   return dispatch => {
-    const url = `${DEPLOY_ENDPOINT}`;
+    const url = `${process.env.GATSBY_DEPLOY_ENDPOINT}`;
     console.log(`Deploy command sent to ${url}`);
 
     firebase
