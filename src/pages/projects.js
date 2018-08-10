@@ -114,6 +114,10 @@ const ProjectsPageContainer = props => (
               project_description
               project_file_url
               social_media
+              facebook
+              twitter
+              instagram
+              youtube
               focus
               city {
                 city

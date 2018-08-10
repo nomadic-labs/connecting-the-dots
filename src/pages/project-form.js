@@ -14,7 +14,7 @@ import Editable from "../components/editable/Editable";
 import BackgroundImage from "../components/editable/BackgroundImage";
 import PlainTextEditor from "../components/editingTools/PlainTextEditor";
 import FileUploadEditor from "../components/editingTools/FileUploadEditor";
-import CitySelector from "../components/CitySelector";
+import PlaceSelector from "../components/PlaceSelector";
 import Select from "react-select";
 
 const menuItems = [{ label: "Home", url: "/" }];
@@ -129,187 +129,281 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                 className="margin-nine no-margin-bottom no-margin-lr"
               >
                 <form id="project-submission-form">
-                  <div id="success" className="no-margin-lr" />
+                  <fieldset className="margin-four no-margin-lr">
+                    <legend>
+                      <h3 className="alt-font margin-two no-margin-lr">About you</h3>
+                    </legend>
 
-                  <div id="name-input">
-                    <label htmlFor="name">Your Name * </label>
-                    <input
-                      type="text"
-                      name="name"
-                      id="name"
-                      placeholder="Firstname Lastname"
-                      className="big-input alt-font"
-                      required
-                      aria-required
-                      onChange={onChange("name")}
-                      value={formData["name"] || ""}
-                    />
-                  </div>
-
-                  <div id="email-input">
-                    <label htmlFor="email">Email Address *</label>
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      required
-                      aria-required
-                      placeholder="name@your-project.ca"
-                      className="big-input alt-font"
-                      onChange={onChange("email")}
-                      value={formData["email"] || ""}
-                    />
-                  </div>
-
-                  <div id="organization-input">
-                    <label htmlFor="organization">
-                      Your Organization
-                    </label>
-                    <input
-                      type="text"
-                      name="organization"
-                      id="organization"
-                      placeholder="Organization Name"
-                      className="big-input alt-font"
-                      onChange={onChange("organization")}
-                      value={formData["organization"] || ""}
-                    />
-                  </div>
-
-                  <div id="project-title-input">
-                    <label htmlFor="project-title">
-                      Project Title
-                    </label>
-                    <input
-                      type="text"
-                      name="project-title"
-                      id="project-title"
-                      placeholder="Project Title"
-                      className="big-input alt-font"
-                      onChange={onChange("project-title")}
-                      value={formData["project-title"] || ""}
-                    />
-                  </div>
-
-                  <div id="city-input">
-                    <label htmlFor="city">City</label>
-                    <CitySelector
-                      type="text"
-                      name="city"
-                      id="city"
-                      placeholder="City Name"
-                      handleSelect={onChange("city")}
-                      value={formData["city"]}
-                      style={{marginBottom: '20px'}}
-                      className="big-select alt-font text-medium"
-                    />
-                  </div>
-
-                  <div id="focus-input">
-                    <label htmlFor="Focus">Area of Focus</label>
-                    <div className="big-select alt-font text-medium" style={{marginBottom: '20px'}}>
-                      <Select
-                        id="focus"
-                        name="Focus"
-                        options={focusOptions}
-                        onChange={onChange("focus")}
-                        className="big-select"
-                        isMulti
-                        styles={{
-                          input: (base) => ({ ...base, fontFamily: `'Judson', 'Georgia', serif`, verticalAlign: 'middle' }),
-                          control: (base, state) => {
-                            const baseStyle = {
-                              ...base,
-                              backgroundColor: "#fff",
-                              border: "2px solid rgba(0,0,0,.1)",
-                              borderRadius: "none",
-                              padding: "10px 14px",
-                              boxShadow: "none",
-                            };
-
-
-                            if (state.isFocused) {
-                              return {
-                                ...baseStyle,
-                                border: "2px solid rgba(0,0,0,.5)",
-                                "&:hover": {
-                                  border: "2px solid rgba(0,0,0,.5)",
-                                }
-                              }
-                            }
-
-                            return baseStyle;
-                          }
-                        }}
+                    <div id="name-input">
+                      <label htmlFor="name">Name * </label>
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Firstname Lastname"
+                        className="big-input alt-font"
+                        required
+                        aria-required
+                        onChange={onChange("name")}
+                        value={formData["name"] || ""}
                       />
                     </div>
-                  </div>
 
-                  <div id="position-input">
-                    <label htmlFor="position">
-                      Your Role in the Project
-                    </label>
-                    <input
-                      type="text"
-                      name="position"
-                      id="position"
-                      placeholder="Program Coordinator"
-                      className="big-input alt-font"
-                      onChange={onChange("position")}
-                      value={formData["position"] || ""}
-                    />
-                  </div>
+                    <div id="email-input">
+                      <label htmlFor="email">Email Address *</label>
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        required
+                        aria-required
+                        placeholder="name@your-project.ca"
+                        className="big-input alt-font"
+                        onChange={onChange("email")}
+                        value={formData["email"] || ""}
+                      />
+                    </div>
 
-                  <div id="website-input">
-                    <label htmlFor="website">Project Website</label>
-                    <input
-                      type="text"
-                      name="website"
-                      id="website"
-                      placeholder="https://www.your-project.ca"
-                      className="big-input alt-font"
-                      onChange={onChange("website")}
-                      value={formData["website"] || ""}
-                    />
-                  </div>
+                    <div id="position-input">
+                      <label htmlFor="position">
+                        Your Role in the Project
+                      </label>
+                      <input
+                        type="text"
+                        name="position"
+                        id="position"
+                        placeholder="Program Coordinator"
+                        className="big-input alt-font"
+                        onChange={onChange("position")}
+                        value={formData["position"] || ""}
+                      />
+                    </div>
+                  </fieldset>
 
-                   <div id="social-media-input">
-                    <label htmlFor="social-media">
-                      Social Media Link (Facebook, Twitter, Instagram, etc.)
-                    </label>
-                    <input
-                      type="text"
-                      name="social-media"
-                      id="social-media"
-                      placeholder="https://socialmedia.com/yourproject"
-                      className="big-input alt-font"
-                      onChange={onChange("social-media")}
-                      value={formData["social-media"] || ""}
-                    />
-                  </div>
+                  <fieldset className="margin-four no-margin-lr">
+                    <legend>
+                      <h3 className="alt-font margin-two no-margin-lr">About the project</h3>
+                    </legend>
 
-                  <div id="project-description-input">
-                    <label htmlFor="Project description">
-                      Describe Your Project
-                    </label>
-                    <textarea
-                      name="project-description"
-                      id="project-description"
-                      placeholder="Please provide a brief description of your project (max 2000 characters)."
-                      className="big-input alt-font"
-                      onChange={onChange("project-description")}
-                      value={formData["project-description"] || ""}
-                      maxLength={2000}
-                    />
-                  </div>
 
-                  <div id="file-upload">
-                    <label>Upload a File</label>
-                    <FileUploadEditor
-                      content={{}}
-                      handleChange={onChange("project-file-url")}
-                    />
-                  </div>
+                    <div id="project-title-input">
+                      <label htmlFor="project-title">
+                        Project Title
+                      </label>
+                      <input
+                        type="text"
+                        name="project-title"
+                        id="project-title"
+                        placeholder="Project Title"
+                        className="big-input alt-font"
+                        onChange={onChange("project-title")}
+                        value={formData["project-title"] || ""}
+                      />
+                    </div>
+
+                    <div id="organization-input">
+                      <label htmlFor="organization">
+                        Organization
+                      </label>
+                      <input
+                        type="text"
+                        name="organization"
+                        id="organization"
+                        placeholder="Organization Name"
+                        className="big-input alt-font"
+                        onChange={onChange("organization")}
+                        value={formData["organization"] || ""}
+                      />
+                    </div>
+
+                    <div id="city-input">
+                      <label htmlFor="city">City</label>
+                      <PlaceSelector
+                        placeType="city"
+                        type="text"
+                        name="city"
+                        id="city"
+                        placeholder="City Name"
+                        handleSelect={onChange("city")}
+                        value={formData["city"]}
+                        style={{marginBottom: '20px'}}
+                        className="big-select alt-font text-medium"
+                      />
+                    </div>
+
+                    <div id="city-input">
+                      <label htmlFor="city">Address</label>
+                      <PlaceSelector
+                        placeType="address"
+                        type="text"
+                        name="address"
+                        id="address"
+                        placeholder="Organization address"
+                        handleSelect={onChange("address")}
+                        value={formData["address"]}
+                        style={{marginBottom: '20px'}}
+                        className="big-select alt-font text-medium"
+                      />
+                    </div>
+
+                    <div id="focus-input">
+                      <label htmlFor="Focus">Area(s) of Focus</label>
+                      <div className="big-select alt-font text-medium" style={{marginBottom: '20px'}}>
+                        <Select
+                          id="focus"
+                          name="Focus"
+                          options={focusOptions}
+                          onChange={onChange("focus")}
+                          className="big-select"
+                          isMulti
+                          styles={{
+                            input: (base) => ({ ...base, fontFamily: `'Judson', 'Georgia', serif`, verticalAlign: 'middle' }),
+                            control: (base, state) => {
+                              const baseStyle = {
+                                ...base,
+                                backgroundColor: "#fff",
+                                border: "2px solid rgba(0,0,0,.1)",
+                                borderRadius: "none",
+                                padding: "10px 14px",
+                                boxShadow: "none",
+                              };
+
+
+                              if (state.isFocused) {
+                                return {
+                                  ...baseStyle,
+                                  border: "2px solid rgba(0,0,0,.5)",
+                                  "&:hover": {
+                                    border: "2px solid rgba(0,0,0,.5)",
+                                  }
+                                }
+                              }
+
+                              return baseStyle;
+                            }
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    <div id="website-input">
+                      <label htmlFor="website">Project Website</label>
+                      <input
+                        type="text"
+                        name="website"
+                        id="website"
+                        placeholder="https://www.your-project.ca"
+                        className="big-input alt-font"
+                        onChange={onChange("website")}
+                        value={formData["website"] || ""}
+                      />
+                    </div>
+
+                    <div id="project-description-input">
+                      <label htmlFor="Project description">
+                        Describe Your Project
+                      </label>
+                      <textarea
+                        name="project-description"
+                        id="project-description"
+                        placeholder="Please provide a brief description of your project (max 2000 characters)."
+                        className="big-input alt-font"
+                        onChange={onChange("project-description")}
+                        value={formData["project-description"] || ""}
+                        maxLength={2000}
+                      />
+                    </div>
+
+                    <div id="file-upload">
+                      <label>Upload a File</label>
+                      <FileUploadEditor
+                        content={{}}
+                        handleChange={onChange("project-file-url")}
+                      />
+                    </div>
+
+                  </fieldset>
+
+                  <fieldset className="margin-four no-margin-lr">
+                    <legend>
+                      <h3 className="alt-font margin-two no-margin-lr">Social Media</h3>
+                    </legend>
+
+                    <div id="twitter-input">
+                      <label htmlFor="twitter">
+                        Twitter
+                      </label>
+                      <input
+                        type="text"
+                        name="twitter"
+                        id="twitter"
+                        placeholder="https://twitter.com/yourproject"
+                        className="big-input alt-font"
+                        onChange={onChange("twitter")}
+                        value={formData["twitter"] || ""}
+                      />
+                    </div>
+
+                    <div id="facebook-input">
+                      <label htmlFor="facebook">
+                        Facebook
+                      </label>
+                      <input
+                        type="text"
+                        name="facebook"
+                        id="facebook"
+                        placeholder="https://www.facebook.com/yourproject"
+                        className="big-input alt-font"
+                        onChange={onChange("facebook")}
+                        value={formData["facebook"] || ""}
+                      />
+                    </div>
+
+                    <div id="instagram-input">
+                      <label htmlFor="instagram">
+                        Instagram
+                      </label>
+                      <input
+                        type="text"
+                        name="instagram"
+                        id="instagram"
+                        placeholder="https://www.instagram.com/yourproject"
+                        className="big-input alt-font"
+                        onChange={onChange("instagram")}
+                        value={formData["instagram"] || ""}
+                      />
+                    </div>
+
+                    <div id="youtube-input">
+                      <label htmlFor="youtube">
+                        YouTube
+                      </label>
+                      <input
+                        type="text"
+                        name="youtube"
+                        id="youtube"
+                        placeholder="https://www.youtube.com/yourproject"
+                        className="big-input alt-font"
+                        onChange={onChange("youtube")}
+                        value={formData["youtube"] || ""}
+                      />
+                    </div>
+
+                    <div id="social-media-input">
+                      <label htmlFor="social-media">
+                        Other social media (MySpace, anyone?)
+                      </label>
+                      <input
+                        type="text"
+                        name="social-media"
+                        id="social-media"
+                        placeholder="https://socialmedia.com/yourproject"
+                        className="big-input alt-font"
+                        onChange={onChange("social-media")}
+                        value={formData["social-media"] || ""}
+                      />
+                    </div>
+                  </fieldset>
 
                   <button
                     id="project-form-submit"

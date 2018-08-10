@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import OpenIcon from "@material-ui/icons/OpenInNew";
+import ensureAbsoluteUrl from "../../utils/ensureAbsoluteUrl.js"
 
 const styles = {
   paper: {
@@ -53,7 +54,7 @@ const ProjectCard = ({ project }) => {
             {project.website && (
               <Grid item>
                 <a
-                  href={project.website}
+                  href={ensureAbsoluteUrl(project.website)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-small no-margin no-padding inner-link"
@@ -66,10 +67,74 @@ const ProjectCard = ({ project }) => {
               </Grid>
             )}
 
+            {project.twitter && (
+              <Grid item>
+                <a
+                  href={ensureAbsoluteUrl(project.twitter)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-small no-margin no-padding inner-link"
+                >
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    Twitter
+                    <OpenIcon style={{ marginLeft: "4px" }} />
+                  </div>
+                </a>
+              </Grid>
+            )}
+
+            {project.facebook && (
+              <Grid item>
+                <a
+                  href={ensureAbsoluteUrl(project.facebook)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-small no-margin no-padding inner-link"
+                >
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    Facebook
+                    <OpenIcon style={{ marginLeft: "4px" }} />
+                  </div>
+                </a>
+              </Grid>
+            )}
+
+            {project.instagram && (
+              <Grid item>
+                <a
+                  href={ensureAbsoluteUrl(project.instagram)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-small no-margin no-padding inner-link"
+                >
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    Instagram
+                    <OpenIcon style={{ marginLeft: "4px" }} />
+                  </div>
+                </a>
+              </Grid>
+            )}
+
+            {project.youtube && (
+              <Grid item>
+                <a
+                  href={ensureAbsoluteUrl(project.youtube)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-small no-margin no-padding inner-link"
+                >
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    YouTube
+                    <OpenIcon style={{ marginLeft: "4px" }} />
+                  </div>
+                </a>
+              </Grid>
+            )}
+
             {project.social_media && (
               <Grid item>
                 <a
-                  href={project.social_media}
+                  href={ensureAbsoluteUrl(project.social_media)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-small no-margin no-padding inner-link"
