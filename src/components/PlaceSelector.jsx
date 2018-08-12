@@ -137,7 +137,7 @@ class PlaceSelector extends Component {
           value={value}
           onChange={this.handleChange}
           noResultsText="No results for this city"
-          placeholder={`Start typing a ${placeType}...`}
+          placeholder={`Start typing the ${placeType}...`}
           defaultOptions
           loadOptions={this.searchPlaces}
           styles={{

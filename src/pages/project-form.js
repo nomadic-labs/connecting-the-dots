@@ -128,7 +128,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                 md={8}
                 className="margin-nine no-margin-bottom no-margin-lr"
               >
-                <form id="project-submission-form">
+                <form id="project-submission-form" onSubmit={onSubmit}>
                   <fieldset className="margin-four no-margin-lr">
                     <legend>
                       <h3 className="alt-font margin-two no-margin-lr">About you</h3>
@@ -166,7 +166,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
 
                     <div id="position-input">
                       <label htmlFor="position">
-                        Your Role in the Project
+                        Your Role in the Project *
                       </label>
                       <input
                         type="text"
@@ -176,6 +176,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                         className="big-input alt-font"
                         onChange={onChange("position")}
                         value={formData["position"] || ""}
+                        required
                       />
                     </div>
                   </fieldset>
@@ -188,7 +189,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
 
                     <div id="project-title-input">
                       <label htmlFor="project-title">
-                        Project Title
+                        Project Title *
                       </label>
                       <input
                         type="text"
@@ -198,12 +199,13 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                         className="big-input alt-font"
                         onChange={onChange("project-title")}
                         value={formData["project-title"] || ""}
+                        required
                       />
                     </div>
 
                     <div id="organization-input">
                       <label htmlFor="organization">
-                        Organization
+                        Organization *
                       </label>
                       <input
                         type="text"
@@ -213,11 +215,12 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                         className="big-input alt-font"
                         onChange={onChange("organization")}
                         value={formData["organization"] || ""}
+                        required
                       />
                     </div>
 
                     <div id="city-input">
-                      <label htmlFor="city">City</label>
+                      <label htmlFor="city">City *</label>
                       <PlaceSelector
                         placeType="city"
                         type="text"
@@ -228,6 +231,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                         value={formData["city"]}
                         style={{marginBottom: '20px'}}
                         className="big-select alt-font text-medium"
+                        required
                       />
                     </div>
 
@@ -247,7 +251,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     </div>
 
                     <div id="focus-input">
-                      <label htmlFor="Focus">Area(s) of Focus</label>
+                      <label htmlFor="Focus">Area(s) of Focus *</label>
                       <div className="big-select alt-font text-medium" style={{marginBottom: '20px'}}>
                         <Select
                           id="focus"
@@ -256,6 +260,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                           onChange={onChange("focus")}
                           className="big-select"
                           isMulti
+                          required
                           styles={{
                             input: (base) => ({ ...base, fontFamily: `'Judson', 'Georgia', serif`, verticalAlign: 'middle' }),
                             control: (base, state) => {
@@ -286,6 +291,22 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       </div>
                     </div>
 
+                    <div id="project-description-input">
+                      <label htmlFor="Project description">
+                        Describe Your Project (max 2000 characters) *
+                      </label>
+                      <textarea
+                        name="project-description"
+                        id="project-description"
+                        placeholder="Please provide a brief description of your project."
+                        className="big-input alt-font"
+                        onChange={onChange("project-description")}
+                        value={formData["project-description"] || ""}
+                        maxLength={2000}
+                        required
+                      />
+                    </div>
+
                     <div id="website-input">
                       <label htmlFor="website">Project Website</label>
                       <input
@@ -296,21 +317,6 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                         className="big-input alt-font"
                         onChange={onChange("website")}
                         value={formData["website"] || ""}
-                      />
-                    </div>
-
-                    <div id="project-description-input">
-                      <label htmlFor="Project description">
-                        Describe Your Project
-                      </label>
-                      <textarea
-                        name="project-description"
-                        id="project-description"
-                        placeholder="Please provide a brief description of your project (max 2000 characters)."
-                        className="big-input alt-font"
-                        onChange={onChange("project-description")}
-                        value={formData["project-description"] || ""}
-                        maxLength={2000}
                       />
                     </div>
 
@@ -409,7 +415,6 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     id="project-form-submit"
                     type="submit"
                     className="highlight-button-dark btn btn-medium"
-                    onClick={onSubmit}
                   >
                     Submit
                   </button>
