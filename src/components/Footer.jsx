@@ -26,6 +26,12 @@ const Footer = props => {
                 <a href="https://twitter.com/Project_CtD" target="_blank" rel="noopener noreferrer">
                   <i className="fa fa-twitter" />
                 </a>
+                <a href="https://www.instagram.com/project_ctd/" target="_blank" rel="noopener noreferrer">
+                  <i className="fa fa-instagram" />
+                </a>
+                <a href="https://www.linkedin.com/in/connecting-the-dots-00a0a4169/" target="_blank" rel="noopener noreferrer">
+                  <i className="fa fa-linkedin" />
+                </a>
               </div>
             </div>
           </div>

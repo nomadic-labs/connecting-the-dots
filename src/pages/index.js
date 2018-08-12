@@ -28,6 +28,9 @@ import partner12 from "../assets/images/partners/Ontario-Alliance-of-Black-Schoo
 import partner13 from "../assets/images/partners/Ontario-Black-History-Society.jpg";
 import partner14 from "../assets/images/partners/wedge15.png";
 import partner15 from "../assets/images/partners/ylac.png";
+import partner16 from "../assets/images/partners/Silvertrust-Media.jpg";
+import partner17 from "../assets/images/partners/Afroglobal-Television.jpg";
+import partner18 from "../assets/images/partners/banki-designs-logo.jpg";
 
 import coast from "../assets/images/bg-01.png";
 import toronto from "../assets/images/toronto.jpg";
@@ -42,7 +45,7 @@ const menuItems = [
   { label: "Places", url: "#tour" },
   { label: "Black History Ottawa", url: "#bho" },
   { label: "Contact us", url: "#contact" },
-  { label: "Projects", url: "/projects" },
+  { label: "Projects", url: "/projects" }
 ];
 
 const mapDispatchToProps = dispatch => {
@@ -144,7 +147,6 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </Editable>
               </div>
               <div className="col-md-6 col-sm-12 col-xs-12 col-md-offset-1 sm-padding-five sm-no-padding-lr sm-no-padding-bottom xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom">
-
                 <div className="col-md-6 col-sm-6 service-sub text-center">
                   <div className="logo-container">
                     <img src={BHOlogo} alt="Black History Ottawa logo" />
@@ -162,7 +164,6 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                     supported by the Government of Canada
                   </span>
                 </div>
-
               </div>
             </div>
           </div>
@@ -928,14 +929,22 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   imageSrc={partner13}
                   name={`Ontario Black History Society`}
                 />
-                <PartnerLogo
-                  imageSrc={partner14}
-                  name={`WEDGE 15 Inc.`}
-                />
+                <PartnerLogo imageSrc={partner14} name={`WEDGE 15 Inc.`} />
                 <PartnerLogo
                   imageSrc={partner15}
                   name={`Young Leaders Advisory Council`}
                 />
+                <PartnerLogo imageSrc={partner16} name={`Silvertrust Media`} />
+              </div>
+            </div>
+
+            <div className="row margin-eight no-margin-bottom">
+              <div className="col-12 center-col partner-row">
+                <PartnerLogo
+                  imageSrc={partner17}
+                  name={`Afroglobal Television`}
+                />
+                <PartnerLogo imageSrc={partner18} name={`Banki Designs`} />
               </div>
             </div>
           </div>
