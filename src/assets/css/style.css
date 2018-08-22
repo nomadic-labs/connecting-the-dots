@@ -501,6 +501,7 @@ i { color: #9a9a9a; margin:0}
 .display-inline { display: inline !important}
 .display-none { display: none !important}
 .display-inherit { display: inherit !important}
+.display-flex-center { display: flex !important; justify-content: center; }
 
 /* position */
 .position-relative{ position: relative !important; z-index: 5 }

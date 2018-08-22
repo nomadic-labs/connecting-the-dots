@@ -38,8 +38,8 @@ const mapDispatchToProps = dispatch => {
     onLoadPageData: data => {
       dispatch(loadPageData(data));
     },
-    onSubmitProjectForm: formData => {
-      dispatch(submitProjectForm(formData));
+    onSubmitProjectForm: (formData, e) => {
+      dispatch(submitProjectForm(formData, e));
     },
     onUpdateForm: data => {
       dispatch(updateForm(data));
@@ -68,9 +68,12 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
       onUpdatePageData("project-form", id, content);
     };
 
-    const onSubmit = e => {
-      e.preventDefault();
-      onSubmitProjectForm(formData);
+    const onSubmit = (e) => {
+      if (!formData.submitted) {
+        e.persist();
+        e.preventDefault();
+        return onSubmitProjectForm(formData, e);
+      }
     };
 
     const onChange = field => event => {
@@ -128,7 +131,16 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                 md={8}
                 className="margin-nine no-margin-bottom no-margin-lr"
               >
-                <form id="project-submission-form" onSubmit={onSubmit}>
+                <form
+                  id="project-submission-form"
+                  onSubmit={onSubmit}
+                  method="POST"
+                  action="https://formspree.io/sharonkennedy100@gmail.com"
+                >
+                  <input type="hidden" name="_subject" value="New project submission on Connecting the Dots!" />
+                  <input type="text" name="_gotcha" style={{ display: "none" }} />
+                  <input type="hidden" name="_next" value="https://www.connectingthedots.ca/?notification=project-form-success" />
+
                   <fieldset className="margin-four no-margin-lr">
                     <legend>
                       <h3 className="alt-font margin-two no-margin-lr">About you</h3>
@@ -138,7 +150,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       <label htmlFor="name">Name * </label>
                       <input
                         type="text"
-                        name="name"
+                        name="Name"
                         id="name"
                         placeholder="Firstname Lastname"
                         className="big-input alt-font"
@@ -153,7 +165,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       <label htmlFor="email">Email Address *</label>
                       <input
                         type="email"
-                        name="email"
+                        name="Email"
                         id="email"
                         required
                         aria-required
@@ -170,7 +182,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       </label>
                       <input
                         type="text"
-                        name="position"
+                        name="Position"
                         id="position"
                         placeholder="Program Coordinator"
                         className="big-input alt-font"
@@ -193,7 +205,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       </label>
                       <input
                         type="text"
-                        name="project-title"
+                        name="Project title"
                         id="project-title"
                         placeholder="Project Title"
                         className="big-input alt-font"
@@ -209,7 +221,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       </label>
                       <input
                         type="text"
-                        name="organization"
+                        name="Organization"
                         id="organization"
                         placeholder="Organization Name"
                         className="big-input alt-font"
@@ -224,7 +236,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       <PlaceSelector
                         placeType="city"
                         type="text"
-                        name="city"
+                        name="City"
                         id="city"
                         placeholder="City Name"
                         handleSelect={onChange("city")}
@@ -240,7 +252,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       <PlaceSelector
                         placeType="address"
                         type="text"
-                        name="address"
+                        name="Address"
                         id="address"
                         placeholder="Organization address"
                         handleSelect={onChange("address")}
@@ -255,7 +267,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       <div className="big-select alt-font text-medium" style={{marginBottom: '20px'}}>
                         <Select
                           id="focus"
-                          name="Focus"
+                          name="Area(s) of focus"
                           options={focusOptions}
                           onChange={onChange("focus")}
                           className="big-select"
@@ -296,7 +308,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                         Describe Your Project (max 2000 characters) *
                       </label>
                       <textarea
-                        name="project-description"
+                        name="Project description"
                         id="project-description"
                         placeholder="Please provide a brief description of your project."
                         className="big-input alt-font"
@@ -311,7 +323,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       <label htmlFor="website">Project Website</label>
                       <input
                         type="text"
-                        name="website"
+                        name="Website"
                         id="website"
                         placeholder="https://www.your-project.ca"
                         className="big-input alt-font"
@@ -341,7 +353,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       </label>
                       <input
                         type="text"
-                        name="twitter"
+                        name="Twitter"
                         id="twitter"
                         placeholder="https://twitter.com/yourproject"
                         className="big-input alt-font"
@@ -356,7 +368,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       </label>
                       <input
                         type="text"
-                        name="facebook"
+                        name="Facebook"
                         id="facebook"
                         placeholder="https://www.facebook.com/yourproject"
                         className="big-input alt-font"
@@ -371,7 +383,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       </label>
                       <input
                         type="text"
-                        name="instagram"
+                        name="Instagram"
                         id="instagram"
                         placeholder="https://www.instagram.com/yourproject"
                         className="big-input alt-font"
@@ -386,7 +398,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       </label>
                       <input
                         type="text"
-                        name="youtube"
+                        name="Youtube"
                         id="youtube"
                         placeholder="https://www.youtube.com/yourproject"
                         className="big-input alt-font"
@@ -401,7 +413,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       </label>
                       <input
                         type="text"
-                        name="social-media"
+                        name="Other social media"
                         id="social-media"
                         placeholder="https://socialmedia.com/yourproject"
                         className="big-input alt-font"
