@@ -135,7 +135,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                   id="project-submission-form"
                   onSubmit={onSubmit}
                   method="POST"
-                  action="https://formspree.io/sharonkennedy100@gmail.com"
+                  action="https://formspree.io/connectingthedots.bho@gmail.com"
                 >
                   <input type="hidden" name="_subject" value="New project submission on Connecting the Dots!" />
                   <input type="text" name="_gotcha" style={{ display: "none" }} />
