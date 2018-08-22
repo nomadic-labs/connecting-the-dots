@@ -1,6 +1,7 @@
 import axios from "axios";
 import firebase from "../firebase/init";
 import slugify from "slugify";
+import { NOTIFICATION_MESSAGES } from "../utils/constants";
 
 // AUTHENTICATION ------------------------
 
@@ -24,6 +25,13 @@ export function showNotification(message, color) {
 
 export function closeNotification() {
   return { type: "CLOSE_NOTIFICATION" };
+}
+
+export function showNotificationByName(name) {
+  return dispatch => {
+    const message = NOTIFICATION_MESSAGES[name];
+    dispatch(showNotification(message, "success"));
+  };
 }
 
 // PAGE EDITING ------------------------
@@ -137,7 +145,7 @@ export function updateForm(data) {
   return { type: "UPDATE_PROJECT_FORM", data };
 }
 
-export function submitProjectForm(formData) {
+export function submitProjectForm(formData, e) {
   return dispatch => {
     const db = firebase.database();
     const user = slugify(formData.name);
@@ -148,9 +156,9 @@ export function submitProjectForm(formData) {
 
     const data = {
       ...formData,
-      'submitted-on': date.toString(),
+      "submitted-on": date.toString(),
       status
-    }
+    };
 
     db.ref(`projectSubmissions/${submissionId}`).update(data, error => {
       if (error) {
@@ -165,12 +173,7 @@ export function submitProjectForm(formData) {
       }
 
       dispatch(submitProjectFormSuccess());
-      dispatch(
-        showNotification(
-          "Thanks for submitting your project! We will review it before publishing it on the website.",
-          "success"
-        )
-      );
+      e.target.submit();
     });
   };
 }
@@ -182,7 +185,7 @@ export function updateProjects(projects) {
 }
 
 export function updateProject(projectId, projectData) {
-  return { type: "UPDATE_PROJECT", projectId, projectData }
+  return { type: "UPDATE_PROJECT", projectId, projectData };
 }
 
 export function updateProjectStatus(projectId, status) {
@@ -210,7 +213,7 @@ export function updateProjectStatus(projectId, status) {
           )
         );
       });
-  }
+  };
 }
 
 export function getProjects() {

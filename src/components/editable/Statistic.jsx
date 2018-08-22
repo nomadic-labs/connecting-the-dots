@@ -18,6 +18,9 @@ const Statistic = props => {
         handleSave={handleSave}
         content={content}
       >
+        { props.prefix &&
+          <span className="counter-number alt-font font-weight-500 black-text">{props.prefix}</span>
+        }
         <span
           className="timer counter-number alt-font font-weight-500 black-text"
           data-to={content.number}

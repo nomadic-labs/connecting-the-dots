@@ -83,7 +83,10 @@ export const projectForm = (state={}, action) => {
         ...action.data
       }
     case 'SUBMIT_PROJECT_FORM_SUCCESS':
-      return {}
+      return {
+        ...state,
+        submitted: true,
+      }
     default:
       return state
   }

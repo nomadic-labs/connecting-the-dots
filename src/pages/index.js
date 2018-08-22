@@ -1,7 +1,11 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import { connect } from "react-redux";
-import { updatePage, loadPageData } from "../redux/actions";
+import {
+  updatePage,
+  loadPageData,
+  showNotificationByName
+} from "../redux/actions";
 
 import Layout from "../layouts/index.js";
 import BackgroundImage from "../components/editable/BackgroundImage";
@@ -55,6 +59,9 @@ const mapDispatchToProps = dispatch => {
     },
     onLoadPageData: data => {
       dispatch(loadPageData(data));
+    },
+    showNotificationByName: name => {
+      dispatch(showNotificationByName(name));
     }
   };
 };
@@ -783,7 +790,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           </div>
         </section>
 
-        <section className="no-padding-top wow fadeIn" id="bho">
+        <section className="no-padding wow fadeIn" id="bho">
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-12 padding-nine bg-black agency-skill md-padding-fifteen sm-padding-nineteen">
@@ -858,8 +865,49 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           </div>
         </section>
 
+        <section id="donate" className="wow fadeIn bg-fast-yellow work-with-us">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12 col-sm-12 text-center">
+                <i className="icon-gift icon-large black-text" />
+                <div className="title-medium alt-font black-text display-flex-center margin-four text-uppercase">
+                  <Statistic
+                    content={content["dollars-raised"]}
+                    handleSave={onSave("dollars-raised")}
+                    prefix="$"
+                  />
+                  <Statistic
+                    content={content["fundraising-target"]}
+                    handleSave={onSave("fundraising-target")}
+                    last={true}
+                    prefix="$"
+                  />
+                </div>
+
+                <div className="title-medium alt-font black-text display-block margin-four text-uppercase">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["donate-cta"]}
+                    handleSave={onSave("donate-cta")}
+                  >
+                    {content["donate-cta"]
+                      ? content["donate-cta"]["text"]
+                      : "Help us to reach our fundraising goal!"}
+                  </Editable>
+                </div>
+                <a
+                  href="https://www.fundscrip.com/support-a-group/XCS92G?GUID"
+                  className="highlight-button-dark btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
+                >
+                  Donate to Connect the Dots
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section
-          className="wow fadeIn animated no-padding"
+          className="wow fadeIn animated no-padding-bottom"
           style={{ visibility: "visible", animationName: "fadeIn" }}
           id="partners"
         >
@@ -1064,8 +1112,13 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   />
                   <input
                     type="hidden"
+                    name="_subject"
+                    value="You're received a message from the Connecting the Dots contact form!"
+                  />
+                  <input
+                    type="hidden"
                     name="_next"
-                    value="https://www.connectingthedots.ca/"
+                    value="https://www.connectingthedots.ca/?notification=contact-form-success"
                   />
                   <input
                     type="text"
@@ -1097,6 +1150,12 @@ class PageContainer extends React.Component {
     };
 
     this.props.onLoadPageData(initialPageData);
+    if (this.props.location.search) {
+      const notificationName = this.props.location.search.split(
+        "notification="
+      )[1];
+      this.props.showNotificationByName(notificationName);
+    }
   }
 
   render() {
