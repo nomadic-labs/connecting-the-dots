@@ -60,7 +60,8 @@ const ProjectCard = ({ project, uid, updateProjectStatus }) => {
     updateProjectStatus(uid, "rejected");
   };
 
-  const focusAreas = project.focus ? project.focus.map(focus => focus.label).join(', ') : "None selected"
+  const focusAreas = project.focus ? project.focus.map(focus => focus.label).join(', ') : "None selected";
+  const city = project.city ? project.city.label : "None selected";
 
   return (
     <Paper style={styles.paper}>
@@ -108,7 +109,7 @@ const ProjectCard = ({ project, uid, updateProjectStatus }) => {
 
           <TableRow>
             <CustomTableCell>Location</CustomTableCell>
-            <CustomTableCell>{project.city.label}</CustomTableCell>
+            <CustomTableCell>{city}</CustomTableCell>
           </TableRow>
 
           <TableRow>
