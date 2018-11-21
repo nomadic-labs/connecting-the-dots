@@ -19,7 +19,7 @@ export function toggleRegistrationModal() {
 
 // NOTIFICATIONS ------------------------
 
-export function showNotification(message, color) {
+export function showNotification(message, color="success") {
   return { type: "SHOW_NOTIFICATION", message, color };
 }
 
@@ -30,7 +30,7 @@ export function closeNotification() {
 export function showNotificationByName(name) {
   return dispatch => {
     const message = NOTIFICATION_MESSAGES[name];
-    dispatch(showNotification(message, "success"));
+    dispatch( (message, "success"));
   };
 }
 
@@ -164,6 +164,7 @@ export function submitProjectForm(formData, e) {
       if (error) {
         console.log("Error submitting form", error);
         dispatch(submitProjectFormError(error));
+
         return dispatch(
           showNotification(
             `There was an error submitting your form: ${error}`,

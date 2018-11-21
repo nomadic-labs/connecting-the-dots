@@ -18,10 +18,11 @@ class ProjectsPage extends React.Component {
     this.projectsByCity = {};
     this.props.projects.forEach(node => {
       const project = node.node;
-      if (this.projectsByCity[project.city.city]) {
-        this.projectsByCity[project.city.city].projects.push(project);
+      const city = project.city ? project.city.city : "No city provided"
+      if (this.projectsByCity[city]) {
+        this.projectsByCity[city].projects.push(project);
       } else {
-        this.projectsByCity[project.city.city] = {
+        this.projectsByCity[city] = {
           location: project.city,
           projects: [project]
         };

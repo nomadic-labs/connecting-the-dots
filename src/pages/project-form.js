@@ -5,7 +5,8 @@ import {
   updateForm,
   submitProjectForm,
   updatePage,
-  loadPageData
+  loadPageData,
+  showNotification
 } from "../redux/actions";
 import Grid from "@material-ui/core/Grid";
 
@@ -43,6 +44,9 @@ const mapDispatchToProps = dispatch => {
     },
     onUpdateForm: data => {
       dispatch(updateForm(data));
+    },
+    showNotification: message => {
+      dispatch(showNotification(message))
     }
   };
 };
@@ -60,7 +64,8 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
     formData,
     onUpdatePageData,
     onSubmitProjectForm,
-    onUpdateForm
+    onUpdateForm,
+    showNotification
   }) => {
     const content = pageData ? pageData.content : {};
 
@@ -68,10 +73,25 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
       onUpdatePageData("project-form", id, content);
     };
 
+    const validate = formData => {
+      if (!formData.city) {
+        showNotification('Please select a city.')
+        return false
+      }
+
+      if (!formData.focus) {
+        showNotification('Please select at least one focus area.')
+        return false
+      }
+
+      return true
+    }
+
     const onSubmit = (e) => {
-      if (!formData.submitted) {
-        e.persist();
-        e.preventDefault();
+      e.persist();
+      e.preventDefault();
+
+      if (!formData.submitted && validate(formData)) {
         return onSubmitProjectForm(formData, e);
       }
     };
