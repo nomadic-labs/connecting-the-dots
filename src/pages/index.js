@@ -49,7 +49,8 @@ const menuItems = [
   { label: "Places", url: "#tour" },
   { label: "Black History Ottawa", url: "#bho" },
   { label: "Contact us", url: "#contact" },
-  { label: "Projects", url: "/projects" }
+  { label: "Projects", url: "/projects" },
+  { label: "Events", url: "/projects" },
 ];
 
 const mapDispatchToProps = dispatch => {
