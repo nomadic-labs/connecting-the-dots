@@ -48,6 +48,15 @@ const Navigation = (props) => {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <a
+                    href={`https://www.eventbrite.ca/o/the-connecting-the-dots-project-17703280533`}
+                    className="inner-link text-medium"
+                    data-scroll
+                  >
+                    Events
+                  </a>
+                </li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
                 <li>

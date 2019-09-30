@@ -37,11 +37,13 @@ import partner17 from "../assets/images/partners/Afroglobal-Television.jpg";
 import partner18 from "../assets/images/partners/banki-designs-logo.jpg";
 
 import coast from "../assets/images/bg-01.png";
+import bg02 from "../assets/images/bg-02.jpg";
 import toronto from "../assets/images/toronto.jpg";
 import calgary from "../assets/images/calgary.jpg";
 import halifax from "../assets/images/halifax.jpg";
 import montreal from "../assets/images/montreal.jpg";
 import vancouver from "../assets/images/vancouver.jpg";
+import winnipeg from "../assets/images/winnipeg.jpg";
 
 const menuItems = [
   { label: "Our mission", url: "#about" },
@@ -50,7 +52,6 @@ const menuItems = [
   { label: "Black History Ottawa", url: "#bho" },
   { label: "Contact us", url: "#contact" },
   { label: "Projects", url: "/projects" },
-  { label: "Events", url: "/projects" },
 ];
 
 const mapDispatchToProps = dispatch => {
@@ -449,7 +450,8 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           </div>
           <div className="container-fluid display-inline-block margin-eight no-margin-lr no-margin-bottom md-margin-twenty-three md-no-margin-bottom md-no-margin-lr sm-margin-five sm-no-margin-lr sm-no-margin-buttom xs-margin-eleven xs-no-margin-lr xs-no-margin-buttom">
             <div className="row">
-              <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
+
+              <div className="col-md-3 col-sm-6 no-padding team-style1 overflow-hidden">
                 <div className="" />
                 <img src={coast} alt="Coast to Coast" />
                 <div className="team-mood text-center">
@@ -475,7 +477,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </figure>
               </div>
 
-              <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
+              <div className="col-md-3 col-sm-6 no-padding team-style1 overflow-hidden">
                 <div className="opacity-light" />
                 <img src={toronto} alt="Toronto, Ontario" />
                 <div className="team-mood text-center">
@@ -491,7 +493,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   </figcaption>
                 </figure>
               </div>
-              <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
+              <div className="col-md-3 col-sm-6 no-padding team-style1 overflow-hidden">
                 <div className="opacity-light" />
                 <img src={calgary} alt="Calgary, Alberta" />
                 <div className="team-mood text-center">
@@ -507,7 +509,8 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   </figcaption>
                 </figure>
               </div>
-              <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
+
+              <div className="col-md-3 col-sm-6 no-padding team-style1 overflow-hidden">
                 <div className="opacity-light" />
                 <img src={vancouver} alt="Vancouver, British Columbia" />
                 <div className="team-mood text-center">
@@ -523,7 +526,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   </figcaption>
                 </figure>
               </div>
-              <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
+              <div className="col-md-3 col-sm-6 no-padding team-style1 overflow-hidden">
                 <div className="opacity-light" />
                 <img src={halifax} alt="Halifax, Nova Scotia" />
                 <div className="team-mood text-center">
@@ -539,7 +542,8 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   </figcaption>
                 </figure>
               </div>
-              <div className="col-md-2 col-sm-6 no-padding team-style1 overflow-hidden">
+
+              <div className="col-md-3 col-sm-6 no-padding team-style1 overflow-hidden">
                 <div className="opacity-light" />
                 <img src={montreal} alt="Montreal, Québec" />
                 <div className="team-mood text-center">
@@ -555,6 +559,40 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   </figcaption>
                 </figure>
               </div>
+
+              <div className="col-md-3 col-sm-6 no-padding team-style1 overflow-hidden">
+                <div className="opacity-light" />
+                <img src={winnipeg} alt="Winnipeg, Manitoba" />
+                <div className="team-mood text-center">
+                  <span className="text-uppercase alt-font font-weight-400 text-large bg-white letter-spacing-3 md-text-small sm-text-large no-wrap">
+                    Manitoba
+                  </span>
+                </div>
+                <figure className="text-center padding-thirty">
+                  <figcaption>
+                    <span className="alt-font font-weight-100 text-medium letter-spacing-2 text-uppercase black-text title-underline padding-fifteen margin-sixteen display-inline-block no-margin-top no-padding-top no-padding-lr no-margin-lr">
+                      30,335 Black Canadians
+                    </span>
+                  </figcaption>
+                </figure>
+              </div>
+
+              <div className="col-md-3 col-sm-6 no-padding overflow-hidden team-style1-end pos-relative">
+                <img src={bg02} alt="" />
+                <div className="team-mood text-center">
+                  <span className="text-uppercase alt-font font-weight-400 text-large letter-spacing-3 md-text-small sm-text-large no-wrap">
+                    <a
+                      href="https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/index-eng.cfm"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="highlight-button-black-border btn btn-medium button inner-link xs-no-margin"
+                    >
+                      2016 Census
+                    </a>
+                  </span>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>

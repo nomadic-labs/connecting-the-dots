@@ -1229,10 +1229,15 @@ ul.list-line li span {min-width:130px; display:inline-block}
 .team-style1 .team-mood span {padding: 10px 20px}
 .team-style1:hover .team-mood {opacity: 0; top: -10px;}
 .team-style1:hover .opacity-full, .team-style1:hover .bg-gray { opacity: 0; bottom: -150px;}
-.team-style1 figure {opacity: 0; position: absolute; width: 100%; bottom: -150px; background: rgba(253,217,71,.95); }
+.team-style1 figure {opacity: 0; position: absolute; width: 100%; bottom: -150px; background: rgba(252,178,57,.90); }
 .team-style1:hover figure {opacity: 1; bottom: 0; z-index: 5; }
 .team-style1 .team-social i {margin: 0 20px;}
-
+.team-style1-end .team-mood {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
 /* team - style 2 */
 .team-style2 .team-social i {margin: 0 20px;}
 .team-style2 .team-social a:hover i {opacity: .5}
