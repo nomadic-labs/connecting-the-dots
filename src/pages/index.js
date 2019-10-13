@@ -14,6 +14,7 @@ import PlainTextEditor from "../components/editingTools/PlainTextEditor";
 import RichTextEditor from "../components/editingTools/RichTextEditor";
 import Statistic from "../components/editable/Statistic";
 import PartnerLogo from "../components/PartnerLogo";
+import YoutubeVideoFeed from "../components/YoutubeVideoFeed";
 
 import BHOlogo from "../assets/images/bho-logo.png";
 import GOClogo from "../assets/images/goc.png";
@@ -83,7 +84,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
 
     return (
       <Layout menuItems={menuItems}>
-        <section className="no-padding">
+        <section className="no-padding" id="landing">
           <BackgroundImage
             content={content["landing-background"]}
             handleSave={onSave("landing-background")}
@@ -178,7 +179,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           </div>
         </section>
 
-        <section className="wow fadeIn no-padding-top">
+        <section className="wow fadeIn no-padding-top no-padding-bottom" id="who-we-are">
           <div className="container-fluid">
             <div className="row">
               <div className="xs-col-12 col-md-6 service no-padding flex">
@@ -208,7 +209,33 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           </div>
         </section>
 
-        <section className="wow fadeIn no-padding-top">
+        <section className="wow fadeIn bg-fast-yellow" id="digital-stories">
+          <div className="container">
+            <div className="row xs-text-center">
+              <div className="col-md-12 col-sm-12">
+                <h2 className="alt-font text-italic font-weight-600 title-thick-underline border-color-white display-inline-block letter-spacing-1 margin-seven no-margin-lr no-margin-top xs-margin-eleven xs-no-margin-lr xs-no-margin-top">
+                  <Editable
+                    editor={PlainTextEditor}
+                    content={content["ditital-stories-title"]}
+                    handleSave={onSave("ditital-stories-title")}
+                  >
+                    {content["ditital-stories-title"]
+                      ? content["ditital-stories-title"]["text"]
+                      : "Title"}
+                  </Editable>
+                </h2>
+              </div>
+            </div>
+
+            <div className="row xs-text-center">
+              <div className="col-md-12 col-sm-12">
+                <YoutubeVideoFeed />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="wow fadeIn">
           <div className="container">
             <div className="row xs-text-center">
               <div className="col-md-12 col-sm-12">
