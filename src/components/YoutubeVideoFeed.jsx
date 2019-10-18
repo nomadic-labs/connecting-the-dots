@@ -5,7 +5,6 @@ import Dialog from '@material-ui/core/Dialog';
 const YOUTUBE_API_ENDPOINT = "https://www.googleapis.com/youtube/v3/playlistItems";
 
 const EmbeddedVideo = ({ video, onClickVideo }) => {
-  console.log(video.snippet)
   return (
     <div className="col-12 col-sm-6 col-md-3" onClick={onClickVideo}>
       <div className="pos-relative video-thumbmail">

@@ -52,6 +52,10 @@ export function setPageContentState(location, content) {
   return { type: "SET_PAGE_CONTENT", location, content };
 }
 
+export function updateMenuData(location, index, content) {
+  return { type: "UPDATE_MENU_DATA", location, index, content };
+}
+
 export function pushContentItem(location, content) {
   return (dispatch, getState) => {
     const db = firebase.database();
@@ -134,6 +138,35 @@ export function updatePage(pageId, contentId, content) {
     });
   };
 }
+
+export function updateMenu(location, index, content) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+    const state = getState();
+    const pageId = state.page.data.id;
+
+
+    db.ref(`pages/${pageId}/menu/${location}/${index}/content`).update(content, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      dispatch(updateMenuData(location, index, content));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    })
+  }
+}
+
 
 export function deploy() {
   return dispatch => {

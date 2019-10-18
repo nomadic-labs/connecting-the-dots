@@ -95,6 +95,20 @@ export const page = (state={}, action) => {
           }
         }
       }
+
+    case 'UPDATE_MENU_DATA':
+      let newContentArray = [...state.data.menu[action.location]]
+      newContentArray[action.index]['content'] = action.content
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          menu: {
+            ...state.data.menu,
+            [action.location]: newContentArray
+          }
+        }
+      }
     default:
       return state
   }

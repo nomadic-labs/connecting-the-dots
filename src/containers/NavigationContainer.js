@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { StaticQuery, graphql } from "gatsby";
 
 import {
+  updateMenu,
   userLoggedIn,
   userLoggedOut,
   toggleRegistrationModal,
@@ -30,6 +31,9 @@ const mapDispatchToProps = dispatch => {
     onToggleRegistrationModal: () => {
       dispatch(toggleRegistrationModal());
     },
+    onUpdateMenu: (location, index, content) => {
+      dispatch(updateMenu(location, index, content))
+    }
   };
 };
 

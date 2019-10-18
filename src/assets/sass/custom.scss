@@ -3,6 +3,13 @@
 @import "menu";
 @import "loader";
 
+.navigation-menu {
+  .navbar-right {
+    .btn-small {
+      padding: 6px 25px;
+    }
+  }
+}
 
 .large {
   font-size: 150%;
@@ -180,17 +187,17 @@ button, .stc-btn {
 }
 
 section#partners {
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .partner-row {
     display: flex;
     align-items: stretch;
     flex-wrap: wrap;
-
-    .logo-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-    }
   }
 }
 

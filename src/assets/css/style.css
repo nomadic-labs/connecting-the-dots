@@ -797,6 +797,7 @@ nav.navbar-height{  height: 100px !important;}
 nav.navbar-height.shrink {height: 50px !important;}
 .navbar li.active a { border-bottom: 1px solid #fff}
 .header-white li.active a { border-bottom: 1px solid #000}
+.navbar .navbar-right .btn-small { padding-left: 24px !important; padding-right: 24px !important; }
 
 /* without button */
 .without-button .navbar-header { background: none}

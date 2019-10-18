@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import { connect } from "react-redux";
+import { EditableLink } from "react-easy-editables"
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import {
@@ -24,24 +25,6 @@ import Collection from "../components/editable/Collection";
 
 import BHOlogo from "../assets/images/bho-logo.png";
 import GOClogo from "../assets/images/goc.png";
-import partner1 from "../assets/images/partners/35-working-with-Racialized-Youth.jpg";
-import partner2 from "../assets/images/partners/BHO-logo-black.png";
-import partner3 from "../assets/images/partners/Black-Agenda-Noir.jpg";
-import partner4 from "../assets/images/partners/Black-Business-and-Professional-Association.jpg";
-import partner5 from "../assets/images/partners/Black-Health-Alliance.jpg";
-import partner6 from "../assets/images/partners/by-blacks.jpg";
-import partner7 from "../assets/images/partners/CanadianCouncil_Black.jpg";
-import partner8 from "../assets/images/partners/Jamaican-Canadian-Association.jpg";
-import partner9 from "../assets/images/partners/JNikira-Dinqinesh-Education-Centre.jpg";
-import partner10 from "../assets/images/partners/Legacy-Voices.jpg";
-import partner11 from "../assets/images/partners/Nova-Scotia-Alliance-of-Black-School-Educators.jpg";
-import partner12 from "../assets/images/partners/Ontario-Alliance-of-Black-School-Educators.jpg";
-import partner13 from "../assets/images/partners/Ontario-Black-History-Society.jpg";
-import partner14 from "../assets/images/partners/wedge15.png";
-import partner15 from "../assets/images/partners/ylac.png";
-import partner16 from "../assets/images/partners/Silvertrust-Media.jpg";
-import partner17 from "../assets/images/partners/Afroglobal-Television.jpg";
-import partner18 from "../assets/images/partners/banki-designs-logo.jpg";
 
 import coast from "../assets/images/bg-01.png";
 import bg02 from "../assets/images/bg-02.jpg";
@@ -52,14 +35,6 @@ import montreal from "../assets/images/montreal.jpg";
 import vancouver from "../assets/images/vancouver.jpg";
 import winnipeg from "../assets/images/winnipeg.jpg";
 
-const menuItems = [
-  { label: "Our mission", url: "#about" },
-  { label: "Get involved", url: "#get-involved" },
-  { label: "Places", url: "#tour" },
-  { label: "Black History Ottawa", url: "#bho" },
-  { label: "Contact us", url: "#contact" },
-  { label: "Projects", url: "/projects" },
-];
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -78,7 +53,6 @@ const mapDispatchToProps = dispatch => {
     onRemoveContentItem: (location, itemId) => {
       dispatch(removeContentItem(location, itemId))
     },
-
   };
 };
 
@@ -92,6 +66,7 @@ const mapStateToProps = state => {
 const HomePage = connect(mapStateToProps, mapDispatchToProps)(
   ({ pageData, onUpdatePageData, isEditingPage, onPushContentItem, onRemoveContentItem }) => {
     const content = pageData ? pageData.content : {};
+    const menuItems = pageData ? pageData.menu : {};
     const onSave = id => content => {
       onUpdatePageData("home", id, content);
     };
@@ -103,6 +78,8 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
     const onDeleteItem = id => itemId => {
       onRemoveContentItem(id, itemId)
     }
+
+    console.log('menuItems', menuItems)
 
     return (
       <Layout menuItems={menuItems}>
@@ -420,18 +397,16 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                       : "Want to get involved?"}
                   </Editable>
                 </span>
-                <Link
-                  to="/projects"
-                  className="highlight-button btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
-                >
-                  See the Projects
-                </Link>
-                <Link
-                  to="/project-form"
-                  className="highlight-button-dark btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
-                >
-                  Submit a project
-                </Link>
+                <EditableLink
+                  content={content["get-involved-btn-1"]}
+                  onSave={onSave("get-involved-btn-1")}
+                  classes="highlight-button btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
+                />
+                <EditableLink
+                  content={content["get-involved-btn-2"]}
+                  onSave={onSave("get-involved-btn-2")}
+                  classes="highlight-button-dark btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
+                />
               </div>
             </div>
           </div>
@@ -472,12 +447,11 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   </Editable>
                 </span>
                 <div>
-                  <a
-                    href="#contact"
-                    className="highlight-button-black-border btn btn-medium button inner-link xs-no-margin"
-                  >
-                    {`Let's Work Together`}
-                  </a>
+                  <EditableLink
+                    content={content["work-together-btn"]}
+                    onSave={onSave("work-together-btn")}
+                    classes="highlight-button-black-border btn btn-medium button inner-link xs-no-margin"
+                  />
                 </div>
               </div>
               <div className="col-md-7 col-sm-12 text-center sm-margin-fifteen sm-no-margin-lr sm-no-margin-buttom">
@@ -909,15 +883,11 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   />
                 </Editable>
 
-                <a
-                  className="highlight-button-white-border margin-six btn btn-medium no-margin-lr button inner-link"
-                  href="https://www.canadahelps.org/en/charities/black-history-ottawa-corporation/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {`Support BHO `}
-                  <i className="fa fa-heart-o icon-extra-small white-text" />
-                </a>
+                <EditableLink
+                  content={content["support-btn"]}
+                  onSave={onSave("support-btn")}
+                  classes="highlight-button-white-border margin-six btn btn-medium no-margin-lr button inner-link"
+                />
               </div>
 
               <div className="col-lg-6 col-md-6 col-sm-12 padding-4 bg-gray agency-skill md-padding-seventeen sm-padding-nineteen">
@@ -983,12 +953,11 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                       : "Help us to reach our fundraising goal!"}
                   </Editable>
                 </div>
-                <a
-                  href="https://www.fundscrip.com/support-a-group/XCS92G?GUID"
-                  className="highlight-button-dark btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
-                >
-                  Donate to Connect the Dots
-                </a>
+                <EditableLink
+                  content={content["donate-btn"]}
+                  onSave={onSave("donate-btn")}
+                  classes="highlight-button-dark btn btn-medium button inner-link xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom"
+                />
               </div>
             </div>
           </div>
@@ -1194,6 +1163,20 @@ export const query = graphql`
       slug
       template
       page_type
+      menu {
+        left {
+          content {
+            anchor
+            link
+          }
+        }
+        right {
+          content {
+            anchor
+            link
+          }
+        }
+      }
     }
   }
 `;

@@ -1,10 +1,8 @@
 import React from "react";
+import { EditableLink } from "react-easy-editables"
 import { Link } from "gatsby";
 
 const styles = {
-  button: {
-    padding: '6px 25px',
-  },
   fullWidth: {
     width: '100%'
   }
@@ -12,7 +10,11 @@ const styles = {
 
 
 const Navigation = (props) => {
-  const menuItems = props.menuItems ? props.menuItems : []
+  const leftMenu = props.menuItems.left || [];
+  const rightMenu = props.menuItems.right || [];
+
+  const handleSaveMenu = (location, index) => content => props.onUpdateMenu(location, index, content)
+
   return (
     <div>
       <nav className="navbar no-margin-bottom">
@@ -37,50 +39,30 @@ const Navigation = (props) => {
               style={styles.fullWidth}
             >
               <ul className="nav navbar-nav">
-                { menuItems.map(item => (
-                  <li key={item.url}>
-                    <Link
-                      to={`${item.url}`}
-                      className="inner-link text-medium"
+                { leftMenu.map((item, index) => (
+                  <li key={item.content.link}>
+                    <EditableLink
+                      content={item.content}
+                      onSave={handleSaveMenu('left', index)}
+                      classes="inner-link text-medium"
                       data-scroll
-                    >
-                      {item.label}
-                    </Link>
+                    />
                   </li>
                 ))}
-                <li>
-                  <a
-                    href={`https://www.eventbrite.ca/o/the-connecting-the-dots-project-17703280533`}
-                    className="inner-link text-medium"
-                    data-scroll
-                  >
-                    Events
-                  </a>
-                </li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
-                <li>
-                  <Link
-                    className="btn-small-white btn btn-small no-margin inner-link"
-                    to="/project-form"
-                  >
-                    <span style={styles.button}>
-                      Submit a Project
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    className="btn-small-white btn btn-small no-margin inner-link"
-                    href="https://www.gofundme.com/f/fundraising-for-connecting-the-dots"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span style={styles.button}>
-                      Donate Now
-                    </span>
-                  </a>
-                </li>
+                {
+                  rightMenu.map((item, index) => (
+                    <li key={item.content.link}>
+                      <EditableLink
+                        content={item.content}
+                        onSave={handleSaveMenu('right', index)}
+                        classes="btn-small-white btn btn-small no-margin inner-link"
+                        data-scroll
+                      />
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </div>

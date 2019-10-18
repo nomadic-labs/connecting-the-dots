@@ -51,7 +51,7 @@ const PartnerLogo = props => {
   }
 
   return (
-    <div className="col-xs-12 col-sm-3 col-md-3 text-center no-margin-bottom xs-margin-nineteen xs-no-margin-lr xs-no-margin-top logo-container">
+    <div className="col-xs-12 col-sm-3 col-md-3 text-center margin-eight no-margin-lr no-margin-top xs-margin-nineteen xs-no-margin-lr xs-no-margin-top logo-container">
       <Editable
         Editor={PartnerLogoEditor}
         handleSave={handleSave}
