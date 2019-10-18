@@ -1,10 +1,15 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import { connect } from "react-redux";
+import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
+
 import {
   updatePage,
   loadPageData,
-  showNotificationByName
+  showNotificationByName,
+  updatePageContent,
+  pushContentItem,
+  removeContentItem,
 } from "../redux/actions";
 
 import Layout from "../layouts/index.js";
@@ -15,6 +20,7 @@ import RichTextEditor from "../components/editingTools/RichTextEditor";
 import Statistic from "../components/editable/Statistic";
 import PartnerLogo from "../components/PartnerLogo";
 import YoutubeVideoFeed from "../components/YoutubeVideoFeed";
+import Collection from "../components/editable/Collection";
 
 import BHOlogo from "../assets/images/bho-logo.png";
 import GOClogo from "../assets/images/goc.png";
@@ -65,22 +71,38 @@ const mapDispatchToProps = dispatch => {
     },
     showNotificationByName: name => {
       dispatch(showNotificationByName(name));
-    }
+    },
+    onPushContentItem: (location, data) => {
+      dispatch(pushContentItem(location, data))
+    },
+    onRemoveContentItem: (location, itemId) => {
+      dispatch(removeContentItem(location, itemId))
+    },
+
   };
 };
 
 const mapStateToProps = state => {
   return {
-    pageData: state.page.data
+    pageData: state.page.data,
+    isEditingPage: state.adminTools.isEditingPage,
   };
 };
 
 const HomePage = connect(mapStateToProps, mapDispatchToProps)(
-  ({ pageData, onUpdatePageData }) => {
+  ({ pageData, onUpdatePageData, isEditingPage, onPushContentItem, onRemoveContentItem }) => {
     const content = pageData ? pageData.content : {};
     const onSave = id => content => {
       onUpdatePageData("home", id, content);
     };
+
+    const onAddItem = id => content => {
+      onPushContentItem(id, content);
+    }
+
+    const onDeleteItem = id => itemId => {
+      onRemoveContentItem(id, itemId)
+    }
 
     return (
       <Layout menuItems={menuItems}>
@@ -985,82 +1007,16 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </h2>
               </div>
             </div>
-            <div className="row margin-eight no-margin-bottom">
-              <div className="col-12 center-col partner-row">
-                <PartnerLogo
-                  imageSrc={partner1}
-                  name={"3R Working with Racialized Youth"}
-                />
-                <PartnerLogo
-                  imageSrc={partner2}
-                  name={"Black History Ottawa"}
-                />
-                <PartnerLogo imageSrc={partner3} name={"Black Agenda Noir"} />
-                <PartnerLogo
-                  imageSrc={partner4}
-                  name={"Black Business and Professional Association"}
-                />
-              </div>
-            </div>
-
-            <div className="row margin-eight no-margin-bottom">
-              <div className="col-12 center-col partner-row">
-                <PartnerLogo
-                  imageSrc={partner5}
-                  name={"Black Health Alliance"}
-                />
-                <PartnerLogo imageSrc={partner6} name={"ByBlacks.com"} />
-                <PartnerLogo
-                  imageSrc={partner7}
-                  name={"Canadian Council for People of African Descent"}
-                />
-                <PartnerLogo
-                  imageSrc={partner8}
-                  name={"Jamaican Canadian Association"}
-                />
-              </div>
-            </div>
-            <div className="row margin-eight no-margin-bottom">
-              <div className="col-12 center-col partner-row">
-                <PartnerLogo
-                  imageSrc={partner9}
-                  name={`J'Nikira Dinqinesh Education Centre`}
-                />
-                <PartnerLogo imageSrc={partner10} name={`Legacy Voices`} />
-                <PartnerLogo
-                  imageSrc={partner11}
-                  name={`Nova Scotia Alliance of Black School Educators`}
-                />
-                <PartnerLogo
-                  imageSrc={partner12}
-                  name={`Ontario Alliance of Black School Educators`}
-                />
-              </div>
-            </div>
-            <div className="row margin-eight no-margin-bottom">
-              <div className="col-12 center-col partner-row">
-                <PartnerLogo
-                  imageSrc={partner13}
-                  name={`Ontario Black History Society`}
-                />
-                <PartnerLogo imageSrc={partner14} name={`WEDGE 15 Inc.`} />
-                <PartnerLogo
-                  imageSrc={partner15}
-                  name={`Young Leaders Advisory Council`}
-                />
-                <PartnerLogo imageSrc={partner16} name={`Silvertrust Media`} />
-              </div>
-            </div>
-
-            <div className="row margin-eight no-margin-bottom">
-              <div className="col-12 center-col partner-row">
-                <PartnerLogo
-                  imageSrc={partner17}
-                  name={`Afroglobal Television`}
-                />
-                <PartnerLogo imageSrc={partner18} name={`Banki Designs`} />
-              </div>
-            </div>
+            <Collection
+              items={content["partner-logos"]}
+              Component={PartnerLogo}
+              onSave={onSave('partner-logos')}
+              onAddItem={onAddItem('partner-logos')}
+              onDeleteItem={onDeleteItem('partner-logos')}
+              isEditingPage={isEditingPage}
+              defaultContent={DEFAULT_COMPONENT_CONTENT['partner-logos']}
+              classes="row margin-eight no-margin-bottom"
+            />
           </div>
         </section>
 
