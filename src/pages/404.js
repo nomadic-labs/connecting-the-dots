@@ -12,7 +12,7 @@ const styles = {
 }
 
 const NotFoundPage = props => (
-  <Layout>
+  <Layout >
     <Grid container justify="center" className={props.classes.container}>
       <Grid item>
         <Typography variant="display1" gutterBottom>

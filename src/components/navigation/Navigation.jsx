@@ -72,4 +72,8 @@ const Navigation = (props) => {
   );
 }
 
+Navigation.defaultProps = {
+  menuItems: { left: [], right: [] }
+}
+
 export default Navigation;
