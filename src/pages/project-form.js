@@ -18,7 +18,6 @@ import FileUploadEditor from "../components/editingTools/FileUploadEditor";
 import PlaceSelector from "../components/PlaceSelector";
 import Select from "react-select";
 
-const menuItems = [{ label: "Home", url: "/" }];
 
 const focusOptions = [
   { label: 'Education', value: 'Education' },
@@ -100,6 +99,8 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
       const value = event.target ? event.target.value : event;
       onUpdateForm({ [field]: value });
     };
+
+    const menuItems = pageData ? pageData.menu : {};
 
     return (
       <Layout menuItems={menuItems}>
@@ -484,6 +485,20 @@ export const query = graphql`
       slug
       template
       page_type
+      menu {
+        left {
+          content {
+            anchor
+            link
+          }
+        }
+        right {
+          content {
+            anchor
+            link
+          }
+        }
+      }
     }
   }
 `;

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getProjects, updateProjectStatus } from "../redux/actions";
+import { getProjects, updateProjectStatus, loadPageData } from "../redux/actions";
 import { map } from "lodash";
 
 import Grid from "@material-ui/core/Grid";
@@ -32,13 +32,17 @@ const mapDispatchToProps = dispatch => {
     },
     updateProjectStatus: (uid, status) => {
       dispatch(updateProjectStatus(uid, status));
-    }
+    },
+    onLoadPageData: data => {
+      dispatch(loadPageData(data));
+    },
   };
 };
 
 const mapStateToProps = state => {
   return {
-    projects: state.projects
+    projects: state.projects,
+    pageData: state.page.data,
   };
 };
 
@@ -169,6 +173,7 @@ const ProjectCard = ({ project, uid, updateProjectStatus }) => {
 };
 
 const ProjectReviewPage = props => {
+  const menuItems = props.pageData ? props.pageData.menu : {};
   return (
     <Layout menuItems={menuItems}>
       <ProtectedPage>
@@ -199,11 +204,39 @@ const ProjectReviewPage = props => {
 class PageContainer extends React.Component {
   componentDidMount() {
     this.props.getProjects();
+    const initialPageData = {
+      ...this.props.data.pages,
+    };
+
+    this.props.onLoadPageData(initialPageData);
   }
 
   render() {
     return <ProjectReviewPage {...this.props} />;
   }
 }
+
+export const query = graphql`
+  query {
+    pages(id: { eq: "project-review" }) {
+      id
+      menu {
+        left {
+          content {
+            anchor
+            link
+          }
+        }
+        right {
+          content {
+            anchor
+            link
+          }
+        }
+      }
+    }
+  }
+`;
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageContainer);

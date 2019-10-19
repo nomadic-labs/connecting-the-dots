@@ -79,8 +79,6 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
       onRemoveContentItem(id, itemId)
     }
 
-    console.log('menuItems', menuItems)
-
     return (
       <Layout menuItems={menuItems}>
         <section className="no-padding" id="landing">

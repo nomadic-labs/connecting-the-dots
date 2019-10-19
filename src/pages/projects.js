@@ -1,7 +1,12 @@
 import React from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import { StaticQuery, graphql } from "gatsby";
 import { map } from "lodash";
+
+import {
+  loadPageData,
+} from "../redux/actions";
+
 import Helmet from "react-helmet";
 import Layout from "../layouts/index.js";
 import mapbox from "../utils/mapbox";
@@ -9,7 +14,19 @@ import ProjectCard from "../components/projects/ProjectCard";
 
 import "../assets/css/mapbox.css";
 
-const menuItems = [{ label: "Home", url: "/" }];
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoadPageData: data => {
+      dispatch(loadPageData(data));
+    }
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    pageData: state.page.data,
+  };
+};
 
 class ProjectsPage extends React.Component {
   constructor(props) {
@@ -57,6 +74,7 @@ class ProjectsPage extends React.Component {
   }
 
   render() {
+    const menuItems = this.props.pageData ? this.props.pageData.menu : {};
     return (
       <Layout menuItems={menuItems}>
         <Helmet>
@@ -98,44 +116,73 @@ class ProjectsPage extends React.Component {
   }
 }
 
-const ProjectsPageContainer = props => (
-  <StaticQuery
-    query={graphql`
-      query {
-        allProjects(filter: { status: { eq: "approved" } }) {
-          edges {
-            node {
-              id
-              name
-              position
-              organization
-              website
-              province
-              project_title
-              project_description
-              project_file_url
-              social_media
-              facebook
-              twitter
-              instagram
-              youtube
-              focus
-              city {
-                city
-                province
-                latitude
-                longitude
-                place_id
-              }
-            }
+class PageContainer extends React.Component {
+  componentDidMount() {
+    const initialPageData = {
+      ...this.props.data.pages,
+    };
+
+    this.props.onLoadPageData(initialPageData);
+  }
+
+  render() {
+    return <ProjectsPage {...this.props} projects={this.props.data.allProjects.edges} />;
+  }
+}
+
+export const query = graphql`
+  query {
+    allProjects(filter: { status: { eq: "approved" } }) {
+      edges {
+        node {
+          id
+          name
+          position
+          organization
+          website
+          province
+          project_title
+          project_description
+          project_file_url
+          social_media
+          facebook
+          twitter
+          instagram
+          youtube
+          focus
+          city {
+            city
+            province
+            latitude
+            longitude
+            place_id
           }
         }
       }
-    `}
-    render={data => (
-      <ProjectsPage {...props} projects={data.allProjects.edges} />
-    )}
-  />
-);
+    }
+    pages(id: { eq: "project-form" }) {
+      id
+      content
+      title
+      slug
+      template
+      page_type
+      menu {
+        left {
+          content {
+            anchor
+            link
+          }
+        }
+        right {
+          content {
+            anchor
+            link
+          }
+        }
+      }
+    }
+  }
+`;
 
-export default ProjectsPageContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(PageContainer);
