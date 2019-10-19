@@ -26,7 +26,7 @@
     /* spa */
     .hover-box-text .title-medium::before {left: 35px;width: 15px;}
     .hover-box-text {padding: 45px 55px;}
-    
+
     /* tattoo */
     .tattoo-art-box .title-extra { font-size: 42px !important; line-height: 42px !important;}
 }
@@ -56,7 +56,6 @@
 }
 
 @media (max-width: 1199px) {
-    section { padding: 110px 0;}
 
     .md-center-col{ float:none !important; margin-left:auto !important; margin-right:auto !important}
     /* border */
@@ -291,14 +290,14 @@
 
     /* architecture */
     .architecture-section { padding: 90px 60px 0;}
-    
+
     /* personal */
     .personal-slider-content span {margin-left: auto !important; margin-right: auto !important}
-    
+
     /* wedding */
     .center-logo-header .nav li {  margin: 0 8px;}
     .center-logo-header .navbar-nav a {font-size: 13px;}
-    
+
     /* photography */
     .photography-about::after { background-color: #fff; content: ""; height: 100%; left: 0; opacity: 0.8; position: absolute; top: 0; width: 100%; z-index: 0;}
     .photography-about .container {position: relative; z-index: 1;}
@@ -307,18 +306,18 @@
     .photography-about { min-height: 700px;}
     .hover-box-image-link { bottom: 20px;}
     .hover-box-image:hover h3 {font-size: 27px; top: 66%; letter-spacing: 8px !important;}
-    
+
     /* slider and parallax typography */
     .slider-typography .slider-typography-option2 span { font-size: 40px; }
 
     .icon-box i{margin: 0 19px;}
     .widget.affix{width: 18%;}
     .tab-style9 .nav-tabs li a{padding: 0 36px;}
-    .glyphs .box1{width: 50%;}    
+    .glyphs .box1{width: 50%;}
 }
 
-@media only screen  and (min-width : 1000px) and (max-width : 1024px) { 
-    
+@media only screen  and (min-width : 1000px) and (max-width : 1024px) {
+
     #breakfast, #lunch, #dinner {background-size: 145%  !important;}
     .restaurant-menu-text { left: 59px;}
 }
@@ -339,17 +338,17 @@
     .menu-item:first-child { padding: 16px 0;}
     .chef-bio:hover .chef-details { bottom: 20px;}
     .slider-typography .slider-typography-option5 span {width: 65%;}
-    
+
     /* personal */
     .personal .container { width: 100% !important;}
-    
+
     /*  parallax / background  */
     .parallax-fix{ background-attachment: scroll !important; }
     .fix-background { background-attachment:inherit !important}
-    
+
     /* photography */
     .blog-post-style4 .post-thumbnail img {width: auto !important; max-width: none !important;}
-    
+
     /* page title */
     .blog-listing-link a::after { padding: 0 3px 0 7px; }
 }
@@ -359,7 +358,7 @@
     .footer-social a { margin: 0 13px;}
     .personal .container { width: 460px !important;}
     .sm-center-col{ float:none !important; margin-left:auto !important; margin-right:auto !important}
-    
+
     /* border */
     .sm-no-border { border:none !important}
 
@@ -468,11 +467,11 @@
     .sm-position-right { right:0 !important; }
     .sm-position-left { left:0 !important; }
     .sm-position-top { top:0 !important; }
-    
+
     /* color */
     .sm-white-text{ color:#FFF !important}
     .sm-black-text{ color:#000 !important}
-    
+
     /* top */
     .sm-top-minus1 {top: -1px !important}
     .sm-top-minus2 {top: -2px !important}
@@ -549,7 +548,7 @@
     .sm-font-weight-600 { font-weight:600 !important}
     .sm-font-weight-700 { font-weight:700 !important}
     .sm-font-weight-800 { font-weight:800 !important}
-    
+
     /* background image */
     .parallax-fix { background-attachment: inherit !important}
 
@@ -568,25 +567,25 @@
 
     /* border */
     .sm-no-border { border:none !important}
-    
+
     /* alert */
     .alert {padding: 10px;}
-    
+
     /* close button */
     .mfp-figure .mfp-close {display: block !important}
     .mfp-image-holder .mfp-close {position: fixed; top: 0; right: 15px !important;}
-    
+
     /* br */
     .sm-br-display-none br { display: none !important}
-    
+
     /* navigation */
     .nav li { margin: 15px 13px;}
-    
+
     /* dropdown */
     .dropdown-menu { position: inherit; min-width: 100%; float: none !important; padding: 0 !important; background-color: transparent !important; border: 0 none !important; box-shadow: none;  margin-top: 0; width: auto; line-height: 1.42857 !important;  }
     .navbar-nav .open .dropdown-menu { background-color: transparent !important; border: 0 none !important; padding: 0 !important; box-shadow: none;  line-height: 1.42857 !important;}
     .navbar-nav .open .dropdown-menu a {  line-height: 1.42857 !important;}
-    
+
     /* pull navigation */
     .show-menu .menu-wrap {left: 0;}
 
@@ -596,8 +595,8 @@
     .navbar-collapse {box-shadow: none; background:rgba(0,0,0,.95); width: 100%; position: absolute; top: 75px}
     .navbar.shrink .navbar-collapse {top:60px}
     .navbar li.active a { border-bottom: 1px solid #fff; display: inline-block; }
-    .navbar-header {float: none;} 
-    .navbar-toggle {display: block;}     
+    .navbar-header {float: none;}
+    .navbar-toggle {display: block;}
     .navbar-collapse.collapse {display: none!important;}
     .navbar-nav>li {float: none; }
     .collapse.in{display:block !important;}
@@ -620,7 +619,7 @@
     .sidebar-nav .navbar-nav li a {padding: 0 !important}
     .sidebar-nav .navbar {border: 0;}
     .sidebar-nav li.active a {border-bottom: 1px solid #000;}
-    
+
     /* work */
     .grid-style1 .grid figcaption h3 { font-size: 18px;}
     .grid-style2 .grid figcaption { padding: 30px 15px;}
@@ -680,7 +679,7 @@
     .hover-box-image-link { bottom: 40px;}
     .hover-box-image:hover h3 {top: 70%;}
     .photography-awards { min-height: 900px;}
-    
+
     /* spa */
     .hover-box-text {padding: 8px 12px;}
     .hover-box-text .title-medium::before {height: 4px; left: 53px; top: 62px;}
@@ -692,13 +691,13 @@
     .blog-sharing i{margin: 0 10px;}
     .blog-image blockquote{padding: 30px;}
     .blog-image blockquote p::before{font-size: 42px;}
-    
+
     /* personal */
     .personal .container { width: 100% !important;}
     .personal-about::after { background-color: #fff; content: ""; height: 100%; left: 0; opacity: 1; position: absolute; top: 0; width: 100%; z-index: 0;}
     .personal-about .container {position: relative; z-index: 1;}
     .personal section { padding: 100px 0;}
-    
+
     /* wedding */
     .center-logo-header .navbar-nav li { text-align: left; margin: 15px 13px; float: none; display: block;}
     .center-logo-header .navbar-nav li a {color: #fff !important; font-size: 12px; font-weight: 500; padding: 0 !important; }
@@ -712,26 +711,26 @@
     .attending-main .img-border-medium {height: 470px;}
     .our-story-wedding .blog-post-style3 article .post-details { padding: 20px 0 0;}
     .center-logo-header .navbar-toggle .icon-bar { background: #000;}
-    
+
     /* tattoo */
-    .header-white .navbar-nav a {color: #fff !important} 
+    .header-white .navbar-nav a {color: #fff !important}
     .tattoo-art-box .title-extra { font-size: 40px !important; line-height: 40px !important;}
     .scrollToTop {display: none !important}
     .restaurant-dishes {width: 550px;}
-    
+
     .widget.affix{width: 23%;}
     .tab-style5 li a{margin: 0 25px;}
     .tab-style9 .nav-tabs li a{padding: 0 22px;}
     .icon-box i{ margin: 7px;}
 
     .button-bg-area .btn{margin-bottom:5px; padding: 10px;}
-    
+
 }
 
 @media (max-width: 767px) {
 
     .xs-center-col{ float:none !important; margin-left:auto !important; margin-right:auto !important}
-    
+
     /* border */
     .xs-no-border { border:none !important}
     .xs-separator-line-thick { height: 4px; margin: 0 auto; width: 30px; margin:7% auto}
@@ -880,7 +879,6 @@
     .xs-z-index-0 {z-index:0 !important;}
     .xs-z-index-minus2 {z-index:-2 !important;}
     .xs-no-transition * { transition-timing-function: none; -moz-transition-timing-function: none; -webkit-transition-timing-function: none; -o-transition-timing-function: none; transition-duration: 0s; -moz-transition-duration: 0s; -webkit-transition-duration: 0s; -o-transition-duration: 0s; }
-    section { padding: 130px 0; }
 
     /* text */
     .xs-text-center { text-align: center !important}
@@ -890,15 +888,15 @@
     /* float */
     .xs-f-right {float: right !important;}
     .xs-f-left {float: left !important;}
-    
+
     /* color */
     .xs{ color:#FFF !important}
     .xs-black-text{ color:#000 !important}
-    
+
     /* background position */
     .xs-background-position-center-top { background-position: center top !important;}
     .xs-background-position-left-center { background-position: left center !important;}
-    
+
     /* different text size */
     .xs-text-extra-small { font-size:10px !important; line-height:15px!important;}
     .xs-text-small { font-size:11px !important; line-height:15px!important;}
@@ -945,11 +943,11 @@
 
     /* br */
     .xs-br-display-none br { display: none !important}
-    
+
      /* alert */
     .alert {padding: 15px;}
     .alert button.close {margin-top: -7px}
-    
+
     /* border */
     .xs-no-border { border:none !important}
 
@@ -997,20 +995,20 @@
     #counter-event .counter-box { width: 72px; padding: 0 10px; }
     #counter-event .number { font-size: 30px; line-height: 32px; }
     #counter-event span { font-size: 10px; }
-    
+
     /* grid style1 */
     .grid-style1-border {width: calc(100% - 0px); top: 0; left: 0; height: calc(100% - 0px);}
 
     /* agency */
     .slider-typography .slider-typography-option1 span {font-size: 56px; line-height: 60px;}
-    section { padding: 80px 0;}  
+    section { padding: 80px 0;}
     .post-thumbnail > img { height: 100%; width: auto;}
-    
+
     /* restaurant */
     .special-dishes-price { right: 23%;}
     .restaurant-menu-background {left: 19%; width: calc(100% - 38%);}
     .restaurant-dishes { height: 480px; margin-top: 0; width: 410px;}
-    #menu .container-fluid {left: 0;} 
+    #menu .container-fluid {left: 0;}
 
     /* travel */
     .travel-slider { min-height: 360px;}
@@ -1045,7 +1043,7 @@
     .treatments-box-text { min-height: 490px;}
     .hover-box-more { height: 70px; padding: 15px; right: -80px;  width: 70px;}
     .treatments-box-text-sub img {width: 170px;}
-    
+
     /* personal */
     .sidebar-nav.shrink .navbar-collapse { top: 11px;}
     .portfolio-filter-tab-style-5 li.active a::before {top: 17px;}
@@ -1057,13 +1055,13 @@
     .attending-main {height: 580px;}
     .attending-main .img-border-medium {height: 550px;}
     .wedding-slider {min-height: 500px !important;}
-    
+
      /* coming soon */
     .coming-soon-bg .number {height: 10px;}
     .coming-soon-bg .counter-box span { height: 10px;}
     .coming-soon-bg .counter-box {width: 70px !important; padding: 0 !important}
     .coming-soon-bg p { font-size: 12px !important;}
-    
+
     /* blog */
     .page-title{padding:210px 0 0 !important}
     .blog-sharing{ margin: 10px 0;}
@@ -1071,9 +1069,9 @@
     .pagination{margin: 15px 0; padding: 0;}
     .pagination a::after{padding: 5px 8px;}
     .blog-post-title::after {top: 20px;}
-    
+
     .widget.affix { top: 0; width: 100%; position: relative; }
-    
+
     .portfolio-filter-tab-style-4 li {display: inline-block !important; width: 100%; margin:10px 0 10px !important}
     .portfolio-filter-tab-style-2 li {display: inline-block !important; width: 100%; }
     .portfolio-filter-tab-style-3 li {display: table !important; margin:10px auto 10px !important}
@@ -1086,7 +1084,7 @@
     .portfolio-filter-tab-style-3 li:first-child { margin:10px auto 10px !important}
     .portfolio-filter-tab-style-3 li:last-child { margin:10px auto 10px !important}
     .tab-style-4 li {margin: 0}
-    
+
     .tab-style5 .nav-tabs li.active a, .tab-style6 .nav-tabs li.active a{border-bottom: 2px solid #000; }
     .tab-style5 .nav li a, .tab-style6 .nav-tabs li a{border-bottom: 2px solid #e5e5e5; padding:15px 0 15px;}
     .tab-style5 .nav li a:focus, .tab-style5 .nav li a:hover, .tab-style6 .nav-tabs li a:hover{border-bottom: 2px solid #000;}
@@ -1113,7 +1111,7 @@
     .alert-style1 .alert{font-size: 16px; line-height: 24px; margin-bottom: 0; padding-left: 0; padding-right: 0;}
 
     .button-bg-area .btn{display: table; margin: 0 auto 25px;}
-    
+
 }
 
 @media (max-width: 480px) {
@@ -1130,14 +1128,14 @@
 
     /* testimonial */
     .testimonial-style2 img { width: 80%;}
-    
+
     /* tattoo */
     .tattoo-art-box .title-extra { font-size: 35px !important; line-height: 40px !important;}
 
     /* agency */
     .slider-typography .slider-typography-option1 span {font-size: 34px; line-height: 38px;}
     .slider-typography .slider-typography-option1 p {font-size: 11px;}
-    .footer-social a {margin: 0 10px;}  
+    .footer-social a {margin: 0 10px;}
 
     /* restaurant */
     section { padding: 60px 0;}
@@ -1146,7 +1144,7 @@
     .menu-text { width: 100% !important;}
     .menu-item { padding: 24px 0;}
     .menu-item p { margin: 0;}
-    .restaurant-menu-text-inner { padding: 8% !important; }    
+    .restaurant-menu-text-inner { padding: 8% !important; }
     .restaurant-menu-background {left: 10%; width: calc(100% - 20%);height: calc(100% - 50%); top: 26%;}
     .restaurant-menu-text {width: calc(100% - 50px); left: 25px;}
     .special-dishes img { width: 80%;}
@@ -1162,23 +1160,23 @@
     /* wedding */
     .title-dividers::before{width: 30px; left: -35px;}
     .title-dividers::after{width: 30px; right: -35px;}
-    .attending-main { height: 510px;} 
+    .attending-main { height: 510px;}
     .attending-main .img-border-medium {height: 480px;}
     .center-logo-header .navbar-brand img {max-width: 245px; top: -14px;}
-    
-    
+
+
     /* travel */
     .ajax-popup-title {min-height: 400px !important;}
     .ajax-popup-content p span {width: 100%; margin:0 0 20px; text-align: center;}
     .itinerary p span {position: inherit; display: inline-block;}
     .itinerary p {padding-left: 0;}
-    
+
     /* blog post style */
     .blog-post-style5 .post-details { min-height: 280px;}
-    
+
     /* personal */
     .personal-tab-content .grid figcaption h3 { padding: 0;}
-    
+
     .panel-title {font-size: 11px; padding: 7px 15px;}
     .toggles-style1 .panel-title {font-size: 12px; line-height: 45px; padding: 0 20px;}
     .toggles-style1 .panel-title span{position: static; }
@@ -1190,18 +1188,17 @@
 }
 
 @media (max-width: 320px) {
-    
+
     /* pull navigation */
     .menu-wrap {width: 100%; left: 350px}
     .menu-button {right: 0; margin: 30px;}
-    
+
     /* wedding */
     .attending-main { height: 460px;}
     .attending-main .img-border-medium {height: 430px;}
 }
- @media only screen  and (min-width : 360px) and (max-width : 640px) { 
+ @media only screen  and (min-width : 360px) and (max-width : 640px) {
      .coming-soon-bg, .coming-soon-bg .slider-text-middle-main {min-height: 550px !important}
      .min-height-image .full-screen { min-height: 510px !important;}
      .display-none-minwidth {display: none !important}
  }
- 
