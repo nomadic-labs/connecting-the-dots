@@ -18,16 +18,18 @@ const EmbeddedVideo = ({ video, onClickVideo }) => {
   )
 }
 
-class YoutubeVideoFeed
- extends Component {
+class YoutubeVideoFeed extends Component {
   constructor(props) {
     super(props);
     this.state = { videos: [], openDialog: false, videoId: "" };
+  }
+
+  componentDidMount() {
     this.populateVideos()
   }
 
   populateVideos = () => {
-    const url = `${YOUTUBE_API_ENDPOINT}?key=${process.env.GATSBY_YOUTUBE_API_KEY}&part=snippet&playlistId=${process.env.GATSBY_YOUTUBE_CHANNEL_UPLOADS_ID}`;
+    const url = `${YOUTUBE_API_ENDPOINT}?key=${process.env.GATSBY_YOUTUBE_API_KEY}&part=snippet&playlistId=${process.env.GATSBY_YOUTUBE_CHANNEL_UPLOADS_ID}&maxResults=50`;
     const method = "GET";
 
     axios({

@@ -177,16 +177,16 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
         </section>
 
         <section className="wow fadeIn no-padding-top no-padding-bottom" id="who-we-are">
-          <div className="container-fluid">
+          <div className="container-fluid flex">
             <div className="row">
-              <div className="xs-col-12 col-md-6 service no-padding flex">
+              <div className="xs-col-12 col-md-6 h-100 no-padding">
                 <BackgroundImage
                   content={content["who-we-are-img"]}
                   handleSave={onSave("who-we-are-img")}
                 />
               </div>
-              <div className="xs-col-12 col-md-6 bg-black service padding-seven md-padding-seventeen xs-padding-twenty-nine">
-                <div className="title-large margin-six no-margin-lr no-margin-top display-inline-block white-text">
+              <div className="xs-col-12 col-md-6 bg-black padding-seven md-padding-seventeen xs-padding-twenty-nine">
+                <div className="title-large display-inline-block white-text">
                   <Editable
                     editor={RichTextEditor}
                     content={content["who-we-are"]}
