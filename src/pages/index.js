@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import { connect } from "react-redux";
 import { EditableLink } from "react-easy-editables"
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
@@ -8,7 +8,6 @@ import {
   updatePage,
   loadPageData,
   showNotificationByName,
-  updatePageContent,
   pushContentItem,
   removeContentItem,
 } from "../redux/actions";

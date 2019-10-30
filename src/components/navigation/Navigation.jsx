@@ -1,6 +1,5 @@
 import React from "react";
 import { EditableLink } from "react-easy-editables"
-import { Link } from "gatsby";
 
 const styles = {
   fullWidth: {

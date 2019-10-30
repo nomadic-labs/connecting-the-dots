@@ -17,7 +17,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Layout from "../layouts/index";
 import ProtectedPage from "../layouts/protected-page"
 
-const menuItems = [{ label: "Home", url: "/" }];
 const styles = {
   paper: {
     marginTop: "4rem",

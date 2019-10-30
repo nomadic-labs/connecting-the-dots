@@ -1,11 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import {
-  PlainTextEditor,
-  RichTextEditor,
   ImageUploadEditor,
-  LinkEditor,
   Editable
 } from 'react-easy-editables';
 
