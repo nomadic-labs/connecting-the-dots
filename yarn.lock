@@ -11533,10 +11533,10 @@ react-draft-wysiwyg@^1.11.0:
     linkify-it "^2.0.3"
     prop-types "^15.6.0"
 
-react-easy-editables@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.5.4.tgz#5d035c760ec6fc380daf9f1d6a0718b6d1455931"
-  integrity sha512-5ci4zk9FiV2pWrRdHkLSxcEitZS36o0WOeOvo0KtQ8D1Nj/8ywvBznUiDMwQxDPmY7mvfGYU7dqTJGKq+Qyqnw==
+react-easy-editables@^0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.5.6.tgz#0b50b23526b147edc98fb65a91908314326d3b2b"
+  integrity sha512-Knzr/dY6ZBx0jQ2pyMBfo6RRyZpvHmmj81jyfWpTDxnxuLRMR3t1QoAdmei/rMuN+hnjtEgl5qkwe3xbO8rjZw==
   dependencies:
     react-image-lightbox "^5.1.0"
 
