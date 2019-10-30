@@ -788,7 +788,7 @@ nav.shrink .container {height: 60px;}
 .navbar-nav a { font-size: 12px; text-transform: uppercase; color: #fff !important; padding:0 !important; font-weight: 500}
 .navbar-nav a:hover { color: #cacaca !important; background: transparent !important}
 .navbar-nav a:focus {color: #fff !important; background: transparent !important}
-.nav li {margin: 15px 20px}
+.nav li {margin: 15px}
 .sticky-wrapper {position: absolute; top: 0; width: 100%}
 .navbar-brand img {position: relative; top: -5px; z-index: 2; max-width: 156px;}
 nav.shrink {background: rgba(0,0,0,1); border: none !important}

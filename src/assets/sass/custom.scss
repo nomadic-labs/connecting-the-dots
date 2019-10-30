@@ -266,6 +266,10 @@ section#partners {
   height: 100%;
 }
 
+.preserve-newlines {
+  white-space: pre-wrap;
+}
+
 /* RESPONSIVE FOR TABLETS */
 
 @media (max-width: 992px) {

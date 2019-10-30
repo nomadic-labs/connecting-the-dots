@@ -87,7 +87,7 @@ class ProjectsPage extends React.Component {
             </h1>
             <div
               className="mabox-map"
-              style={{ height: "50vh", width: "100%", minHeight: "300px" }}
+              style={{ height: "65vh", width: "100%", minHeight: "300px" }}
             >
               <div ref={el => (this.mapContainer = el)} />
             </div>

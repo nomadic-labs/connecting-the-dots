@@ -25,7 +25,7 @@ const ProjectCard = ({ project }) => {
           <p className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
             {project.organization}
           </p>
-          <p className="text-large margin-three no-margin-lr display-block xs-margin-eleven xs-no-margin-lr">
+          <p className="text-large margin-three no-margin-lr display-block xs-margin-eleven xs-no-margin-lr preserve-newlines">
             {project.project_description}
           </p>
 

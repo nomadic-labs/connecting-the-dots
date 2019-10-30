@@ -16,7 +16,7 @@ const Navigation = (props) => {
 
   return (
     <div>
-      <nav className="navbar no-margin-bottom">
+      <nav className="navbar navbar-expand-lg no-margin-bottom">
         <div className="navigation-menu padding-two no-padding-top no-padding-bottom">
           <div className="row">
             <div className="col-lg-1 col-md-3 navbar-header">
