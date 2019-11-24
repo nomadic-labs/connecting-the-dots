@@ -51,7 +51,7 @@ class ProjectsPage extends React.Component {
     this.map = new mapbox.Map({
       container: this.mapContainer,
       style: "mapbox://styles/mapbox/dark-v9",
-      center: [-90, 54],
+      center: [-90, 56],
       zoom: 3.0
     });
 
