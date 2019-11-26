@@ -50,7 +50,8 @@ const CustomTableCell = withStyles(theme => ({
     fontSize: "1.4rem"
   },
   body: {
-    fontSize: "1.4rem"
+    fontSize: "1.4rem",
+    whiteSpace: "pre-wrap"
   }
 }))(TableCell);
 
