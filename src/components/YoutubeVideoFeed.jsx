@@ -1,15 +1,81 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Dialog from '@material-ui/core/Dialog';
+import Slider from "react-slick"
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const YOUTUBE_API_ENDPOINT = "https://www.googleapis.com/youtube/v3/playlistItems";
 
+const PrevArrow = props => {
+  const { className, style, onClick } = props;
+  return (
+    <button
+      className={className}
+      onClick={onClick}
+      style={style}
+    >
+      <i className="fas fa-angle-left"></i>
+    </button>
+  );
+}
+
+const NextArrow = props => {
+  const { className, style, onClick } = props;
+  return (
+    <button
+      className={className}
+      onClick={onClick}
+      style={style}
+    >
+      <i className="fas fa-angle-right"></i>
+    </button>
+  );
+}
+
+const settings = {
+  infinite: true,
+  speed: 500,
+  draggable: true,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  prevArrow: <PrevArrow />,
+  nextArrow: <NextArrow />,
+  responsive: [
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        swipe: true,
+      }
+    },
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        swipe: true,
+      }
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        swipe: true,
+      }
+    },
+  ]
+};
+
 const EmbeddedVideo = ({ video, onClickVideo }) => {
   return (
-    <div className="col-12 col-sm-6 col-md-3" onClick={onClickVideo}>
+    <div className="padding-five">
       <div className="pos-relative video-thumbmail">
         <div className="play-button">
-          <i className="fa fa-play-circle"></i>
+          <i className="fa fa-play-circle" onClick={onClickVideo}></i>
         </div>
         <img className="img-fluid" src={video.snippet.thumbnails.medium.url} alt={`Video thumbnail for "${video.snippet.title}"`} />
       </div>
@@ -52,12 +118,14 @@ class YoutubeVideoFeed extends Component {
     const { videos, openDialog, videoId, videoTitle } = this.state;
     return (
       <div>
-        <div className="row">
-          {
-            videos.map(video => {
-              return <EmbeddedVideo video={video} key={video.id} onClickVideo={() => this.setState({ videoId: video.snippet.resourceId.videoId, videoTitle: video.snippet.title }, this.openDialog) } />
-            })
-          }
+        <div className="xs-padding-five">
+          <Slider { ...settings }>
+            {
+              videos.map(video => {
+                return <EmbeddedVideo video={video} key={video.id} onClickVideo={() => this.setState({ videoId: video.snippet.resourceId.videoId, videoTitle: video.snippet.title }, this.openDialog) } />
+              })
+            }
+          </Slider>
         </div>
         <Dialog onClose={this.closeDialog} aria-labelledby="simple-dialog-title" open={openDialog}>
           <div className="embed-container">

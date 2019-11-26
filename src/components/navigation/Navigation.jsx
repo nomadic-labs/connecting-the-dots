@@ -39,7 +39,7 @@ const Navigation = (props) => {
             >
               <ul className="nav navbar-nav">
                 { leftMenu.map((item, index) => (
-                  <li key={item.content.link}>
+                  <li key={item.content.link} className={`${Boolean(item.content.anchor) ? "" : "no-margin-right no-margin-left"}`}>
                     <EditableLink
                       content={item.content}
                       onSave={handleSaveMenu('left', index)}
@@ -52,11 +52,11 @@ const Navigation = (props) => {
               <ul className="nav navbar-nav navbar-right">
                 {
                   rightMenu.map((item, index) => (
-                    <li key={item.content.link}>
+                    <li key={item.content.link} className="no-margin-left">
                       <EditableLink
                         content={item.content}
                         onSave={handleSaveMenu('right', index)}
-                        classes="btn-small-white btn btn-small no-margin inner-link"
+                        classes="btn-small-white btn btn-small inner-link no-margin"
                         data-scroll
                       />
                     </li>

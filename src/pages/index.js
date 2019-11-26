@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
 import { EditableLink } from "react-easy-editables"
+
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import {
@@ -224,9 +225,7 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
             </div>
 
             <div className="row xs-text-center">
-              <div className="col-md-12 col-sm-12">
-                <YoutubeVideoFeed />
-              </div>
+              <YoutubeVideoFeed />
             </div>
           </div>
         </section>

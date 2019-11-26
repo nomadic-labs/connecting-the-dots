@@ -270,6 +270,14 @@ section#partners {
   white-space: pre-wrap;
 }
 
+.slick-prev {
+  left: -2% !important;
+}
+
+.slick-next {
+  right: -2% !important;
+}
+
 /* RESPONSIVE FOR TABLETS */
 
 @media (max-width: 992px) {
