@@ -75,7 +75,7 @@ const EmbeddedVideo = ({ video, onClickVideo }) => {
     <div className="padding-five">
       <div className="pos-relative video-thumbmail">
         <div className="play-button">
-          <i className="fa fa-play-circle" onClick={onClickVideo}></i>
+          <button style={{ background: "transparent" }} onClick={onClickVideo}><i className="fa fa-play-circle"></i></button>
         </div>
         <img className="img-fluid" src={video.snippet.thumbnails.medium.url} alt={`Video thumbnail for "${video.snippet.title}"`} />
       </div>

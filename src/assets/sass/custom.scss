@@ -223,6 +223,14 @@ section#partners {
       transition: all 0.3s linear;
     }
 
+    button {
+      &:hover, &:focus {
+        i {
+        opacity: 1;
+        }
+      }
+    }
+
   }
 
   &:hover, &:focus {
