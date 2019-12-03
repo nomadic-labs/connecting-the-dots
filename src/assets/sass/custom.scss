@@ -278,13 +278,29 @@ section#partners {
   white-space: pre-wrap;
 }
 
-.slick-prev {
-  left: -2% !important;
+
+#digital-stories {
+  .slick-prev {
+    left: -3% !important;
+    height: 30px;
+    width: 30px;
+
+    &:before {
+      font-size: 30px;
+    }
+  }
+
+  .slick-next {
+    right: -3% !important;
+    height: 30px;
+    width: 30px;
+
+    &:before {
+      font-size: 30px;
+    }
+  }
 }
 
-.slick-next {
-  right: -2% !important;
-}
 
 /* RESPONSIVE FOR TABLETS */
 
