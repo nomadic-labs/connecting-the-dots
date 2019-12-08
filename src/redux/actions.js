@@ -310,10 +310,6 @@ export function updateProjects(projects) {
   return { type: "UPDATE_PROJECTS", projects };
 }
 
-export function updateSubmission(submission) {
-  return { type: "UPDATE_SUBMISSION", submission };
-}
-
 export function updateProject(projectId, projectData) {
   return { type: "UPDATE_PROJECT", projectId, projectData };
 }

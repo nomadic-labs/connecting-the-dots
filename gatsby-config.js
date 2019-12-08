@@ -19,27 +19,27 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-remove-serviceworker`,
     {
-      resolve: "gatsby-source-firebase",
+      resolve: "gatsby-source-firebase-nl",
       options: {
         credential: firebaseConfig.serviceAccountKey,
         databaseURL: firebaseConfig.databaseURL,
         types: [
           {
-            type: "Projects",
-            path: "projectSubmissions",
+            type: "Pages",
+            path: "pages",
             map: node => {
-              node.focus = JSON.stringify(node.focus);
+              node.content = JSON.stringify(node.content);
 
               return node
             },
           },
           {
-            type: "Pages",
-            path: "pages",
+            type: "Projects",
+            path: "projectSubmissions",
             map: node => {
-              node.content = JSON.stringify(node.content);
+              node.focus = JSON.stringify(node.focus);
 
               return node
             },
