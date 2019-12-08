@@ -280,6 +280,30 @@ export function submitProjectForm(formData, e) {
   };
 }
 
+
+export function saveProjectForm(formData, e, submissionId) {
+  return dispatch => {
+    const db = firebase.database()
+    const data = { ...formData }
+
+    db.ref(`projectSubmissions/${submissionId}`).update(data, error => {
+      if (error) {
+        console.log("Error saving form", error);
+        dispatch(submitProjectFormError(error));
+
+        return dispatch(
+          showNotification(
+            `There was an error submitting your form: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      dispatch(showNotification("The submission was saved.", "success"));
+    });
+  };
+}
+
 // PROJECTS ------------------------
 
 export function updateProjects(projects) {
@@ -318,9 +342,14 @@ export function updateProjectStatus(projectId, status) {
   };
 }
 
+export function loadingProjects() {
+  return { type: "LOADING_PROJECTS" };
+}
+
 export function getProjects() {
   return dispatch => {
     const db = firebase.database();
+    dispatch(loadingProjects());
 
     db
       .ref(`projectSubmissions`)
@@ -328,6 +357,20 @@ export function getProjects() {
       .then(snapshot => {
         const projects = snapshot.val();
         dispatch(updateProjects(projects));
+      });
+  };
+}
+
+export function getSubmission(uid) {
+  return dispatch => {
+    const db = firebase.database();
+
+    db
+      .ref(`projectSubmissions/${uid}`)
+      .once("value")
+      .then(snapshot => {
+        const submission = snapshot.val();
+        dispatch(updateForm(submission));
       });
   };
 }

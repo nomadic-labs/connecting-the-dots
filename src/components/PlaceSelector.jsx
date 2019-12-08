@@ -16,6 +16,12 @@ class PlaceSelector extends Component {
     this.generateOption = place => this._generateOption(place);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.value && prevProps.value !== this.props.value) {
+      this.setState({ value: this.generateOptionFromSavedSubmission() })
+    }
+  }
+
   _handleChange(selected) {
     if (!selected) {
       return this.setState({ value: selected });
@@ -117,6 +123,13 @@ class PlaceSelector extends Component {
           value: place
         };
     }
+  }
+
+  generateOptionFromSavedSubmission = () => {
+    return {
+      label: this.props.value.label,
+      value: this.props.value
+    };
   }
 
   render() {
