@@ -20,7 +20,7 @@ import PlainTextEditor from "../components/editingTools/PlainTextEditor";
 import FileUploadEditor from "../components/editingTools/FileUploadEditor";
 import PlaceSelector from "../components/PlaceSelector";
 import Select from "react-select";
-import queryString from "query-string"
+// import queryString from "query-string"
 
 
 const focusOptions = [
@@ -485,13 +485,13 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
 class PageContainer extends React.Component {
   constructor(props) {
     super(props)
-    const parsedQueryString = queryString.parse(this.props.location.search)
-    const projectUid = parsedQueryString.project
+    // const parsedQueryString = queryString.parse(this.props.location.search)
+    // const projectUid = parsedQueryString.project
 
-    if (Boolean(projectUid)) {
-      this.projectUid = projectUid
-      this.props.getSubmission(projectUid)
-    }
+    // if (Boolean(projectUid)) {
+    //   this.projectUid = projectUid
+    //   this.props.getSubmission(projectUid)
+    // }
   }
 
   componentDidMount() {

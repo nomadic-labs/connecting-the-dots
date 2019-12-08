@@ -33,7 +33,6 @@
     "morgan": "^1.9.0",
     "node-sass": "^4.9.2",
     "prop-types": "^15.6.2",
-    "query-string": "^6.9.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-draft-wysiwyg": "^1.11.0",
