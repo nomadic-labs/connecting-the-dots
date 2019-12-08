@@ -30,7 +30,7 @@ export function closeNotification() {
 export function showNotificationByName(name) {
   return dispatch => {
     const message = NOTIFICATION_MESSAGES[name];
-    dispatch( (message, "success"));
+    dispatch(showNotification(message, "success"));
   };
 }
 
