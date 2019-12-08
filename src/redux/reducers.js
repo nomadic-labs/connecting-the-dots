@@ -131,16 +131,27 @@ export const projectForm = (state={}, action) => {
   }
 }
 
-export const projects = (state={}, action) => {
+export const projects = (state={ loading: false, projects: {} }, action) => {
   switch (action.type) {
+    case 'LOADING_PROJECTS':
+      return {
+        ...state,
+        loading: true
+      }
     case 'UPDATE_PROJECTS':
-      return action.projects;
+      return {
+        projects: action.projects,
+        loading: false
+      };
     case 'UPDATE_PROJECT':
       return {
         ...state,
-        [action.projectId]: {
-          ...state[action.projectId],
-          ...action.projectData
+        projects: {
+          ...state.projects,
+          [action.projectId]: {
+            ...state[action.projectId],
+            ...action.projectData
+          }
         }
       }
     default:

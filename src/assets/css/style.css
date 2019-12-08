@@ -627,12 +627,12 @@ section { padding: 4% 0; }
 .highlight-button-green:hover i {color:#fff;}
 
 .highlight-button-green-dark { border:2px solid #005E3F; display: inline-block; padding: 2px 20px 3px; font-size: 12px; color:#fff; background-color: #005E3F;  }
-.highlight-button-green-dark:hover, .highlight-button-green-dark:focus { background-color: transparent; border: 2px solid #000; color:#000}
+.highlight-button-green-dark:hover, .highlight-button-green-dark:focus { background-color: transparent; color:#000}
 .highlight-button-green-dark i { color: #fff}
 .highlight-button-green-dark:hover i {color:#fff;}
 
 .highlight-button-blue { border:2px solid #2283d4; display: inline-block; padding: 8px 20px 9px; font-size: 12px; color:#fff; background-color: #2283d4;  }
-.highlight-button-blue:hover, .highlight-button-blue:focus { background-color: transparent; border: 2px solid #fff; color:#fff}
+.highlight-button-blue:hover, .highlight-button-blue:focus { background-color: transparent;}
 .highlight-button-blue i { color: #fff}
 .highlight-button-blue:hover i {color:#2283d4}
 

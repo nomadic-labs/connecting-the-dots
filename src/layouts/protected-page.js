@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-// import { push } from 'gatsby';
 
 const mapStateToProps = state => {
   const allowEditing = state.adminTools.user && state.adminTools.user.isEditor;

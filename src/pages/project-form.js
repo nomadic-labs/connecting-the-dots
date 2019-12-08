@@ -4,19 +4,23 @@ import { graphql } from "gatsby";
 import {
   updateForm,
   submitProjectForm,
+  saveProjectForm,
   updatePage,
   loadPageData,
-  showNotification
+  showNotification,
+  getSubmission
 } from "../redux/actions";
 import Grid from "@material-ui/core/Grid";
 
 import Layout from "../layouts/index.js";
+import ProtectedPage from "../layouts/protected-page.js";
 import Editable from "../components/editable/Editable";
 import BackgroundImage from "../components/editable/BackgroundImage";
 import PlainTextEditor from "../components/editingTools/PlainTextEditor";
 import FileUploadEditor from "../components/editingTools/FileUploadEditor";
 import PlaceSelector from "../components/PlaceSelector";
 import Select from "react-select";
+import queryString from "query-string"
 
 
 const focusOptions = [
@@ -41,11 +45,17 @@ const mapDispatchToProps = dispatch => {
     onSubmitProjectForm: (formData, e) => {
       dispatch(submitProjectForm(formData, e));
     },
+    onSaveProjectForm: (formData, e, submissionId) => {
+      dispatch(saveProjectForm(formData, e, submissionId));
+    },
     onUpdateForm: data => {
       dispatch(updateForm(data));
     },
     showNotification: message => {
       dispatch(showNotification(message))
+    },
+    getSubmission: uid => {
+      dispatch(getSubmission(uid))
     }
   };
 };
@@ -63,10 +73,12 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
     formData,
     onUpdatePageData,
     onSubmitProjectForm,
+    onSaveProjectForm,
     onUpdateForm,
-    showNotification
+    showNotification,
+    projectUid,
   }) => {
-    const content = pageData ? pageData.content : {};
+    const content = pageData && pageData.content ? pageData.content : {};
 
     const onSave = id => content => {
       onUpdatePageData("project-form", id, content);
@@ -94,6 +106,13 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
         return onSubmitProjectForm(formData, e);
       }
     };
+
+    const onSaveForm = e => {
+      e.preventDefault()
+      if (!formData.submitted && validate(formData)) {
+        return onSaveProjectForm(formData, e, projectUid);
+      }
+    }
 
     const onChange = field => event => {
       const value = event.target ? event.target.value : event;
@@ -154,7 +173,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
               >
                 <form
                   id="project-submission-form"
-                  onSubmit={onSubmit}
+                  onSubmit={Boolean(projectUid) ? onSaveForm : onSubmit}
                   method="POST"
                   action="https://formspree.io/connectingthedots.bho@gmail.com"
                 >
@@ -292,6 +311,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                           options={focusOptions}
                           onChange={onChange("focus")}
                           className="big-select"
+                          value={formData["focus"]}
                           isMulti
                           required
                           styles={{
@@ -354,8 +374,9 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     </div>
 
                     <div id="file-upload">
-                      <label>Upload a File</label>
+                      <label htmlFor="file-attachment">Upload a File</label>
                       <FileUploadEditor
+                        id={"file-attachment"}
                         content={{}}
                         handleChange={onChange("project-file-url")}
                       />
@@ -449,7 +470,7 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                     type="submit"
                     className="highlight-button-dark btn btn-medium"
                   >
-                    Submit
+                    { projectUid ? "Save" : "Submit" }
                   </button>
                 </form>
               </Grid>
@@ -462,6 +483,17 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
 );
 
 class PageContainer extends React.Component {
+  constructor(props) {
+    super(props)
+    const parsedQueryString = queryString.parse(this.props.location.search)
+    const projectUid = parsedQueryString.project
+
+    if (Boolean(projectUid)) {
+      this.projectUid = projectUid
+      this.props.getSubmission(projectUid)
+    }
+  }
+
   componentDidMount() {
     const initialPageData = {
       ...this.props.data.pages,
@@ -472,6 +504,14 @@ class PageContainer extends React.Component {
   }
 
   render() {
+    if (this.projectUid) {
+      return(
+        <ProtectedPage>
+          <ProjectForm projectUid={this.projectUid} />
+        </ProtectedPage>
+      )
+    }
+
     return <ProjectForm />;
   }
 }
