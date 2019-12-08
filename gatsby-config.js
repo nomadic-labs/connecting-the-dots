@@ -21,7 +21,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     // `gatsby-plugin-offline`,
     {
-      resolve: "gatsby-source-firebase",
+      resolve: "gatsby-source-firebase-nl",
       options: {
         credential: firebaseConfig.serviceAccountKey,
         databaseURL: firebaseConfig.databaseURL,
