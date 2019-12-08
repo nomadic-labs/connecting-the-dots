@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, graphql } from "gatsby"
 import { connect } from "react-redux";
 import { getProjects, updateProjectStatus, loadPageData } from "../redux/actions";
 import { map } from "lodash";
@@ -11,6 +12,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import CloseIcon from "@material-ui/icons/Close";
 import CheckIcon from "@material-ui/icons/Check";
+import EditIcon from "@material-ui/icons/Edit";
 import OpenIcon from "@material-ui/icons/OpenInNew";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -40,7 +42,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    projects: state.projects,
+    projects: state.projects.projects,
+    loadingProjects: state.projects.loading,
     pageData: state.page.data,
   };
 };
@@ -143,6 +146,15 @@ const ProjectCard = ({ project, uid, updateProjectStatus }) => {
             <CustomTableCell>
               <Grid container spacing={16}>
                 <Grid item>
+                  <Link
+                    to={`/project-form?project=${uid}/`}
+                    className="btn highlight-button-blue btn-small no-margin inner-link btn-flex"
+                  >
+                    <EditIcon />
+                    Edit
+                  </Link>
+                </Grid>
+                <Grid item>
                   <button
                     className="btn highlight-button-dark btn-small no-margin inner-link btn-flex"
                     variant="raised"
@@ -174,6 +186,11 @@ const ProjectCard = ({ project, uid, updateProjectStatus }) => {
 
 const ProjectReviewPage = props => {
   const menuItems = props.pageData ? props.pageData.menu : {};
+
+  if (props.loadingProjects) {
+    return <div className="loader" />
+  }
+
   return (
     <Layout menuItems={menuItems}>
       <ProtectedPage>

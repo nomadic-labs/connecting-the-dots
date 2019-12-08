@@ -27,6 +27,15 @@ module.exports = {
         databaseURL: firebaseConfig.databaseURL,
         types: [
           {
+            type: "Projects",
+            path: "projectSubmissions",
+            map: node => {
+              node.focus = JSON.stringify(node.focus);
+
+              return node
+            },
+          },
+          {
             type: "Pages",
             path: "pages",
             map: node => {
@@ -35,15 +44,6 @@ module.exports = {
               return node
             },
           },
-          {
-            type: "Projects",
-            path: "projectSubmissions",
-            map: node => {
-              node.focus = JSON.stringify(node.focus);
-
-              return node
-            },
-          }
         ]
       }
     },

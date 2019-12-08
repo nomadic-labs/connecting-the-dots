@@ -12,8 +12,14 @@ class PlaceSelector extends Component {
     this.handleChange = s => this._handleChange(s);
     this.searchPlaces = (query, callback) =>
       this._searchPlaces(query, callback);
-    this.fetchPlaceById = () => this._fetchPlaceById();
+    this.fetchPlaceById = (id) => this._fetchPlaceById(id);
     this.generateOption = place => this._generateOption(place);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.value && prevProps.value !== this.props.value) {
+      this.setState({ value: this.generateOptionFromSavedSubmission() })
+    }
   }
 
   _handleChange(selected) {
@@ -76,8 +82,8 @@ class PlaceSelector extends Component {
       });
   }
 
-  _fetchPlaceById() {
-    const url = `${ALGOLIA_ENDPOINT}/${this.props.place_id}`;
+  _fetchPlaceById(id) {
+    const url = `${ALGOLIA_ENDPOINT}/${id}`;
 
     axios
       .get(url)
@@ -115,6 +121,26 @@ class PlaceSelector extends Component {
         return {
           label: `${place.locale_names.default[0]}`,
           value: place
+        };
+    }
+  }
+
+  generateOptionFromSavedSubmission = () => {
+    switch (this.props.placeType) {
+      case "city":
+        return {
+          label: this.props.value.label,
+          value: this.props.value
+        };
+      case "address":
+        return {
+          label: this.props.value.label,
+          value: this.props.value
+        };
+      default:
+        return {
+          label: this.props.value.label,
+          value: this.props.value
         };
     }
   }
