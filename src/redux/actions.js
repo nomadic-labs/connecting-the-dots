@@ -392,6 +392,7 @@ export function getSubmission(uid) {
   };
 }
 
+
 export function deleteSubmission(project, uid) {
   return dispatch => {
     const db = firebase.database();
