@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, graphql } from "gatsby"
 import { connect } from "react-redux";
-import { getProjects, updateProjectStatus, loadPageData, deleteSubmission } from "../redux/actions";
+import { getProjectsByStatus, updateProjectStatus, loadPageData, deleteSubmission } from "../redux/actions";
 import { map } from "lodash";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import Grid from "@material-ui/core/Grid";
 import Table from "@material-ui/core/Table";
@@ -20,6 +21,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Layout from "../layouts/index";
 import ProtectedPage from "../layouts/protected-page"
 
+import 'react-tabs/style/react-tabs.css';
+
+
 const styles = {
   paper: {
     marginTop: "4rem",
@@ -29,8 +33,8 @@ const styles = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProjects: () => {
-      dispatch(getProjects());
+    getProjectsByStatus: (status) => {
+      dispatch(getProjectsByStatus(status));
     },
     updateProjectStatus: (uid, status) => {
       dispatch(updateProjectStatus(uid, status));
@@ -38,8 +42,8 @@ const mapDispatchToProps = dispatch => {
     onLoadPageData: data => {
       dispatch(loadPageData(data));
     },
-    deleteSubmission: uid => {
-      dispatch(deleteSubmission(uid));
+    deleteSubmission: (project, uid) => {
+      dispatch(deleteSubmission(project, uid));
     },
   };
 };
@@ -74,7 +78,7 @@ const ProjectCard = ({ project, uid, updateProjectStatus, deleteSubmission }) =>
   const deleteProject = () => {
     if (typeof window !== "undefined") {
       if (window.confirm("Are you sure you want to delete this project?")) {
-        deleteSubmission(uid)
+        deleteSubmission(project, uid)
       }
     }
   }
@@ -206,11 +210,35 @@ const ProjectCard = ({ project, uid, updateProjectStatus, deleteSubmission }) =>
   );
 };
 
+const ProjectReviewTab = props => {
+  if (props.loadingProjects) {
+    return <div className="loader" />
+  }
+
+  return(
+    <div>
+      {map(props.projects, (project, uid) => {
+        return (
+          <ProjectCard
+            project={project}
+            key={uid}
+            uid={uid}
+            updateProjectStatus={props.updateProjectStatus}
+            deleteSubmission={props.deleteSubmission}
+          />
+        );
+      })}
+    </div>
+  )
+}
+
 const ProjectReviewPage = props => {
   const menuItems = props.pageData ? props.pageData.menu : {};
 
-  if (props.loadingProjects) {
-    return <div className="loader" />
+  const loadProjects = (index) => {
+    const statuses = ["pending", "approved", "rejected"]
+    props.getProjectsByStatus(statuses[index])
+    return true
   }
 
   return (
@@ -218,22 +246,26 @@ const ProjectReviewPage = props => {
       <ProtectedPage>
       <section className="">
         <div className="container">
-          <h2 className="alt-font black-text text-italic font-weight-600 xs-title-extra-large">
+          <h2 className="alt-font black-text text-italic font-weight-600 xs-title-extra-large margin-four no-margin-lr no-margin-top">
             Submitted Projects
           </h2>
-          <div>
-            {map(props.projects, (project, uid) => {
-              return (
-                <ProjectCard
-                  project={project}
-                  key={uid}
-                  uid={uid}
-                  updateProjectStatus={props.updateProjectStatus}
-                  deleteSubmission={props.deleteSubmission}
-                />
-              );
-            })}
-          </div>
+          <Tabs onSelect={loadProjects}>
+            <TabList>
+              <Tab>Pending</Tab>
+              <Tab>Approved</Tab>
+              <Tab>Rejected</Tab>
+            </TabList>
+
+            <TabPanel>
+              <ProjectReviewTab {...props} />
+            </TabPanel>
+            <TabPanel>
+              <ProjectReviewTab {...props} />
+            </TabPanel>
+            <TabPanel>
+              <ProjectReviewTab {...props} />
+            </TabPanel>
+          </Tabs>
         </div>
       </section>
       </ProtectedPage>
@@ -243,7 +275,7 @@ const ProjectReviewPage = props => {
 
 class PageContainer extends React.Component {
   componentDidMount() {
-    this.props.getProjects();
+    this.props.getProjectsByStatus("pending")
     const initialPageData = {
       ...this.props.data.pages,
     };
