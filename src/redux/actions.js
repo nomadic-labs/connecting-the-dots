@@ -353,6 +353,7 @@ export function getProjects() {
 
     db
       .ref(`projectSubmissions`)
+      .orderByChild('status')
       .once("value")
       .then(snapshot => {
         const projects = snapshot.val();
@@ -372,5 +373,23 @@ export function getSubmission(uid) {
         const submission = snapshot.val();
         dispatch(updateForm(submission));
       });
+  };
+}
+
+export function deleteSubmission(uid) {
+  return dispatch => {
+    const db = firebase.database();
+
+    db
+      .ref(`projectSubmissions/${uid}`)
+      .remove()
+      .then(() => {
+        dispatch(showNotification("The project has been deleted"))
+        dispatch(getProjects());
+      })
+      .catch(err => {
+        console.log(err)
+        dispatch(showNotification(`The project was not deleted: ${err}`))
+      })
   };
 }
