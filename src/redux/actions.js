@@ -353,7 +353,23 @@ export function getProjects() {
 
     db
       .ref(`projectSubmissions`)
+      .once("value")
+      .then(snapshot => {
+        const projects = snapshot.val();
+        dispatch(updateProjects(projects));
+      });
+  };
+}
+
+export function getProjectsByStatus(status) {
+  return dispatch => {
+    const db = firebase.database();
+    dispatch(loadingProjects());
+
+    db
+      .ref(`projectSubmissions`)
       .orderByChild('status')
+      .equalTo(status)
       .once("value")
       .then(snapshot => {
         const projects = snapshot.val();
