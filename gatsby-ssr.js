@@ -8,24 +8,20 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { JssProvider } from 'react-jss';
 import getPageContext from './src/utils/getPageContext';
-import createStore from './src/redux/createStore'
-import { Provider } from 'react-redux'
+import wrapWithProvider from "./src/redux/wrapWithProvider";
 
 export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString, setHeadComponents }) => {
   const pageContext = getPageContext();
-  const store = createStore()
 
   const bodyHTML = renderToString(
-    <Provider store={store}>
-      <JssProvider
-        registry={pageContext.sheetsRegistry}
-        generateClassName={pageContext.generateClassName}
-      >
-        {React.cloneElement(bodyComponent, {
-          pageContext,
-        })}
-      </JssProvider>
-    </Provider>
+    <JssProvider
+      registry={pageContext.sheetsRegistry}
+      generateClassName={pageContext.generateClassName}
+    >
+      {React.cloneElement(bodyComponent, {
+        pageContext,
+      })}
+    </JssProvider>
   );
 
   replaceBodyHTMLString(bodyHTML);
@@ -39,3 +35,4 @@ export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString, setHeadC
   ]);
 };
 
+export const wrapRootElement = wrapWithProvider;
