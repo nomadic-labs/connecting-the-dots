@@ -3,6 +3,7 @@
   "description": "Connecting the Dots website CMS",
   "version": "1.0.0",
   "author": "Sharon Kennedy <sharon@nomadiclabs.com>",
+  "url": "https://github.com/nomadic-labs/connecting-the-dots.git",
   "engines": {
     "node": "^8.9.4"
   },
@@ -11,7 +12,7 @@
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "@types/react": "^16.9.16",
-    "axios": "^0.18.1",
+    "axios": "^0.19.0",
     "babel-polyfill": "^6.26.0",
     "browserslist": "^3.2.0",
     "caniuse-db": "^1.0.30000867",
@@ -47,7 +48,8 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "slick-carousel": "^1.8.1",
-    "slugify": "^1.2.9"
+    "slugify": "^1.2.9",
+    "typescript": "^3.7.3"
   },
   "keywords": [
     "gatsby"
@@ -60,8 +62,7 @@
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "predeploy": "rm -rf .cache",
-    "deploy": "gatsby build && firebase deploy",
-    "start": "node index.js"
+    "deploy": "gatsby build && firebase deploy"
   },
   "devDependencies": {
     "prettier": "^1.8.2"
