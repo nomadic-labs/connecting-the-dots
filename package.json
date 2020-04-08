@@ -5,7 +5,7 @@
   "author": "Sharon Kennedy <sharon@nomadiclabs.com>",
   "url": "https://github.com/nomadic-labs/connecting-the-dots.git",
   "engines": {
-    "node": "^8.9.4"
+    "node": "8.9.4"
   },
   "dependencies": {
     "@firebase/app-types": "^0.1.0",
