@@ -14,7 +14,6 @@ import {
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import RegistrationModal from "./RegistrationModal";
 
 const styles = {
   iconLabel: {
@@ -160,14 +159,9 @@ class AccountButton extends React.Component {
       <span>
         <div
           className="highlight-button-black-border btn btn-small no-margin inner-link"
-          onClick={login}
         >
-          <span style={styles.iconLabel}>Sign In / Sign Up</span>
+          <Link to={'/login'} style={styles.iconLabel}>Sign In / Sign Up</Link>
         </div>
-        <RegistrationModal
-          open={Boolean(props.showRegistrationModal)}
-          onToggleRegistrationModal={props.onToggleRegistrationModal}
-        />
       </span>
     );
   }
