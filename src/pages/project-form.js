@@ -1,6 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { graphql } from "gatsby";
+import Grid from "@material-ui/core/Grid";
+import Select from "react-select";
+import queryString from "query-string"
+
+import {
+  EditableBackgroundImage,
+  EditableText,
+  FileUploadEditor
+} from 'react-easy-editables'
+
 import {
   updateForm,
   submitProjectForm,
@@ -10,17 +20,11 @@ import {
   showNotification,
   getSubmission
 } from "../redux/actions";
-import Grid from "@material-ui/core/Grid";
 
 import Layout from "../layouts/index.js";
 import ProtectedPage from "../layouts/protected-page.js";
-import Editable from "../components/editable/Editable";
-import BackgroundImage from "../components/editable/BackgroundImage";
-import PlainTextEditor from "../components/editingTools/PlainTextEditor";
-import FileUploadEditor from "../components/editingTools/FileUploadEditor";
 import PlaceSelector from "../components/PlaceSelector";
-import Select from "react-select";
-import queryString from "query-string"
+import { uploadImage, uploadFile } from "../firebase/operations"
 
 
 const focusOptions = [
@@ -124,42 +128,34 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
     return (
       <Layout menuItems={menuItems}>
         <section className="no-padding">
-          <BackgroundImage
+          <EditableBackgroundImage
             content={content["project-form-background"]}
             handleSave={onSave("project-form-background")}
-            overlay={true}
+            uploadImage={uploadImage}
+            styles={{ position: "relative" }}
           >
+            <div className="opacity-medium bg-dark-gray"></div>
             <div className="container half-screen position-relative">
               <div className="slider-typography text-center">
                 <div className="slider-text-middle-main md-margin-eleven sm-margin-three xs-margin-thirteen">
                   <div className="slider-text-middle slider-typography-option1">
                     <h2 className="alt-font white-text text-italic font-weight-600 xs-title-extra-large">
-                      <Editable
-                        editor={PlainTextEditor}
+                      <EditableText
                         content={content["project-form-title"]}
                         handleSave={onSave("project-form-title")}
-                      >
-                        {content["project-form-title"]
-                          ? content["project-form-title"]["text"]
-                          : "Title"}
-                      </Editable>
+                      />
                     </h2>
                     <div className="alt-font title-small xs-text-large white-text margin-one no-margin-bottom no-margin-lr display-block">
-                      <Editable
-                        editor={PlainTextEditor}
+                      <EditableText
                         content={content["project-form-description"]}
                         handleSave={onSave("project-form-description")}
-                      >
-                        {content["project-form-description"]
-                          ? content["project-form-description"]["text"]
-                          : "Subtitle"}
-                      </Editable>
+                      />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </BackgroundImage>
+          </EditableBackgroundImage>
         </section>
 
         <section id="form" className="wow fadeIn work-with-us">

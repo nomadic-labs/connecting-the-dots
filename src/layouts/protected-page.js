@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-// import { push } from 'gatsby';
 
 const mapStateToProps = state => {
   const allowEditing = state.adminTools.user && state.adminTools.user.isEditor;
@@ -22,7 +21,7 @@ const ProtectedPage = props => {
   }
 
   return (
-    <section>
+    <section className="nl-page">
       <div className="container">
         <p>You are not authorized to view this page.</p>
         <p>(Are you logged in?)</p>
@@ -30,7 +29,6 @@ const ProtectedPage = props => {
     </section>
   )
 }
-
 
 
 export default connect(mapStateToProps, null)(ProtectedPage);

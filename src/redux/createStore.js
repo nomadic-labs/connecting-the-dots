@@ -8,3 +8,4 @@ const initialState = { adminTools: { isLoggedIn: false, isEditingPage: false }}
 const createStore = () => reduxCreateStore(appReducers, initialState, applyMiddleware(thunk))
 
 export default createStore;
+

@@ -1,6 +1,6 @@
 import React from "react";
 
-import Editable from "./Editable";
+import { Editable } from "react-easy-editables";
 import StatisticEditor from "../editingTools/StatisticEditor";
 
 const Statistic = props => {
@@ -14,7 +14,7 @@ const Statistic = props => {
   return (
     <div className={`col-sm-4 counter-style1 xs-margin-nineteen xs-no-margin-lr xs-no-margin-top xs-no-border ${border}`}>
       <Editable
-        editor={StatisticEditor}
+        Editor={StatisticEditor}
         handleSave={handleSave}
         content={content}
       >

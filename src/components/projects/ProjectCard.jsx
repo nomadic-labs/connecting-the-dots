@@ -34,7 +34,7 @@ const ProjectCard = ({ project }) => {
             <p className="text-large margin-three no-margin-lr display-block xs-margin-eleven xs-no-margin-lr">{`Areas of focus: ${focusAreas}`}</p>
           }
 
-          <Grid container spacing={24}>
+          <Grid container spacing={2}>
             {project.project_file_url && (
               <Grid item>
                 <a

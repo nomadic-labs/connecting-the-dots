@@ -38,6 +38,12 @@ const styles = {
   }
 }
 
+const editorTheme = {
+  ...theme,
+  primaryColor: '#FCB239'
+}
+
+
 const mapStateToProps = state => {
   return {
     isEditingPage: state.adminTools.isEditingPage,
@@ -59,7 +65,7 @@ const TemplateWrapper = props => (
       <link rel="icon" href={favicon} type="image/x-icon" />
     </Helmet>
     <NotificationContainer />
-    <EditablesContext.Provider value={ { theme: theme, showEditingControls: props.isEditingPage } }>
+    <EditablesContext.Provider value={ { theme: editorTheme, showEditingControls: props.isEditingPage } }>
       <NavigationContainer menuItems={props.menuItems} />
       <div className='page-content' style={styles.content}>{props.children}</div>
       <Footer />

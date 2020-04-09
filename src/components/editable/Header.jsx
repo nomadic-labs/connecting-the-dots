@@ -1,6 +1,5 @@
 import React from "react";
-import Editable from "./Editable";
-import PlainTextEditor from "../editingTools/PlainTextEditor";
+import { Editable, PlainTextEditor } from "react-easy-editables";
 
 
 const Header = (props) => {

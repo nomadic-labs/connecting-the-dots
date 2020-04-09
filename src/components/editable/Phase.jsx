@@ -1,6 +1,5 @@
 import React from "react";
-import Editable from "./Editable";
-import PlainTextEditor from "../editingTools/PlainTextEditor";
+import { Editable, PlainTextEditor } from "react-easy-editables";
 
 const Phase = props => {
   const handleSave = newContent => {
@@ -16,7 +15,6 @@ const Phase = props => {
   };
 
   const { content } = props;
-  console.log('PHASE', content)
 
   return (
     <div

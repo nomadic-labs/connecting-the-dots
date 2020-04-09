@@ -33,7 +33,6 @@ export default class HTML extends React.Component {
           <script src={ withPrefix("/js/bootstrap.min.js")} type="text/javascript"></script>
 
           <script src={ withPrefix("/js/wow.min.js")} type="text/javascript"></script>
-          <script src={ withPrefix("/js/page-scroll.js")} type="text/javascript"></script>
           <script src={ withPrefix("/js/owl.carousel.min.js")} type="text/javascript"></script>
           <script src={ withPrefix("/js/jquery.countTo.js")} type="text/javascript"></script>
           <script src={ withPrefix("/js/jquery.parallax-1.1.3.js")} type="text/javascript"></script>

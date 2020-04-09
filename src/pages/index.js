@@ -1,9 +1,15 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
-import { EditableLink } from "react-easy-editables"
+import {
+  EditableLink,
+  EditableText,
+  EditableParagraph,
+  EditableBackgroundImage
+} from "react-easy-editables"
 
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
+import { uploadImage } from "../firebase/operations"
 
 import {
   updatePage,
@@ -14,10 +20,6 @@ import {
 } from "../redux/actions";
 
 import Layout from "../layouts/index.js";
-import BackgroundImage from "../components/editable/BackgroundImage";
-import Editable from "../components/editable/Editable";
-import PlainTextEditor from "../components/editingTools/PlainTextEditor";
-import RichTextEditor from "../components/editingTools/RichTextEditor";
 import Statistic from "../components/editable/Statistic";
 import PartnerLogo from "../components/PartnerLogo";
 import YoutubeVideoFeed from "../components/YoutubeVideoFeed";
@@ -63,62 +65,75 @@ const mapStateToProps = state => {
   };
 };
 
-const HomePage = connect(mapStateToProps, mapDispatchToProps)(
-  ({ pageData, onUpdatePageData, isEditingPage, onPushContentItem, onRemoveContentItem }) => {
-    const content = pageData ? pageData.content : {};
-    const menuItems = pageData ? pageData.menu : {};
-    const onSave = id => content => {
-      onUpdatePageData("home", id, content);
+class HomePage extends React.Component {
+  constructor(props) {
+    super(props)
+    const initialPageData = {
+      ...this.props.data.pages,
+      content: JSON.parse(this.props.data.pages.content)
     };
 
-    const onAddItem = id => content => {
-      onPushContentItem(id, content);
-    }
+    this.props.onLoadPageData(initialPageData);
+  }
 
-    const onDeleteItem = id => itemId => {
-      onRemoveContentItem(id, itemId)
+  componentDidMount() {
+    if (this.props.location.search) {
+      const notificationName = this.props.location.search.split(
+        "notification="
+      )[1];
+      this.props.showNotificationByName(notificationName);
     }
+  }
+
+  onSave = id => content => {
+    this.props.onUpdatePageData("home", id, content);
+  };
+
+  onAddItem = id => content => {
+    this.props.onPushContentItem(id, content);
+  }
+
+  onDeleteItem = id => itemId => {
+    this.props.onRemoveContentItem(id, itemId)
+  }
+
+  render() {
+    const { pageData, isEditingPage, data } = this.props;
+    const { onSave, onAddItem, onDeleteItem } = this;
+    const content = pageData ? pageData.content : JSON.parse(data.pages.content);
+    const menuItems = pageData ? pageData.menu : {};
 
     return (
       <Layout menuItems={menuItems}>
         <section className="no-padding" id="landing">
-          <BackgroundImage
+          <EditableBackgroundImage
             content={content["landing-background"]}
             handleSave={onSave("landing-background")}
-            overlay={true}
+            uploadImage={uploadImage}
           >
+            <div className="opacity-medium bg-dark-gray"></div>
             <div className="container full-screen position-relative">
               <div className="slider-typography text-left">
                 <div className="slider-text-middle-main md-margin-eleven sm-margin-three xs-margin-thirteen">
                   <div className="slider-text-middle slider-typography-option1">
                     <span className="white-text font-weight-800 letter-spacing-1 alt-font text-italic">
-                      <Editable
-                        editor={PlainTextEditor}
+                      <EditableText
                         content={content["landing-title"]}
                         handleSave={onSave("landing-title")}
-                      >
-                        {content["landing-title"]
-                          ? content["landing-title"]["text"]
-                          : " "}
-                      </Editable>
+                      />
                     </span>
                     <div className="bg-fast-yellow separator-line-extra-thick no-margin-lr margin-twelve md-no-margin-lr md-margin-six" />
-                    <Editable
-                      editor={PlainTextEditor}
-                      content={content["landing-subtitle"]}
-                      handleSave={onSave("landing-subtitle")}
-                    >
                       <p className="white-text main-font title-small xs-width-80">
-                        {content["landing-subtitle"]
-                          ? content["landing-subtitle"]["text"]
-                          : " "}
-                      </p>
-                    </Editable>
+                        <EditableText
+                          content={content["landing-subtitle"]}
+                          handleSave={onSave("landing-subtitle")}
+                        />
+                        </p>
                   </div>
                 </div>
               </div>
             </div>
-          </BackgroundImage>
+          </EditableBackgroundImage>
         </section>
 
         <section id="about" className="wow fadeIn">
@@ -126,32 +141,18 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
             <div className="row xs-text-center">
               <div className="col-md-12 col-sm-12">
                 <h2 className="alt-font text-italic font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-1 margin-seven no-margin-lr no-margin-top xs-margin-eleven xs-no-margin-lr xs-no-margin-top">
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableText
                     content={content["mission-title"]}
                     handleSave={onSave("mission-title")}
-                  >
-                    {content["mission-title"]
-                      ? content["mission-title"]["text"]
-                      : "Title"}
-                  </Editable>
+                  />
                 </h2>
               </div>
               <div className="col-md-5 col-sm-12">
-                <Editable
-                  editor={RichTextEditor}
+                <EditableParagraph
+                  classes="text-extra-large black-text"
                   content={content["mission-description"]}
                   handleSave={onSave("mission-description")}
-                >
-                  <div
-                    className="text-extra-large black-text"
-                    dangerouslySetInnerHTML={{
-                      __html: content["mission-description"]
-                        ? content["mission-description"]["text"]
-                        : "Description"
-                    }}
-                  />
-                </Editable>
+                />
               </div>
               <div className="col-md-6 col-sm-12 col-xs-12 col-md-offset-1 sm-padding-five sm-no-padding-lr sm-no-padding-bottom xs-margin-eleven xs-no-margin-lr xs-no-margin-bottom">
                 <div className="col-md-6 col-sm-6 service-sub text-center">
@@ -180,26 +181,17 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
           <div className="container-fluid flex">
             <div className="row">
               <div className="xs-col-12 col-md-6 h-100 no-padding">
-                <BackgroundImage
+                <EditableBackgroundImage
                   content={content["who-we-are-img"]}
                   handleSave={onSave("who-we-are-img")}
                 />
               </div>
               <div className="xs-col-12 col-md-6 bg-black padding-seven md-padding-seventeen xs-padding-twenty-nine">
                 <div className="title-large display-inline-block white-text">
-                  <Editable
-                    editor={RichTextEditor}
+                  <EditableParagraph
                     content={content["who-we-are"]}
                     handleSave={onSave("who-we-are")}
-                  >
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: content["who-we-are"]
-                          ? content["who-we-are"]["text"]
-                          : " "
-                      }}
-                    />
-                  </Editable>
+                  />
                 </div>
               </div>
             </div>
@@ -211,15 +203,10 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
             <div className="row xs-text-center">
               <div className="col-md-12 col-sm-12">
                 <h2 className="alt-font text-italic font-weight-600 title-thick-underline border-color-white display-inline-block letter-spacing-1 margin-seven no-margin-lr no-margin-top xs-margin-eleven xs-no-margin-lr xs-no-margin-top">
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableText
                     content={content["ditital-stories-title"]}
                     handleSave={onSave("ditital-stories-title")}
-                  >
-                    {content["ditital-stories-title"]
-                      ? content["ditital-stories-title"]["text"]
-                      : "Title"}
-                  </Editable>
+                  />
                 </h2>
               </div>
             </div>
@@ -235,15 +222,10 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
             <div className="row xs-text-center">
               <div className="col-md-12 col-sm-12">
                 <h2 className="alt-font text-italic font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-1 margin-seven no-margin-lr no-margin-top xs-margin-eleven xs-no-margin-lr xs-no-margin-top">
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableText
                     content={content["phases-title"]}
                     handleSave={onSave("phases-title")}
-                  >
-                    {content["phases-title"]
-                      ? content["phases-title"]["text"]
-                      : "Title"}
-                  </Editable>
+                  />
                 </h2>
               </div>
 
@@ -253,28 +235,17 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               >
                 <span className="name yellow-text">
                   <h4 className="alt-font text-italic font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-1 margin-seven no-margin-lr no-margin-top xs-margin-eleven xs-no-margin-lr xs-no-margin-top">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["phase1-title"]}
                       handleSave={onSave("phase1-title")}
-                    >
-                      {content["phase1-title"]
-                        ? content["phase1-title"]["text"]
-                        : "Phase title"}
-                    </Editable>
+                    />
                   </h4>
                 </span>
-                <Editable
-                  editor={PlainTextEditor}
+                <EditableParagraph
+                  classes="center-col width-90 text-medium"
                   content={content["phase1-description"]}
                   handleSave={onSave("phase1-description")}
-                >
-                  <p className="center-col width-90 text-medium">
-                    {content["phase1-description"]
-                      ? content["phase1-description"]["text"]
-                      : "Phase description"}
-                  </p>
-                </Editable>
+                />
                 <i className="fa fa-arrow-circle-right icon-small yellow-text display-block margin-fifteen no-margin-bottom xs-margin-two xs-no-margin-bottom" />
               </div>
 
@@ -284,28 +255,17 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               >
                 <span className="name yellow-text">
                   <h4 className="alt-font text-italic font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-1 margin-seven no-margin-lr no-margin-top xs-margin-eleven xs-no-margin-lr xs-no-margin-top">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["phase2-title"]}
                       handleSave={onSave("phase2-title")}
-                    >
-                      {content["phase2-title"]
-                        ? content["phase2-title"]["text"]
-                        : "Phase title"}
-                    </Editable>
+                    />
                   </h4>
                 </span>
-                <Editable
-                  editor={PlainTextEditor}
+                <EditableParagraph
+                  classes="center-col width-90 text-medium"
                   content={content["phase2-description"]}
                   handleSave={onSave("phase2-description")}
-                >
-                  <p className="center-col width-90 text-medium">
-                    {content["phase2-description"]
-                      ? content["phase2-description"]["text"]
-                      : "Phase description"}
-                  </p>
-                </Editable>
+                />
                 <i className="fa fa-arrow-circle-right icon-small yellow-text display-block margin-fifteen no-margin-bottom xs-margin-two xs-no-margin-bottom" />
               </div>
 
@@ -315,28 +275,17 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               >
                 <span className="name yellow-text">
                   <h4 className="alt-font text-italic font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-1 margin-seven no-margin-lr no-margin-top xs-margin-eleven xs-no-margin-lr xs-no-margin-top">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["phase3-title"]}
                       handleSave={onSave("phase3-title")}
-                    >
-                      {content["phase3-title"]
-                        ? content["phase3-title"]["text"]
-                        : "Phase title"}
-                    </Editable>
+                    />
                   </h4>
                 </span>
-                <Editable
-                  editor={PlainTextEditor}
+                <EditableParagraph
+                  classes="center-col width-90 text-medium"
                   content={content["phase3-description"]}
                   handleSave={onSave("phase3-description")}
-                >
-                  <p className="center-col width-90 text-medium">
-                    {content["phase3-description"]
-                      ? content["phase3-description"]["text"]
-                      : "Phase description"}
-                  </p>
-                </Editable>
+                />
                 <i className="fa fa-arrow-circle-right icon-small yellow-text display-block margin-fifteen no-margin-bottom xs-margin-two xs-no-margin-bottom" />
               </div>
 
@@ -346,28 +295,17 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               >
                 <span className="name yellow-text">
                   <h4 className="alt-font text-italic font-weight-600 title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-1 margin-seven no-margin-lr no-margin-top xs-margin-eleven xs-no-margin-lr xs-no-margin-top">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["phase4-title"]}
                       handleSave={onSave("phase4-title")}
-                    >
-                      {content["phase4-title"]
-                        ? content["phase4-title"]["text"]
-                        : "Phase title"}
-                    </Editable>
+                    />
                   </h4>
                 </span>
-                <Editable
-                  editor={PlainTextEditor}
+                <EditableParagraph
+                  classes="center-col width-90 text-medium"
                   content={content["phase4-description"]}
                   handleSave={onSave("phase4-description")}
-                >
-                  <p className="center-col width-90 text-medium">
-                    {content["phase4-description"]
-                      ? content["phase4-description"]["text"]
-                      : "Phase description"}
-                  </p>
-                </Editable>
+                />
                 <i className="fa fa-arrow-circle-right icon-small yellow-text display-block margin-fifteen no-margin-bottom xs-margin-two xs-no-margin-bottom" />
               </div>
             </div>
@@ -383,15 +321,10 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               <div className="col-md-12 col-sm-12 text-center">
                 <i className="icon-heart icon-large black-text" />
                 <span className="title-medium alt-font black-text display-block margin-four text-uppercase">
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableText
                     content={content["get-involved-cta"]}
                     handleSave={onSave("get-involved-cta")}
-                  >
-                    {content["get-involved-cta"]
-                      ? content["get-involved-cta"]["text"]
-                      : "Want to get involved?"}
-                  </Editable>
+                  />
                 </span>
                 <EditableLink
                   content={content["get-involved-btn-1"]}
@@ -413,34 +346,20 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
             <div className="row">
               <div className="col-md-12 col-sm-12">
                 <h2 className="alt-font font-weight-600 text-italic text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-lr no-margin-top">
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableText
                     content={content["tour-title"]}
                     handleSave={onSave("tour-title")}
-                  >
-                    {content["tour-title"]
-                      ? content["tour-title"]["text"]
-                      : " "}
-                  </Editable>
+                  />
                 </h2>
               </div>
             </div>
             <div className="row">
               <div className="col-md-5 col-sm-12">
                 <span className="text-extra-large margin-fourteen no-margin-lr no-margin-top display-inline-block main-font black-text md-margin-seventeen md-no-margin-lr md-no-margin-top sm-margin-nine sm-no-margin-lr sm-no-margin-top">
-                  <Editable
-                    editor={RichTextEditor}
+                  <EditableParagraph
                     content={content["tour-description"]}
                     handleSave={onSave("tour-description")}
-                  >
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: content["tour-description"]
-                          ? content["tour-description"]["text"]
-                          : " "
-                      }}
-                    />
-                  </Editable>
+                  />
                 </span>
                 <div>
                   <EditableLink
@@ -625,223 +544,139 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
               <div className="col-lg-12 col-md-12 col-sm-12 bg-gray service padding-seven md-padding-seventeen xs-padding-twenty-nine xs-no-padding-lr">
                 <div className="col-md-12 col-sm-12 text-left xs-text-center">
                   <h2 className="alt-font font-weight-600 text-italic  text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-eight no-margin-top">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["focus-title"]}
                       handleSave={onSave("focus-title")}
-                    >
-                      {content["focus-title"]
-                        ? content["focus-title"]["text"]
-                        : "Header"}
-                    </Editable>
+                    />
                   </h2>
                 </div>
                 <div className="col-md-3 col-sm-12 service-sub text-center">
                   <i className="icon-book-open icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["focus1-header"]}
                       handleSave={onSave("focus1-header")}
-                    >
-                      {content["focus1-header"]
-                        ? content["focus1-header"]["text"]
-                        : "Header"}
-                    </Editable>
+                    />
                   </span>
-                  <Editable
-                    editor={PlainTextEditor}
-                    content={content["focus1-description"]}
-                    handleSave={onSave("focus1-description")}
-                  >
-                    <p className="text-medium width-80 center-col">
-                      {content["focus1-description"]
-                        ? content["focus1-description"]["text"]
-                        : "Description"}
-                    </p>
-                  </Editable>
+                  <p className="text-medium width-80 center-col">
+                    <EditableText
+                      content={content["focus1-description"]}
+                      handleSave={onSave("focus1-description")}
+                    />
+                  </p>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
                   <i className="icon-paintbrush icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["focus2-header"]}
                       handleSave={onSave("focus2-header")}
-                    >
-                      {content["focus2-header"]
-                        ? content["focus2-header"]["text"]
-                        : "Header"}
-                    </Editable>
+                    />
                   </span>
-                  <Editable
-                    editor={PlainTextEditor}
-                    content={content["focus2-description"]}
-                    handleSave={onSave("focus2-description")}
-                  >
-                    <p className="text-medium width-80 center-col">
-                      {content["focus2-description"]
-                        ? content["focus2-description"]["text"]
-                        : "Description"}
-                    </p>
-                  </Editable>
+                  <p className="text-medium width-80 center-col">
+                    <EditableText
+                      content={content["focus2-description"]}
+                      handleSave={onSave("focus2-description")}
+                    />
+                  </p>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
                   <i className="icon-megaphone icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["focus3-header"]}
                       handleSave={onSave("focus3-header")}
-                    >
-                      {content["focus3-header"]
-                        ? content["focus3-header"]["text"]
-                        : "Header"}
-                    </Editable>
+                    />
                   </span>
-                  <Editable
-                    editor={PlainTextEditor}
-                    content={content["focus3-description"]}
-                    handleSave={onSave("focus3-description")}
-                  >
-                    <p className="text-medium width-80 center-col">
-                      {content["focus3-description"]
-                        ? content["focus3-description"]["text"]
-                        : "Description"}
-                    </p>
-                  </Editable>
+                  <p className="text-medium width-80 center-col">
+                    <EditableText
+                      content={content["focus3-description"]}
+                      handleSave={onSave("focus3-description")}
+                    />
+                  </p>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
                   <i className="icon-refresh icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["focus4-header"]}
                       handleSave={onSave("focus4-header")}
-                    >
-                      {content["focus4-header"]
-                        ? content["focus4-header"]["text"]
-                        : "Header"}
-                    </Editable>
+                    />
                   </span>
-                  <Editable
-                    editor={PlainTextEditor}
-                    content={content["focus4-description"]}
-                    handleSave={onSave("focus4-description")}
-                  >
-                    <p className="text-medium width-80 center-col">
-                      {content["focus4-description"]
-                        ? content["focus4-description"]["text"]
-                        : "Description"}
-                    </p>
-                  </Editable>
+                  <p className="text-medium width-80 center-col">
+                    <EditableText
+                      content={content["focus4-description"]}
+                      handleSave={onSave("focus4-description")}
+                    />
+                  </p>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
                   <i className="icon-heart icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["focus5-header"]}
                       handleSave={onSave("focus5-header")}
-                    >
-                      {content["focus5-header"]
-                        ? content["focus5-header"]["text"]
-                        : "Header"}
-                    </Editable>
+                    />
                   </span>
-                  <Editable
-                    editor={PlainTextEditor}
-                    content={content["focus5-description"]}
-                    handleSave={onSave("focus5-description")}
-                  >
-                    <p className="text-medium width-80 center-col">
-                      {content["focus5-description"]
-                        ? content["focus5-description"]["text"]
-                        : "Description"}
-                    </p>
-                  </Editable>
+                  <p className="text-medium width-80 center-col">
+                    <EditableText
+                      classes="text-medium width-80 center-col"
+                      content={content["focus5-description"]}
+                      handleSave={onSave("focus5-description")}
+                    />
+                  </p>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
                   <i className="icon-circle-compass icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["6-header"]}
                       handleSave={onSave("6-header")}
-                    >
-                      {content["6-header"]
-                        ? content["6-header"]["text"]
-                        : "Header"}
-                    </Editable>
+                    />
                   </span>
-                  <Editable
-                    editor={PlainTextEditor}
-                    content={content["6-description"]}
-                    handleSave={onSave("6-description")}
-                  >
-                    <p className="text-medium width-80 center-col">
-                      {content["6-description"]
-                        ? content["6-description"]["text"]
-                        : "Description"}
-                    </p>
-                  </Editable>
+                  <p className="text-medium width-80 center-col">
+                    <EditableText
+                      content={content["6-description"]}
+                      handleSave={onSave("6-description")}
+                    />
+                  </p>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
                   <i className="icon-wallet icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["focus7-header"]}
                       handleSave={onSave("focus7-header")}
-                    >
-                      {content["focus7-header"]
-                        ? content["focus7-header"]["text"]
-                        : "Header"}
-                    </Editable>
+                    />
                   </span>
-                  <Editable
-                    editor={PlainTextEditor}
-                    content={content["focus7-description"]}
-                    handleSave={onSave("focus7-description")}
-                  >
-                    <p className="text-medium width-80 center-col">
-                      {content["focus7-description"]
-                        ? content["focus7-description"]["text"]
-                        : "Description"}
-                    </p>
-                  </Editable>
+                  <p className="text-medium width-80 center-col">
+                    <EditableText
+                      content={content["focus7-description"]}
+                      handleSave={onSave("focus7-description")}
+                    />
+                  </p>
                 </div>
 
                 <div className="col-md-3 col-sm-12 service-sub text-center">
                   <i className="icon-chat icon-extra-large purple-text margin-seven no-margin-lr no-margin-top" />
                   <span className="text-medium font-weight-600 letter-spacing-2 text-uppercase black-text margin-one no-margin-lr no-margin-top display-block alt-font">
-                    <Editable
-                      editor={PlainTextEditor}
+                    <EditableText
                       content={content["focus8-header"]}
                       handleSave={onSave("focus8-header")}
-                    >
-                      {content["focus8-header"]
-                        ? content["focus8-header"]["text"]
-                        : "Header"}
-                    </Editable>
+                    />
                   </span>
-                  <Editable
-                    editor={PlainTextEditor}
-                    content={content["focus8-description"]}
-                    handleSave={onSave("focus8-description")}
-                  >
-                    <p className="text-medium width-80 center-col">
-                      {content["focus8-description"]
-                        ? content["focus8-description"]["text"]
-                        : "Description"}
-                    </p>
-                  </Editable>
+                  <p className="text-medium width-80 center-col">
+                    <EditableText
+                      content={content["focus8-description"]}
+                      handleSave={onSave("focus8-description")}
+                    />
+                  </p>
                 </div>
               </div>
             </div>
@@ -853,31 +688,17 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
             <div className="row">
               <div className="col-lg-6 col-md-6 col-sm-12 padding-nine bg-black agency-skill md-padding-fifteen sm-padding-nineteen">
                 <span className="title-extra-large alt-font white-text text-italic">
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableText
                     content={content["bho-header"]}
                     handleSave={onSave("bho-header")}
-                  >
-                    {content["bho-header"]
-                      ? content["bho-header"]["text"]
-                      : "Header"}
-                  </Editable>
+                  />
                 </span>
 
-                <Editable
-                  editor={RichTextEditor}
+                <EditableParagraph
+                  classes="white-text text-extra-large margin-six no-margin-lr"
                   content={content["bho-description"]}
                   handleSave={onSave("bho-description")}
-                >
-                  <p
-                    className="white-text text-extra-large margin-six no-margin-lr"
-                    dangerouslySetInnerHTML={{
-                      __html: content["bho-description"]
-                        ? content["bho-description"]["text"]
-                        : "Description"
-                    }}
-                  />
-                </Editable>
+                />
 
                 <EditableLink
                   content={content["support-btn"]}
@@ -888,31 +709,17 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
 
               <div className="col-lg-6 col-md-6 col-sm-12 padding-4 bg-gray agency-skill md-padding-seventeen sm-padding-nineteen">
                 <span className="text-medium font-weight-600 text-uppercase black-text margin-six display-block main-font">
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableText
                     content={content["bho-objectives-header"]}
                     handleSave={onSave("bho-objectives-header")}
-                  >
-                    {content["bho-objectives-header"]
-                      ? content["bho-objectives-header"]["text"]
-                      : "Our Objectives"}
-                  </Editable>
+                  />
                 </span>
 
                 <div className="padding-six">
-                  <Editable
-                    editor={RichTextEditor}
+                  <EditableParagraph
                     content={content["bho-objectives-details"]}
                     handleSave={onSave("bho-objectives-details")}
-                  >
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: content["bho-objectives-details"]
-                          ? content["bho-objectives-details"]["text"]
-                          : "Details"
-                      }}
-                    />
-                  </Editable>
+                  />
                 </div>
               </div>
             </div>
@@ -939,15 +746,10 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                 </div>
 
                 <div className="title-medium alt-font black-text display-block margin-four text-uppercase">
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableText
                     content={content["donate-cta"]}
                     handleSave={onSave("donate-cta")}
-                  >
-                    {content["donate-cta"]
-                      ? content["donate-cta"]["text"]
-                      : "Help us to reach our fundraising goal!"}
-                  </Editable>
+                  />
                 </div>
                 <EditableLink
                   content={content["donate-btn"]}
@@ -990,30 +792,20 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
             <div className="row">
               <div className="col-md-12 col-sm-12">
                 <h2 className="alt-font font-weight-600 text-italic title-thick-underline border-color-fast-yellow display-inline-block letter-spacing-2 margin-six no-margin-lr no-margin-top">
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableText
                     content={content["contact-title"]}
                     handleSave={onSave("contact-title")}
-                  >
-                    {content["contact-title"]
-                      ? content["contact-title"]["text"]
-                      : "Contact us"}
-                  </Editable>
+                  />
                 </h2>
               </div>
             </div>
             <div className="row call-us">
               <div className="col-sm-12">
                 <span className="text-extra-large margin-six no-margin-lr no-margin-top display-inline-block black-text">
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableText
                     content={content["contact-message"]}
                     handleSave={onSave("contact-message")}
-                  >
-                    {content["contact-message"]
-                      ? content["contact-message"]["text"]
-                      : "Get in touch"}
-                  </Editable>
+                  />
                 </span>
               </div>
             </div>
@@ -1023,49 +815,31 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
                   <span className="text-uppercase alt-font black-text ">
                     Address
                   </span>
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableParagraph
+                    classes="text-medium"
                     content={content["contact-address"]}
                     handleSave={onSave("contact-address")}
-                  >
-                    <p className="text-medium">
-                      {content["contact-address"]
-                        ? content["contact-address"]["text"]
-                        : "Get in touch"}
-                    </p>
-                  </Editable>
+                  />
                 </div>
                 <div className="margin-thirteen no-margin-lr sm-margin-nine sm-no-margin-tb sm-no-margin-left sm-display-inline-table xs-margin-nine xs-no-margin-lr xs-no-margin-top xs-width-100">
                   <span className="text-uppercase alt-font black-text">
                     Email
                   </span>
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableParagraph
+                    classes="text-medium"
                     content={content["contact-email"]}
                     handleSave={onSave("contact-email")}
-                  >
-                    <p className="text-medium">
-                      {content["contact-email"]
-                        ? content["contact-email"]["text"]
-                        : "example@host.com"}
-                    </p>
-                  </Editable>
+                  />
                 </div>
                 <div className="margin-six no-margin-lr sm-margin-nine sm-no-margin-tb sm-no-margin-left sm-display-inline-table xs-margin-nine xs-no-margin-lr xs-no-margin-top xs-width-100">
                   <span className="text-uppercase alt-font black-text">
                     Phone
                   </span>
-                  <Editable
-                    editor={PlainTextEditor}
+                  <EditableParagraph
+                    classes="text-medium"
                     content={content["contact-phone"]}
                     handleSave={onSave("contact-phone")}
-                  >
-                    <p className="text-medium">
-                      {content["contact-phone"]
-                        ? content["contact-phone"]["text"]
-                        : "123-456-7890"}
-                    </p>
-                  </Editable>
+                  />
                 </div>
               </div>
               <div className="col-md-7 col-sm-12 margin-nine no-margin-bottom no-margin-lr">
@@ -1127,28 +901,9 @@ const HomePage = connect(mapStateToProps, mapDispatchToProps)(
       </Layout>
     );
   }
-);
-
-class PageContainer extends React.Component {
-  componentDidMount() {
-    const initialPageData = {
-      ...this.props.data.pages,
-      content: JSON.parse(this.props.data.pages.content)
-    };
-
-    this.props.onLoadPageData(initialPageData);
-    if (this.props.location.search) {
-      const notificationName = this.props.location.search.split(
-        "notification="
-      )[1];
-      this.props.showNotificationByName(notificationName);
-    }
-  }
-
-  render() {
-    return <HomePage />;
-  }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 
 export const query = graphql`
   query {
@@ -1177,4 +932,3 @@ export const query = graphql`
   }
 `;
 
-export default connect(mapStateToProps, mapDispatchToProps)(PageContainer);

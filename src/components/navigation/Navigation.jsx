@@ -43,7 +43,7 @@ const Navigation = (props) => {
                     <EditableLink
                       content={item.content}
                       onSave={handleSaveMenu('left', index)}
-                      classes="inner-link text-medium"
+                      classes="inner-link"
                       data-scroll
                     />
                   </li>

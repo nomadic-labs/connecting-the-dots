@@ -6,6 +6,7 @@
 
 // You can delete this file if you're not using it
 import "babel-polyfill";
+
 import wrapWithProvider from "./src/redux/wrapWithProvider";
 
 export const wrapRootElement = wrapWithProvider

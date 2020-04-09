@@ -58,10 +58,10 @@ const mapStateToProps = state => {
 
 const CustomTableCell = withStyles(theme => ({
   head: {
-    fontSize: "1.4rem"
+    fontSize: "1rem"
   },
   body: {
-    fontSize: "1.4rem",
+    fontSize: "1rem",
     whiteSpace: "pre-wrap"
   }
 }))(TableCell);
@@ -160,7 +160,7 @@ const ProjectCard = ({ project, uid, updateProjectStatus, deleteSubmission }) =>
           <TableRow>
             <CustomTableCell>Actions</CustomTableCell>
             <CustomTableCell>
-              <Grid container spacing={16}>
+              <Grid container spacing={2}>
                 <Grid item>
                   <button
                     className="btn highlight-button-dark btn-small no-margin inner-link btn-flex"
