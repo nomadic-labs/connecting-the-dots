@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 
 import NavigationContainer from "../containers/NavigationContainer";
 import NotificationContainer from "../containers/NotificationContainer";
+import AccountButton from "../components/navigation/AccountButton"
 import Footer from "../components/Footer";
 
 import {
@@ -65,6 +66,7 @@ const TemplateWrapper = props => (
       <link rel="icon" href={favicon} type="image/x-icon" />
     </Helmet>
     <NotificationContainer />
+    <AccountButton />
     <EditablesContext.Provider value={ { theme: editorTheme, showEditingControls: props.isEditingPage } }>
       <NavigationContainer menuItems={props.menuItems} />
       <div className='page-content' style={styles.content}>{props.children}</div>

@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import {
   userLoggedIn,
   userLoggedOut,
-  toggleRegistrationModal,
   deploy,
   toggleEditing
 } from "../../redux/actions";
@@ -16,6 +15,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 
 const styles = {
+  container: {
+    position: "fixed",
+    right: "20px",
+    bottom: "20px",
+    zIndex: "1000",
+  },
   iconLabel: {
     display: "flex",
     alignItems: "center"
@@ -52,10 +57,6 @@ class AccountButton extends React.Component {
       } else {
         this.props.userLoggedOut();
       }
-
-      if (this.props.showRegistrationModal) {
-        this.props.onToggleRegistrationModal();
-      }
     });
   }
 
@@ -63,10 +64,6 @@ class AccountButton extends React.Component {
     firebase.auth().signOut();
     this.props.userLoggedOut();
     push("/");
-  };
-
-  login = e => {
-    this.props.onToggleRegistrationModal();
   };
 
   openMenu = e => {
@@ -87,7 +84,7 @@ class AccountButton extends React.Component {
         : "Account";
       const toggleText = props.isEditingPage ? "Done editing" : "Start editing";
       return (
-        <div>
+        <div style={styles.container}>
           <div
             className="highlight-button-black-border btn btn-small no-margin inner-link"
             onClick={openMenu}
@@ -173,7 +170,6 @@ const mapStateToProps = state => {
   return {
     isLoggedIn: state.adminTools.isLoggedIn,
     user: state.adminTools.user,
-    showRegistrationModal: state.adminTools.showRegistrationModal,
     isEditingPage: state.adminTools.isEditingPage,
     allowEditing: allowEditing
   };
@@ -186,9 +182,6 @@ const mapDispatchToProps = dispatch => {
     },
     userLoggedOut: () => {
       dispatch(userLoggedOut());
-    },
-    onToggleRegistrationModal: () => {
-      dispatch(toggleRegistrationModal());
     },
     onToggleEditing: () => {
       dispatch(toggleEditing());

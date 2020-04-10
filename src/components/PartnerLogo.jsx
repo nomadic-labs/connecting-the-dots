@@ -47,15 +47,17 @@ const PartnerLogo = props => {
   }
 
   return (
-    <div className="col-xs-12 col-sm-3 col-md-3 text-center margin-eight no-margin-lr no-margin-top xs-margin-nineteen xs-no-margin-lr xs-no-margin-top logo-container">
+    <div className="col-xs-12 col-sm-3 col-md-3">
       <Editable
         Editor={PartnerLogoEditor}
         handleSave={handleSave}
         content={content}
         {...props}
       >
-        <img src={content["partner-image"]["imageSrc"]} alt={content["partner-image"]["caption"]} />
-        <span className="text-uppercase text-small display-block letter-spacing-2 margin-twelve no-margin-bottom black-text xs-margin-three xs-no-margin-lr xs-no-margin-bottom">{content["partner-image"]["caption"]}</span>
+        <div className="text-center margin-eight no-margin-lr no-margin-top xs-margin-nineteen xs-no-margin-lr xs-no-margin-top logo-container">
+          <img src={content["partner-image"]["imageSrc"]} alt={content["partner-image"]["caption"]} />
+          <span className="text-uppercase text-small display-block letter-spacing-2 margin-twelve no-margin-bottom black-text xs-margin-three xs-no-margin-lr xs-no-margin-bottom">{content["partner-image"]["caption"]}</span>
+        </div>
       </Editable>
     </div>
   );

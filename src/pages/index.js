@@ -111,24 +111,26 @@ class HomePage extends React.Component {
             handleSave={onSave("landing-background")}
             uploadImage={uploadImage}
           >
+            <div className="position-relative">
             <div className="opacity-medium bg-dark-gray"></div>
-            <div className="container full-screen position-relative">
-              <div className="slider-typography text-left">
-                <div className="slider-text-middle-main md-margin-eleven sm-margin-three xs-margin-thirteen">
-                  <div className="slider-text-middle slider-typography-option1">
-                    <span className="white-text font-weight-800 letter-spacing-1 alt-font text-italic">
-                      <EditableText
-                        content={content["landing-title"]}
-                        handleSave={onSave("landing-title")}
-                      />
-                    </span>
-                    <div className="bg-fast-yellow separator-line-extra-thick no-margin-lr margin-twelve md-no-margin-lr md-margin-six" />
-                      <p className="white-text main-font title-small xs-width-80">
+              <div className="container full-screen position-relative">
+                <div className="slider-typography text-left">
+                  <div className="slider-text-middle-main md-margin-eleven sm-margin-three xs-margin-thirteen">
+                    <div className="slider-text-middle slider-typography-option1">
+                      <span className="white-text font-weight-800 letter-spacing-1 alt-font text-italic">
                         <EditableText
-                          content={content["landing-subtitle"]}
-                          handleSave={onSave("landing-subtitle")}
+                          content={content["landing-title"]}
+                          handleSave={onSave("landing-title")}
                         />
-                        </p>
+                      </span>
+                      <div className="bg-fast-yellow separator-line-extra-thick no-margin-lr margin-twelve md-no-margin-lr md-margin-six" />
+                        <p className="white-text main-font title-small xs-width-80">
+                          <EditableText
+                            content={content["landing-subtitle"]}
+                            handleSave={onSave("landing-subtitle")}
+                          />
+                          </p>
+                    </div>
                   </div>
                 </div>
               </div>
