@@ -30,7 +30,7 @@ class PartnerLogoEditor extends React.Component {
     return(
       <ImageUploadEditor
         content={content["partner-image"]}
-        handleEditorChange={this.handleEditorChange("partner-image")}
+        onContentChange={this.handleEditorChange("partner-image")}
         editCaption={true}
         uploadImage={uploadImage}
       />

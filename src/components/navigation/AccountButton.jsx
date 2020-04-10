@@ -75,7 +75,7 @@ class AccountButton extends React.Component {
   };
 
   render() {
-    const { props, openMenu, closeMenu, logout, login } = this;
+    const { props, openMenu, closeMenu, logout } = this;
     const { anchorEl } = this.state;
 
     if (props.isLoggedIn) {

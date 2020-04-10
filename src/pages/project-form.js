@@ -373,8 +373,9 @@ const ProjectForm = connect(mapStateToProps, mapDispatchToProps)(
                       <label htmlFor="file-attachment">Upload a File</label>
                       <FileUploadEditor
                         id={"file-attachment"}
-                        content={{}}
-                        handleChange={onChange("project-file-url")}
+                        content={formData["project-file-url"]}
+                        uploadFile={uploadFile}
+                        onContentChange={onChange("project-file-url")}
                       />
                     </div>
 
