@@ -153,7 +153,7 @@ class AccountButton extends React.Component {
     }
 
     return (
-      <span>
+      <span style={styles.container}>
         <div
           className="highlight-button-black-border btn btn-small no-margin inner-link"
         >
