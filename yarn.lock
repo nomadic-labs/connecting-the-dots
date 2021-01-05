@@ -2588,6 +2588,13 @@ axios@^0.19.0:
     follow-redirects "1.5.10"
     is-buffer "^2.0.2"
 
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  dependencies:
+    follow-redirects "^1.10.0"
+
 axobject-query@^2.0.2:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-2.1.1.tgz#2a3b1271ec722d48a4cd4b3fcc20c853326a49a7"
@@ -6402,12 +6409,10 @@ follow-redirects@1.5.10:
   dependencies:
     debug "=3.1.0"
 
-follow-redirects@^1.0.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.9.0.tgz#8d5bcdc65b7108fe1508649c79c12d732dcedb4f"
-  integrity sha512-CRcPzsSIbXyVDl0QI01muNDu69S8trU4jArW9LpOt2WtC6LyUJetcIrmfHsRBx7/Jb6GHJUiuqyYxPooFfNt6A==
-  dependencies:
-    debug "^3.0.0"
+follow-redirects@^1.0.0, follow-redirects@^1.10.0:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.1.tgz#5f69b813376cee4fd0474a3aba835df04ab763b7"
+  integrity sha512-SSG5xmZh1mkPGyKzjZP8zLjltIfpW32Y5QpdNJyjcfGxK3qo3NDDkZOZSFiGn1A6SclQxY9GzEwAHQ3dmYRWpg==
 
 for-in@^1.0.2:
   version "1.0.2"
@@ -12555,10 +12560,10 @@ react-dom@^16.8.0:
     prop-types "^15.6.2"
     scheduler "^0.18.0"
 
-react-easy-editables@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.8.2.tgz#bc8cdd991fa14ffb5dbcc5a61c5e052ba9bde3f8"
-  integrity sha512-RnEB7qFIA4tpBW8480UlPEjY0cW1W6lLfnmMtai8v22mHVHANLUZFBu5wOMVyDc/YcyhT2qTgo0brnv45bufQA==
+react-easy-editables@^0.8.6:
+  version "0.8.14"
+  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.8.14.tgz#03fe6f075f85bf80dd09108d3153510052c7afed"
+  integrity sha512-mzCXXf9Ri3GiC7tzidR8P6Xd6prTz2xd1wb1Pfl8rSI8+V6RTan9/Dew/8RtjxLSiko1hQRHiTQRpa9YNlAJzQ==
   dependencies:
     react-gsheets-timeline "^0.5.4"
     react-image-lightbox "^5.1.0"
